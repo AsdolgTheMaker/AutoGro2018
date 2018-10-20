@@ -3,7 +3,7 @@
   <asmv1:assemblyIdentity name="AutoGro.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="AutoGro" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="AutoGro" version="1.3.0.0" language="neutral" processorArchitecture="msil" />
     <commandLine file="AutoGro.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AutoGro.exe" size="89048">
-      <assemblyIdentity name="AutoGro" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AutoGro.exe" size="92632">
+      <assemblyIdentity name="AutoGro" version="1.3.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>9VR3jyv7urYFSK2XMGnxr9Qgad15VfdELgQ6ESzL1GA=</dsig:DigestValue>
+        <dsig:DigestValue>oC3jiXAcr/5aU8eI1Y906G1IsZjwuJvppsWBcAfE/hg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

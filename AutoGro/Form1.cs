@@ -3,25 +3,23 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.IO;
 using System.IO.Compression;
 using System.Threading;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace AutoGro
 {
     public partial class F_Main : Form
     {
-        // these should be updated each time i do... update
-        private const string version = "v1.23";
-        private const string updateDate = "20th October 2018";
-
         public string[] extExceptions = { "tex", "wav", "ogg", "tga", "fbx", "obj", "mp3", "png", "amf", "zpr" };
 
 
-        private class Log
+        public class Log
         {
             RichTextBox LogText;
 
@@ -54,12 +52,69 @@ namespace AutoGro
 
         public F_Main()
         {
-            InitializeComponent();
-            FBD_ContentDir.SelectedPath = Application.StartupPath;
+            if (Updater.tempFile == Application.ExecutablePath)
+            { // update is in progress, proceed to continuing it
+                string oldFile = Updater.tempFile.Replace("_.exe", ".exe");
+                File.Copy(Updater.tempFile, oldFile);
+                Process.Start(oldFile);
+                Application.Exit();
+            }
+            else // common run, act as usual
+            {
+                // if we are running after update - delete temp executable
+                if (File.Exists(Updater.tempFile))
+                {
+                    File.Delete(Updater.tempFile);
+                    Application.Exit();
+                }
+                else
+                {
+                    Updater.UpdateCheckResult updaterResult = Updater.CheckForUpdates();
 
-            Log log = new Log(RTB_Log);
-            log.Message("AutoGro 2018 " + version);
-            log.Line();
+                    InitializeComponent();
+                    FBD_ContentDir.SelectedPath = Application.StartupPath;
+
+                    Log log = new Log(RTB_Log);
+                    log.Message("AutoGro 2018 " + Updater.version);
+
+                    switch (updaterResult)
+                    {
+                        case Updater.UpdateCheckResult.Available:
+                            {
+                                string newVersion = Updater.availableVersion.ToString();
+                                log.Message("Version " + newVersion + " is available!");
+
+                                DialogResult dlgRes = MessageBox.Show("Version " + newVersion + " is available!\n\nUpdate now?", "Update available!", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                                switch (dlgRes)
+                                {
+                                    case DialogResult.Yes:
+                                        {
+                                            Updater.Update();
+                                            break;
+                                        }
+                                    case DialogResult.No:
+                                        {
+                                            log.Message("You can update any time by pressing \"Check for updates\" button below.");
+                                            break;
+                                        }
+                                }
+                                break;
+                            }
+                        case Updater.UpdateCheckResult.Failed:
+                            {
+                                log.Message("Error occurred while checking for updates!");
+                                break;
+                            }
+                        case Updater.UpdateCheckResult.None:
+                            {
+                                log.Message("No updates available.");
+                                break;
+                            }
+                    }
+
+                    log.Line();
+                }
+            }
         }
 
         // Select .wld file to analyze
@@ -603,7 +658,7 @@ namespace AutoGro
 
         private void BT_About_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("AutoGro 2018 " + version + "\n\nMade with:\n.NET Framework 4.6.1\nC# Windows Forms\nVisual Studio Community 2017\n\nAuthor: Asdolg\n" + updateDate, "About", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+            MessageBox.Show("AutoGro 2018 " + Updater.version + "\n\nMade with:\n.NET Framework 4.6.1\nC# Windows Forms\nVisual Studio Community 2017\n\nAuthor: Asdolg\n" + Updater.updateDate, "About", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
         }
 
         private void BT_Help_OtherWLDs_Click(object sender, EventArgs e)

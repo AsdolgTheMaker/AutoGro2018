@@ -18,3 +18,7 @@ D:\Projects\Github\AutoGro2018\AutoGro\obj\Debug\AutoGro.csproj.GenerateResource
 D:\Projects\Github\AutoGro2018\AutoGro\obj\Debug\AutoGro.csproj.CoreCompileInputs.cache
 D:\Projects\Github\AutoGro2018\AutoGro\obj\Debug\AutoGro.exe
 D:\Projects\Github\AutoGro2018\AutoGro\obj\Debug\AutoGro.pdb
+D:\Projects\Github\AutoGro2018\AutoGro\bin\Debug\AutoGro.exe.manifest
+D:\Projects\Github\AutoGro2018\AutoGro\bin\Debug\AutoGro.application
+D:\Projects\Github\AutoGro2018\AutoGro\obj\Debug\AutoGro.exe.manifest
+D:\Projects\Github\AutoGro2018\AutoGro\obj\Debug\AutoGro.application

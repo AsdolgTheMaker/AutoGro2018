@@ -441,7 +441,6 @@
         private System.Windows.Forms.Label LB_ContentFolder;
         private System.Windows.Forms.TextBox TB_ContentPath;
         private System.Windows.Forms.FolderBrowserDialog FBD_ContentDir;
-        private System.Windows.Forms.RichTextBox RTB_Log;
         private System.Windows.Forms.Button BT_Log_Copy;
         private System.Windows.Forms.Button BT_Log_Clear;
         private System.Windows.Forms.Button BT_Exit;
@@ -455,6 +454,7 @@
         private System.Windows.Forms.Button BT_Help_Workshop;
         private System.Windows.Forms.Button BT_Help_Autodetection;
         private System.Windows.Forms.Button BT_Update;
+        private System.Windows.Forms.RichTextBox RTB_Log;
     }
 }
 

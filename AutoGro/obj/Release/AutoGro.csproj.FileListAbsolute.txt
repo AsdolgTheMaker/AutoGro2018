@@ -25,3 +25,4 @@ D:\Projects\Github\AutoGro2018\AutoGro\bin\Release\AutoGro.exe.manifest
 D:\Projects\Github\AutoGro2018\AutoGro\bin\Release\AutoGro.application
 D:\Projects\Github\AutoGro2018\AutoGro\obj\Release\AutoGro.exe.manifest
 D:\Projects\Github\AutoGro2018\AutoGro\obj\Release\AutoGro.application
+D:\Projects\Github\AutoGro2018\AutoGro\obj\Release\AutoGro.csprojAssemblyReference.cache
