@@ -1,0 +1,12 @@
+C:\Users\defra_000\source\repos\AutoGro\AutoGro\bin\Release\AutoGro.exe.config
+C:\Users\defra_000\source\repos\AutoGro\AutoGro\bin\Release\AutoGro.exe
+C:\Users\defra_000\source\repos\AutoGro\AutoGro\bin\Release\AutoGro.pdb
+C:\Users\defra_000\source\repos\AutoGro\AutoGro\obj\Release\AutoGro.F_Main.resources
+C:\Users\defra_000\source\repos\AutoGro\AutoGro\obj\Release\AutoGro.Properties.Resources.resources
+C:\Users\defra_000\source\repos\AutoGro\AutoGro\obj\Release\AutoGro.csproj.GenerateResource.cache
+C:\Users\defra_000\source\repos\AutoGro\AutoGro\obj\Release\AutoGro.csproj.CoreCompileInputs.cache
+C:\Users\defra_000\source\repos\AutoGro\AutoGro\obj\Release\AutoGro.exe
+C:\Users\defra_000\source\repos\AutoGro\AutoGro\obj\Release\AutoGro.pdb
+C:\Users\defra_000\source\repos\AutoGro\AutoGro\bin\Release\AutoGro.exe.CodeAnalysisLog.xml
+C:\Users\defra_000\source\repos\AutoGro\AutoGro\bin\Release\AutoGro.exe.lastcodeanalysissucceeded
+C:\Users\defra_000\source\repos\AutoGro\AutoGro\obj\Release\AutoGro.csprojAssemblyReference.cache

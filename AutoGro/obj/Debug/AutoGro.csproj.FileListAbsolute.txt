@@ -1,0 +1,10 @@
+C:\Users\defra_000\source\repos\AutoGro\AutoGro\bin\Debug\AutoGro.exe.config
+C:\Users\defra_000\source\repos\AutoGro\AutoGro\bin\Debug\AutoGro.exe
+C:\Users\defra_000\source\repos\AutoGro\AutoGro\bin\Debug\AutoGro.pdb
+C:\Users\defra_000\source\repos\AutoGro\AutoGro\obj\Debug\AutoGro.csprojAssemblyReference.cache
+C:\Users\defra_000\source\repos\AutoGro\AutoGro\obj\Debug\AutoGro.F_Main.resources
+C:\Users\defra_000\source\repos\AutoGro\AutoGro\obj\Debug\AutoGro.Properties.Resources.resources
+C:\Users\defra_000\source\repos\AutoGro\AutoGro\obj\Debug\AutoGro.csproj.GenerateResource.cache
+C:\Users\defra_000\source\repos\AutoGro\AutoGro\obj\Debug\AutoGro.csproj.CoreCompileInputs.cache
+C:\Users\defra_000\source\repos\AutoGro\AutoGro\obj\Debug\AutoGro.exe
+C:\Users\defra_000\source\repos\AutoGro\AutoGro\obj\Debug\AutoGro.pdb
