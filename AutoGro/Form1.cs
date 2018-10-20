@@ -16,7 +16,7 @@ namespace AutoGro
     {
         // these should be updated each time i do... update
         private const string version = "v1.23";
-        private const string updateDate = "19th October 2018";
+        private const string updateDate = "20th October 2018";
 
         public string[] extExceptions = { "tex", "wav", "ogg", "tga", "fbx", "obj", "mp3", "png", "amf", "zpr" };
 
@@ -190,6 +190,8 @@ namespace AutoGro
                     log.Message("Created " + fnOutput + " file.");
                     ZipArchive zip = new ZipArchive(grofile, ZipArchiveMode.Create, false);
                     log.Message("Starting packing...");
+
+                    string[] filesList = RemoveDuplicates(files.ToArray());
 
                     // pack every file one by one
                     while (files.Count > 0)
@@ -622,6 +624,11 @@ namespace AutoGro
         private void BT_Help_Workshop_Click(object sender, EventArgs e)
         {
             MessageBox.Show("After packing is done, the program will detect which workshop resources were used and display that info in log box.\n\nNote: the feature may work incorrectly for subscriptions which replace original game's content.", "Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void BT_Update_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

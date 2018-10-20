@@ -39,6 +39,7 @@
             this.SFD_OutputFN = new System.Windows.Forms.SaveFileDialog();
             this.BT_OutputFN = new System.Windows.Forms.Button();
             this.GB_Settings = new System.Windows.Forms.GroupBox();
+            this.BT_Help_Workshop = new System.Windows.Forms.Button();
             this.BT_Help_Gtitle = new System.Windows.Forms.Button();
             this.BT_Help_OtherWLDs = new System.Windows.Forms.Button();
             this.CB_Workshop = new System.Windows.Forms.CheckBox();
@@ -57,8 +58,8 @@
             this.LB_Workshop = new System.Windows.Forms.Label();
             this.TB_WorkshopPath = new System.Windows.Forms.TextBox();
             this.CB_Autodetection = new System.Windows.Forms.CheckBox();
-            this.BT_Help_Workshop = new System.Windows.Forms.Button();
             this.BT_Help_Autodetection = new System.Windows.Forms.Button();
+            this.BT_Update = new System.Windows.Forms.Button();
             this.GB_Settings.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -161,6 +162,17 @@
             this.GB_Settings.TabIndex = 7;
             this.GB_Settings.TabStop = false;
             this.GB_Settings.Text = "Optional settings";
+            // 
+            // BT_Help_Workshop
+            // 
+            this.BT_Help_Workshop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BT_Help_Workshop.Location = new System.Drawing.Point(242, 62);
+            this.BT_Help_Workshop.Name = "BT_Help_Workshop";
+            this.BT_Help_Workshop.Size = new System.Drawing.Size(17, 23);
+            this.BT_Help_Workshop.TabIndex = 18;
+            this.BT_Help_Workshop.Text = "?";
+            this.BT_Help_Workshop.UseVisualStyleBackColor = true;
+            this.BT_Help_Workshop.Click += new System.EventHandler(this.BT_Help_Workshop_Click);
             // 
             // BT_Help_Gtitle
             // 
@@ -265,7 +277,7 @@
             // 
             this.BT_Log_Copy.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.BT_Log_Copy.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.BT_Log_Copy.Location = new System.Drawing.Point(184, 419);
+            this.BT_Log_Copy.Location = new System.Drawing.Point(102, 419);
             this.BT_Log_Copy.Name = "BT_Log_Copy";
             this.BT_Log_Copy.Size = new System.Drawing.Size(75, 23);
             this.BT_Log_Copy.TabIndex = 12;
@@ -277,7 +289,7 @@
             // 
             this.BT_Log_Clear.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.BT_Log_Clear.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.BT_Log_Clear.Location = new System.Drawing.Point(281, 419);
+            this.BT_Log_Clear.Location = new System.Drawing.Point(199, 419);
             this.BT_Log_Clear.Name = "BT_Log_Clear";
             this.BT_Log_Clear.Size = new System.Drawing.Size(75, 23);
             this.BT_Log_Clear.TabIndex = 13;
@@ -288,7 +300,7 @@
             // BT_Exit
             // 
             this.BT_Exit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.BT_Exit.Location = new System.Drawing.Point(631, 419);
+            this.BT_Exit.Location = new System.Drawing.Point(704, 419);
             this.BT_Exit.Name = "BT_Exit";
             this.BT_Exit.Size = new System.Drawing.Size(75, 23);
             this.BT_Exit.TabIndex = 14;
@@ -299,7 +311,7 @@
             // BT_About
             // 
             this.BT_About.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.BT_About.Location = new System.Drawing.Point(539, 419);
+            this.BT_About.Location = new System.Drawing.Point(612, 419);
             this.BT_About.Name = "BT_About";
             this.BT_About.Size = new System.Drawing.Size(75, 23);
             this.BT_About.TabIndex = 15;
@@ -350,17 +362,6 @@
             this.CB_Autodetection.Text = "Enable autodetection";
             this.CB_Autodetection.UseVisualStyleBackColor = true;
             // 
-            // BT_Help_Workshop
-            // 
-            this.BT_Help_Workshop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BT_Help_Workshop.Location = new System.Drawing.Point(242, 62);
-            this.BT_Help_Workshop.Name = "BT_Help_Workshop";
-            this.BT_Help_Workshop.Size = new System.Drawing.Size(17, 23);
-            this.BT_Help_Workshop.TabIndex = 18;
-            this.BT_Help_Workshop.Text = "?";
-            this.BT_Help_Workshop.UseVisualStyleBackColor = true;
-            this.BT_Help_Workshop.Click += new System.EventHandler(this.BT_Help_Workshop_Click);
-            // 
             // BT_Help_Autodetection
             // 
             this.BT_Help_Autodetection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -372,11 +373,23 @@
             this.BT_Help_Autodetection.UseVisualStyleBackColor = true;
             this.BT_Help_Autodetection.Click += new System.EventHandler(this.BT_Help_Autodetection_Click);
             // 
+            // BT_Update
+            // 
+            this.BT_Update.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.BT_Update.Location = new System.Drawing.Point(374, 419);
+            this.BT_Update.Name = "BT_Update";
+            this.BT_Update.Size = new System.Drawing.Size(119, 23);
+            this.BT_Update.TabIndex = 20;
+            this.BT_Update.Text = "Check for updates";
+            this.BT_Update.UseVisualStyleBackColor = true;
+            this.BT_Update.Click += new System.EventHandler(this.BT_Update_Click);
+            // 
             // F_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(880, 452);
+            this.Controls.Add(this.BT_Update);
             this.Controls.Add(this.BT_Help_Autodetection);
             this.Controls.Add(this.CB_Autodetection);
             this.Controls.Add(this.BT_Browse_Workshop);
@@ -441,6 +454,7 @@
         private System.Windows.Forms.CheckBox CB_Autodetection;
         private System.Windows.Forms.Button BT_Help_Workshop;
         private System.Windows.Forms.Button BT_Help_Autodetection;
+        private System.Windows.Forms.Button BT_Update;
     }
 }
 
