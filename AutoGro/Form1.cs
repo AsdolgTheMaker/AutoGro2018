@@ -52,27 +52,23 @@ namespace AutoGro
 
         public F_Main()
         {
-            if (Updater.tempFile == Application.ExecutablePath)
-            { // update is in progress, proceed to continuing it
-                string oldFile = Updater.tempFile.Replace("_.exe", ".exe");
-                File.Copy(Updater.tempFile, oldFile);
-                Process.Start(oldFile);
-                Application.Exit();
-            }
-            else // common run, act as usual
+            // check for updates sequence (in separate block for comfortability)
             {
-                // if we are running after update - delete temp executable
-                if (File.Exists(Updater.tempFile))
-                {
-                    File.Delete(Updater.tempFile);
-                    Application.Exit();
+                if (Application.ExecutablePath == Updater.tempFile)
+                { // if update is in progress - copy current exe to an actual one, then relaunch application
+                    string actualExe = Updater.tempFile.Replace("_.exe", ".exe");
+                    File.Copy(Updater.tempFile, actualExe);
+                    Process.Start(actualExe);
+                    Process.GetCurrentProcess().Kill();
                 }
-                else
+                else // common run
                 {
+                    if (File.Exists(Updater.tempFile))
+                        File.Delete(Updater.tempFile);
+                        
                     Updater.UpdateCheckResult updaterResult = Updater.CheckForUpdates();
 
                     InitializeComponent();
-                    FBD_ContentDir.SelectedPath = Application.StartupPath;
 
                     Log log = new Log(RTB_Log);
                     log.Message("AutoGro 2018 " + Updater.version);
@@ -115,6 +111,8 @@ namespace AutoGro
                     log.Line();
                 }
             }
+
+            FBD_ContentDir.SelectedPath = Application.StartupPath;
         }
 
         // Select .wld file to analyze

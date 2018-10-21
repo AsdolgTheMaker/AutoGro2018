@@ -9,17 +9,37 @@ using System.Windows.Forms;
 
 namespace AutoGro
 {
-    public partial class Updater
+    public class Updater
     {
+        /// <summary>
+        /// Current application version
+        /// </summary>
         public static readonly Version version = Assembly.GetExecutingAssembly().GetName().Version;
-        public static readonly string updateDate = "20th October 2018";
+        public static readonly string updateDate = "21th October 2018";
+
+        /// <summary>
+        /// Last stable version on Github. Filled in by CheckForUpdates() method.
+        /// </summary>
         public static Version availableVersion = null;
 
-        public static string tempFile = Application.ExecutablePath.Replace(".exe", "_.exe");
+        /// <summary>
+        /// Where to download new version
+        /// </summary>
+        public static string tempFile = Application.ExecutablePath.Contains("_.exe") ? Application.ExecutablePath : Application.ExecutablePath.Replace(".exe", "_.exe");
 
+        /// <summary>
+        /// Version control file address
+        /// </summary>
         private static readonly string VersionFileLink = "https://raw.githubusercontent.com/AsdolgTheMaker/AutoGro2018/master/version.txt";
+
+        /// <summary>
+        /// Version file download target location
+        /// </summary>
         private static readonly string VersionFileTarget = Path.GetTempPath() + "version.tmp";
 
+        /// <summary>
+        /// Represents the result of checking for updates
+        /// </summary>
         public enum UpdateCheckResult
         {
             Failed = 0,
@@ -27,6 +47,9 @@ namespace AutoGro
             Available = 2
         }
 
+        /// <summary>
+        /// Connects to Github server and checks if the latest stable version is used
+        /// </summary>
         public static UpdateCheckResult CheckForUpdates()
         {
             try
@@ -35,6 +58,9 @@ namespace AutoGro
                 webClient.DownloadFile(VersionFileLink, VersionFileTarget);
 
                 Version netVersion = Version.Parse(File.ReadAllText(VersionFileTarget));
+
+                File.Delete(VersionFileTarget);
+
                 if (netVersion > version)
                 {
                     availableVersion = netVersion;
@@ -51,14 +77,45 @@ namespace AutoGro
                 MessageBox.Show("Invalid version check! Please, report this.", "Couldn't check for updates", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return UpdateCheckResult.Failed;
             }
-            catch (WebException)
+            catch (WebException ex)
             {
-                MessageBox.Show("Failed to connect to github.", "Couldn't check for updates", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                WebExceptionStatus exStatus = ex.Status;
+                switch (exStatus)
+                {
+                    case (WebExceptionStatus.ConnectFailure):
+                        {
+                            MessageBox.Show("Failed update: couldn't connect to the server.", "Error!", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                            break;
+                        }
+                    case (WebExceptionStatus.ConnectionClosed):
+                        {
+                            MessageBox.Show("Failed update: connection remotely closed.", "Error!", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                            break;
+                        }
+                    case (WebExceptionStatus.ProtocolError):
+                        {
+                            MessageBox.Show("Failed update: error 401.", "Error!", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                            break;
+                        }
+                    case (WebExceptionStatus.Timeout):
+                        {
+                            MessageBox.Show("Failed update: request timeout.", "Error!", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                            break;
+                        }
+                    default:
+                        {
+                            MessageBox.Show("Failed update: " + exStatus.ToString(), "Error!", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                            break;
+                        }
+                }
                 return UpdateCheckResult.Failed;
             }
 
         }
 
+        /// <summary>
+        /// Performs an update
+        /// </summary>
         public static void Update()
         {
             string downloadLink = GetReleaseLink(availableVersion.ToString());
@@ -72,9 +129,10 @@ namespace AutoGro
 
                     webClient.DownloadFile(downloadLink, tempFile);
 
-                    Process.Start(tempFile);
-                    Application.Exit();
-                    dlgRslt = DialogResult.None;
+                    Process.Start(tempFile); 
+                    Process.GetCurrentProcess().Kill();
+
+                    break;
                 }
                 catch (WebException ex)
                 {
@@ -111,9 +169,11 @@ namespace AutoGro
             }
         }
 
-        private static string GetReleaseLink(string version)
-        {
-            return ("https://github.com/AsdolgTheMaker/AutoGro2018/releases/download/" + version + "/AutoGro.exe");
-        }
+        /// <summary>
+        /// Returns a link to download requested application version
+        /// </summary>
+        /// <param name="version">Version to download</param>
+        /// <returns>File web-address</returns>
+        private static string GetReleaseLink(string version) => ("https://github.com/AsdolgTheMaker/AutoGro2018/releases/download/" + version + "/AutoGro.exe");
     }   
 }

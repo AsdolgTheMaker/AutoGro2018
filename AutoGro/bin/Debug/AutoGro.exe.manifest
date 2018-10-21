@@ -3,7 +3,7 @@
   <asmv1:assemblyIdentity name="AutoGro.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="AutoGro" version="1.2.2.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="AutoGro" version="1.3.2.0" language="neutral" processorArchitecture="msil" />
     <commandLine file="AutoGro.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -43,13 +43,13 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AutoGro.exe" size="93656">
-      <assemblyIdentity name="AutoGro" version="1.2.2.0" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="AutoGro" version="1.3.2.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>R6KHBSHmI2SZaMGV0I8aR0hLv9IeMf7Bqrr+JjvqeYk=</dsig:DigestValue>
+        <dsig:DigestValue>C1WwarvBd6HwZffDf7Pt3LiETvZ1EGMjGwyKZK66N4g=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
