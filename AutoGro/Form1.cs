@@ -671,7 +671,44 @@ namespace AutoGro
 
         private void BT_Update_Click(object sender, EventArgs e)
         {
-            
+            Log log = new Log(RTB_Log);
+
+            Updater.UpdateCheckResult updaterResult = Updater.CheckForUpdates();
+            switch (updaterResult)
+            {
+
+                case Updater.UpdateCheckResult.Available:
+                    {
+                        string newVersion = Updater.availableVersion.ToString();
+                        log.Message("Version " + newVersion + " is available!");
+
+                        DialogResult dlgRes = MessageBox.Show("Version " + newVersion + " is available!\n\nUpdate now?", "Update available!", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                        switch (dlgRes)
+                        {
+                            case DialogResult.Yes:
+                                {
+                                    Updater.Update();
+                                    break;
+                                }
+                            case DialogResult.No:
+                                {
+                                    log.Message("You can update any time by pressing \"Check for updates\" button below.");
+                                    break;
+                                }
+                        }
+                        break;
+                    }
+                case Updater.UpdateCheckResult.Failed:
+                    {
+                        log.Message("Error occurred while checking for updates!");
+                        break;
+                    }
+                case Updater.UpdateCheckResult.None:
+                    {
+                        log.Message("No updates available.");
+                        break;
+                    }
+            }
         }
     }
 }
