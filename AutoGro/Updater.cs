@@ -125,11 +125,13 @@ namespace AutoGro
             {
                 try
                 {
+                    string actualExe = Application.ExecutablePath;
+                    File.Move(actualExe, tempFile);
                     WebClient webClient = new WebClient();
 
-                    webClient.DownloadFile(downloadLink, tempFile);
-
-                    Process.Start(tempFile); 
+                    webClient.DownloadFile(downloadLink, actualExe);
+                    
+                    Process.Start(actualExe); 
                     Process.GetCurrentProcess().Kill();
 
                     break;

@@ -54,62 +54,52 @@ namespace AutoGro
         {
             // check for updates sequence (in separate block for comfortability)
             {
-                if (Application.ExecutablePath == Updater.tempFile)
-                { // if update is in progress - copy current exe to an actual one, then relaunch application
-                    string actualExe = Updater.tempFile.Replace("_.exe", ".exe");
-                    File.Copy(Updater.tempFile, actualExe);
-                    Process.Start(actualExe);
-                    Process.GetCurrentProcess().Kill();
-                }
-                else // common run
+                if (File.Exists(Updater.tempFile))
+                    File.Delete(Updater.tempFile);
+                
+                Updater.UpdateCheckResult updaterResult = Updater.CheckForUpdates();
+
+                InitializeComponent();
+
+                Log log = new Log(RTB_Log);
+                log.Message("AutoGro 2018 " + Updater.version);
+
+                switch (updaterResult)
                 {
-                    if (File.Exists(Updater.tempFile))
-                        File.Delete(Updater.tempFile);
-                        
-                    Updater.UpdateCheckResult updaterResult = Updater.CheckForUpdates();
+                    case Updater.UpdateCheckResult.Available:
+                        {
+                            string newVersion = Updater.availableVersion.ToString();
+                            log.Message("Version " + newVersion + " is available!");
 
-                    InitializeComponent();
-
-                    Log log = new Log(RTB_Log);
-                    log.Message("AutoGro 2018 " + Updater.version);
-
-                    switch (updaterResult)
-                    {
-                        case Updater.UpdateCheckResult.Available:
+                            DialogResult dlgRes = MessageBox.Show("Version " + newVersion + " is available!\n\nUpdate now?", "Update available!", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                            switch (dlgRes)
                             {
-                                string newVersion = Updater.availableVersion.ToString();
-                                log.Message("Version " + newVersion + " is available!");
-
-                                DialogResult dlgRes = MessageBox.Show("Version " + newVersion + " is available!\n\nUpdate now?", "Update available!", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                                switch (dlgRes)
-                                {
-                                    case DialogResult.Yes:
-                                        {
-                                            Updater.Update();
-                                            break;
-                                        }
-                                    case DialogResult.No:
-                                        {
-                                            log.Message("You can update any time by pressing \"Check for updates\" button below.");
-                                            break;
-                                        }
-                                }
-                                break;
+                                case DialogResult.Yes:
+                                    {
+                                        Updater.Update();
+                                        break;
+                                    }
+                                case DialogResult.No:
+                                    {
+                                        log.Message("You can update any time by pressing \"Check for updates\" button below.");
+                                        break;
+                                    }
                             }
-                        case Updater.UpdateCheckResult.Failed:
-                            {
-                                log.Message("Error occurred while checking for updates!");
-                                break;
-                            }
-                        case Updater.UpdateCheckResult.None:
-                            {
-                                log.Message("No updates available.");
-                                break;
-                            }
-                    }
-
-                    log.Line();
+                            break;
+                        }
+                    case Updater.UpdateCheckResult.Failed:
+                        {
+                            log.Message("Error occurred while checking for updates!");
+                            break;
+                        }
+                    case Updater.UpdateCheckResult.None:
+                        {
+                            log.Message("No updates available.");
+                            break;
+                        } 
                 }
+
+                log.Line();
             }
 
             FBD_ContentDir.SelectedPath = Application.StartupPath;
