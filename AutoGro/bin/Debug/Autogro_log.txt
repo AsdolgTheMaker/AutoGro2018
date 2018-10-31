@@ -1,0 +1,368 @@
+31.10.2018 17:39:21 || AutoGro 2018 1.3.4.0 initialized.
+
+31.10.2018 17:39:22 || No updates available.
+
+31.10.2018 17:39:34 || Analyzing E:\SteamLibrary\steamapps\common\Serious Sam Fusion 2017\Content\SeriousSam3\Levels\ZZ_CovenantOfIntegrity\Levels\01_Intro.wld file...
+
+31.10.2018 17:39:34 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Levels/01_Intro.wld. Recursion depth: 0.
+
+31.10.2018 17:39:34 || Adding resource Content/SeriousSamFusion/Databases/SeriousSamFusionCollisionTable.ctbl to queue.
+
+31.10.2018 17:39:34 || Unexisting resource E:\SteamLibrary\steamapps\common\Serious Sam Fusion 2017\Content\SeriousSamFusion\Databases\SeriousSamFusionCollisionTable.ctbl
+
+31.10.2018 17:39:34 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Prop_a.mdl to queue.
+
+31.10.2018 17:39:34 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Prop_a.mdl. Recursion depth: 1.
+
+31.10.2018 17:39:34 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Prop_a.bmf to queue.
+
+31.10.2018 17:39:34 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Prop_a.bmf. Recursion depth: 2.
+
+31.10.2018 17:39:34 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Presets/ShaderPresets/Integrity_b.mtr to queue.
+
+31.10.2018 17:39:34 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Presets/ShaderPresets/Integrity_b.mtr. Recursion depth: 3.
+
+31.10.2018 17:39:34 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Textures/Generic/Plates_HM.tex to queue.
+
+31.10.2018 17:39:34 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Textures/Generic/Grid.tex to queue.
+
+31.10.2018 17:39:34 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Prop_b.mdl to queue.
+
+31.10.2018 17:39:34 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Prop_b.mdl. Recursion depth: 1.
+
+31.10.2018 17:39:34 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Prop_b.bmf to queue.
+
+31.10.2018 17:39:34 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Prop_b.bmf. Recursion depth: 2.
+
+31.10.2018 17:39:34 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Prop_c.mdl to queue.
+
+31.10.2018 17:39:34 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Prop_c.mdl. Recursion depth: 1.
+
+31.10.2018 17:39:34 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Prop_c.bmf to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Prop_c.bmf. Recursion depth: 2.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Scripts/Levels/01_Intro/FlyingProps.lua to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Scripts/Levels/01_Intro/FlyingProps.lua. Recursion depth: 1.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Prop_d.mdl to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Prop_d.mdl. Recursion depth: 1.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Prop_d.bmf to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Prop_d.bmf. Recursion depth: 2.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Scripts/FalldownDetector.lua to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Scripts/FalldownDetector.lua. Recursion depth: 1.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Portal.mdl to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Portal.mdl. Recursion depth: 1.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Portal.bmf to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Portal.bmf. Recursion depth: 2.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Presets/ShaderPresets/Integrity_a.mtr to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Presets/ShaderPresets/Integrity_a.mtr. Recursion depth: 3.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Textures/Generic/Bump/Hamered_alluminuim_NM.tex to queue.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Scripts/Levels/01_Intro/Voiceover.lua to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Scripts/Levels/01_Intro/Voiceover.lua. Recursion depth: 1.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Levels/Visibility/01_Intro.rsc to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Levels/Visibility/01_Intro.rsc. Recursion depth: 1.
+
+31.10.2018 17:39:35 || Adding resource Content/Shared/Textures/Interface/VisualBugPins.tex to queue.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Presets/Effects/Integrity_Pixels.pfx to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Presets/Effects/Integrity_Pixels.pfx. Recursion depth: 1.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Levels/DistantLight/01_Intro_DistantLight_ShadowBufferResource000080.rsc to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Levels/DistantLight/01_Intro_DistantLight_ShadowBufferResource000080.rsc. Recursion depth: 1.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Levels/Probes/01_Intro_Probe000081.rsc to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Levels/Probes/01_Intro_Probe000081.rsc. Recursion depth: 1.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Presets/PostProcessing/LightnessWhite.rsc to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Presets/PostProcessing/LightnessWhite.rsc. Recursion depth: 1.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Presets/PostProcessing/LightnessBlack.rsc to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Presets/PostProcessing/LightnessBlack.rsc. Recursion depth: 1.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Platform_01.mdl to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Platform_01.mdl. Recursion depth: 1.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Platform_01.bmf to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Platform_01.bmf. Recursion depth: 2.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Presets/ShaderPresets/Integrity_Floor.mtr to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Presets/ShaderPresets/Integrity_Floor.mtr. Recursion depth: 3.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Databases/Materials/Integrity.mat to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Databases/Materials/Integrity.mat. Recursion depth: 4.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Presets/Effects/Matterial/Default_Bullet.pfx to queue.
+
+31.10.2018 17:39:35 || Unexisting resource E:\SteamLibrary\steamapps\common\Serious Sam Fusion 2017\Content\SeriousSam3\Presets\Effects\Matterial\Default_Bullet.pfx
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Presets/Effects/Matterial/Default_Dust.pfx to queue.
+
+31.10.2018 17:39:35 || Unexisting resource E:\SteamLibrary\steamapps\common\Serious Sam Fusion 2017\Content\SeriousSam3\Presets\Effects\Matterial\Default_Dust.pfx
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Presets/Effects/Matterial/Default_Thrust.pfx to queue.
+
+31.10.2018 17:39:35 || Unexisting resource E:\SteamLibrary\steamapps\common\Serious Sam Fusion 2017\Content\SeriousSam3\Presets\Effects\Matterial\Default_Thrust.pfx
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Presets/Effects/Matterial/Default_Step.pfx to queue.
+
+31.10.2018 17:39:35 || Unexisting resource E:\SteamLibrary\steamapps\common\Serious Sam Fusion 2017\Content\SeriousSam3\Presets\Effects\Matterial\Default_Step.pfx
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Presets/Effects/Matterial/Default_Saw.pfx to queue.
+
+31.10.2018 17:39:35 || Unexisting resource E:\SteamLibrary\steamapps\common\Serious Sam Fusion 2017\Content\SeriousSam3\Presets\Effects\Matterial\Default_Saw.pfx
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Sounds/Materials/Default.scs to queue.
+
+31.10.2018 17:39:35 || Unexisting resource E:\SteamLibrary\steamapps\common\Serious Sam Fusion 2017\Content\SeriousSam3\Sounds\Materials\Default.scs
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Tileset/Wall_4x2.mdl to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Tileset/Wall_4x2.mdl. Recursion depth: 1.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Tileset/Wall_4x2.bmf to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Tileset/Wall_4x2.bmf. Recursion depth: 2.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Databases/Materials/Default.mat to queue.
+
+31.10.2018 17:39:35 || Unexisting resource E:\SteamLibrary\steamapps\common\Serious Sam Fusion 2017\Content\SeriousSam3\Databases\Materials\Default.mat
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Platform_02.mdl to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Platform_02.mdl. Recursion depth: 1.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Platform_02.bmf to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Platform_02.bmf. Recursion depth: 2.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Platform_03.mdl to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Platform_03.mdl. Recursion depth: 1.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Platform_03.bmf to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Platform_03.bmf. Recursion depth: 2.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Platform_04.mdl to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Platform_04.mdl. Recursion depth: 1.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Platform_04.bmf to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Platform_04.bmf. Recursion depth: 2.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Stairs_01.mdl to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Stairs_01.mdl. Recursion depth: 1.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Stairs_01.bmf to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Stairs_01.bmf. Recursion depth: 2.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Stairs_02.mdl to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Stairs_02.mdl. Recursion depth: 1.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Stairs_02.bmf to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Stairs_02.bmf. Recursion depth: 2.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Levels/01_Intro/Visibility.mdl to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Levels/01_Intro/Visibility.mdl. Recursion depth: 1.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Levels/01_Intro/Visibility.bmf to queue.
+
+31.10.2018 17:39:35 || Analyzing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Levels/01_Intro/Visibility.bmf. Recursion depth: 2.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Levels/01_Intro.wld to queue.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Levels/01_Intro.nfo to queue.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Levels/02_Circle.wld to queue.
+
+31.10.2018 17:39:35 || Adding resource Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Levels/02_Circle.nfo to queue.
+
+31.10.2018 17:39:35 || Opening archive file...
+
+31.10.2018 17:39:35 || Creating compression stream...
+
+31.10.2018 17:39:36 || Starting packing...
+
+31.10.2018 17:39:36 || Packing Content/SeriousSamFusion/Databases/SeriousSamFusionCollisionTable.ctbl...
+
+31.10.2018 17:39:36 || Error: file's location does not exist.
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Prop_a.mdl...
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Prop_a.bmf...
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Presets/ShaderPresets/Integrity_b.mtr...
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Textures/Generic/Plates_HM.tex...
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Textures/Generic/Plates_HM--Big.tex...
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Textures/Generic/Grid.tex...
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Textures/Generic/Grid--Big.tex...
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Prop_b.mdl...
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Prop_b.bmf...
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Prop_c.mdl...
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Prop_c.bmf...
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Scripts/Levels/01_Intro/FlyingProps.lua...
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Prop_d.mdl...
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Prop_d.bmf...
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Scripts/FalldownDetector.lua...
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Portal.mdl...
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Portal.bmf...
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Presets/ShaderPresets/Integrity_a.mtr...
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Textures/Generic/Bump/Hamered_alluminuim_NM.tex...
+
+31.10.2018 17:39:36 || Error: file's location does not exist.
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Textures/Generic/Bump/Hamered_alluminuim_NM--Big.tex...
+
+31.10.2018 17:39:36 || Error: file's location does not exist.
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Scripts/Levels/01_Intro/Voiceover.lua...
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Levels/Visibility/01_Intro.rsc...
+
+31.10.2018 17:39:36 || Packing Content/Shared/Textures/Interface/VisualBugPins.tex...
+
+31.10.2018 17:39:36 || Error: file's location does not exist.
+
+31.10.2018 17:39:36 || Packing Content/Shared/Textures/Interface/VisualBugPins--Big.tex...
+
+31.10.2018 17:39:36 || Error: file's location does not exist.
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Presets/Effects/Integrity_Pixels.pfx...
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Levels/DistantLight/01_Intro_DistantLight_ShadowBufferResource000080.rsc...
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Levels/Probes/01_Intro_Probe000081.rsc...
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Presets/PostProcessing/LightnessWhite.rsc...
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Presets/PostProcessing/LightnessBlack.rsc...
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Platform_01.mdl...
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Platform_01.bmf...
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Presets/ShaderPresets/Integrity_Floor.mtr...
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Databases/Materials/Integrity.mat...
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Presets/Effects/Matterial/Default_Bullet.pfx...
+
+31.10.2018 17:39:36 || Error: file's location does not exist.
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Presets/Effects/Matterial/Default_Dust.pfx...
+
+31.10.2018 17:39:36 || Error: file's location does not exist.
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Presets/Effects/Matterial/Default_Thrust.pfx...
+
+31.10.2018 17:39:36 || Error: file's location does not exist.
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Presets/Effects/Matterial/Default_Step.pfx...
+
+31.10.2018 17:39:36 || Error: file's location does not exist.
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Presets/Effects/Matterial/Default_Saw.pfx...
+
+31.10.2018 17:39:36 || Error: file's location does not exist.
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Sounds/Materials/Default.scs...
+
+31.10.2018 17:39:36 || Error: file's location does not exist.
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Tileset/Wall_4x2.mdl...
+
+31.10.2018 17:39:36 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Tileset/Wall_4x2.bmf...
+
+31.10.2018 17:39:37 || Packing Content/SeriousSam3/Databases/Materials/Default.mat...
+
+31.10.2018 17:39:37 || Error: file's location does not exist.
+
+31.10.2018 17:39:37 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Platform_02.mdl...
+
+31.10.2018 17:39:37 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Platform_02.bmf...
+
+31.10.2018 17:39:37 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Platform_03.mdl...
+
+31.10.2018 17:39:37 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Platform_03.bmf...
+
+31.10.2018 17:39:37 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Platform_04.mdl...
+
+31.10.2018 17:39:37 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Platform_04.bmf...
+
+31.10.2018 17:39:37 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Stairs_01.mdl...
+
+31.10.2018 17:39:37 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Stairs_01.bmf...
+
+31.10.2018 17:39:37 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Stairs_02.mdl...
+
+31.10.2018 17:39:37 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Models/Integrity/Stairs_02.bmf...
+
+31.10.2018 17:39:37 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Levels/01_Intro/Visibility.mdl...
+
+31.10.2018 17:39:37 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Levels/01_Intro/Visibility.bmf...
+
+31.10.2018 17:39:37 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Levels/01_Intro.wld...
+
+31.10.2018 17:39:37 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Levels/01_Intro.nfo...
+
+31.10.2018 17:39:37 || Error: file does not exist.
+
+31.10.2018 17:39:37 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Levels/02_Circle.wld...
+
+31.10.2018 17:39:37 || Packing Content/SeriousSam3/Levels/ZZ_CovenantOfIntegrity/Levels/02_Circle.nfo...
+
+31.10.2018 17:39:37 || Error: file does not exist.
+
+31.10.2018 17:39:37 || Finishing forming the package... (may take a while)
+
+31.10.2018 17:39:38 || Package successfully created.
+

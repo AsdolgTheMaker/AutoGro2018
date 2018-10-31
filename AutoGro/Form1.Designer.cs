@@ -60,6 +60,7 @@
             this.CB_Autodetection = new System.Windows.Forms.CheckBox();
             this.BT_Help_Autodetection = new System.Windows.Forms.Button();
             this.BT_Update = new System.Windows.Forms.Button();
+            this.BT_Log_Open = new System.Windows.Forms.Button();
             this.GB_Settings.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -277,7 +278,7 @@
             // 
             this.BT_Log_Copy.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.BT_Log_Copy.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.BT_Log_Copy.Location = new System.Drawing.Point(102, 419);
+            this.BT_Log_Copy.Location = new System.Drawing.Point(146, 419);
             this.BT_Log_Copy.Name = "BT_Log_Copy";
             this.BT_Log_Copy.Size = new System.Drawing.Size(75, 23);
             this.BT_Log_Copy.TabIndex = 12;
@@ -289,7 +290,7 @@
             // 
             this.BT_Log_Clear.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.BT_Log_Clear.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.BT_Log_Clear.Location = new System.Drawing.Point(199, 419);
+            this.BT_Log_Clear.Location = new System.Drawing.Point(236, 419);
             this.BT_Log_Clear.Name = "BT_Log_Clear";
             this.BT_Log_Clear.Size = new System.Drawing.Size(75, 23);
             this.BT_Log_Clear.TabIndex = 13;
@@ -384,11 +385,24 @@
             this.BT_Update.UseVisualStyleBackColor = true;
             this.BT_Update.Click += new System.EventHandler(this.BT_Update_Click);
             // 
+            // BT_Log_Open
+            // 
+            this.BT_Log_Open.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.BT_Log_Open.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.BT_Log_Open.Location = new System.Drawing.Point(49, 419);
+            this.BT_Log_Open.Name = "BT_Log_Open";
+            this.BT_Log_Open.Size = new System.Drawing.Size(75, 23);
+            this.BT_Log_Open.TabIndex = 21;
+            this.BT_Log_Open.Text = "Open in file";
+            this.BT_Log_Open.UseVisualStyleBackColor = true;
+            this.BT_Log_Open.Click += new System.EventHandler(this.BT_Log_Open_Click);
+            // 
             // F_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(880, 452);
+            this.Controls.Add(this.BT_Log_Open);
             this.Controls.Add(this.BT_Update);
             this.Controls.Add(this.BT_Help_Autodetection);
             this.Controls.Add(this.CB_Autodetection);
@@ -455,6 +469,7 @@
         private System.Windows.Forms.Button BT_Help_Autodetection;
         private System.Windows.Forms.Button BT_Update;
         private System.Windows.Forms.RichTextBox RTB_Log;
+        private System.Windows.Forms.Button BT_Log_Open;
     }
 }
 

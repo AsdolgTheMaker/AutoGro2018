@@ -21,12 +21,19 @@ namespace AutoGro
 
         public class Log
         {
+            public static string logfile = "Autogro_log.txt";
             RichTextBox LogText;
 
             // Appends message into log and scrolls textbox
             public void Message(string message)
             {
-                LogText.AppendText(DateTime.Now.ToLocalTime().ToString() + " || " + message + "\n");
+                message = DateTime.Now.ToLocalTime().ToString() + " || " + message + "\n";
+                LogText.AppendText(message);
+
+                StreamWriter logtxt = File.AppendText(logfile);
+                logtxt.WriteLine(message);
+                logtxt.Dispose();
+
                 LogText.SelectionStart = LogText.Text.Length;
                 LogText.ScrollToCaret();
             }
@@ -51,56 +58,54 @@ namespace AutoGro
         private string sContent = "";
 
         public F_Main()
-        {
-            // check for updates sequence (in separate block for comfortability)
-            {
-                if (File.Exists(Updater.tempFile))
-                    File.Delete(Updater.tempFile);
+        { 
+            // check for updates sequence
+            if (File.Exists(Updater.tempFile))
+                File.Delete(Updater.tempFile);
                 
-                Updater.UpdateCheckResult updaterResult = Updater.CheckForUpdates();
+            Updater.UpdateCheckResult updaterResult = Updater.CheckForUpdates();
 
-                InitializeComponent();
+            InitializeComponent();
 
-                Log log = new Log(RTB_Log);
-                log.Message("AutoGro 2018 " + Updater.version);
+            Log log = new Log(RTB_Log);
+            log.Message("AutoGro 2018 " + Updater.version + " initialized.");
 
-                switch (updaterResult)
-                {
-                    case Updater.UpdateCheckResult.Available:
+            // print out update check result
+            switch (updaterResult)
+            {
+                case Updater.UpdateCheckResult.Available:
+                    {
+                        string newVersion = Updater.availableVersion.ToString();
+                        log.Message("Version " + newVersion + " is available!");
+
+                        DialogResult dlgRes = MessageBox.Show("Version " + newVersion + " is available!\n\nUpdate now?", "Update available!", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                        switch (dlgRes)
                         {
-                            string newVersion = Updater.availableVersion.ToString();
-                            log.Message("Version " + newVersion + " is available!");
-
-                            DialogResult dlgRes = MessageBox.Show("Version " + newVersion + " is available!\n\nUpdate now?", "Update available!", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                            switch (dlgRes)
-                            {
-                                case DialogResult.Yes:
-                                    {
-                                        Updater.Update();
-                                        break;
-                                    }
-                                case DialogResult.No:
-                                    {
-                                        log.Message("You can update any time by pressing \"Check for updates\" button below.");
-                                        break;
-                                    }
-                            }
-                            break;
+                            case DialogResult.Yes:
+                                {
+                                    Updater.Update();
+                                    break;
+                                }
+                            case DialogResult.No:
+                                {
+                                    log.Message("You can update any time by pressing \"Check for updates\" button below.");
+                                    break;
+                                }
                         }
-                    case Updater.UpdateCheckResult.Failed:
-                        {
-                            log.Message("Error occurred while checking for updates!");
-                            break;
-                        }
-                    case Updater.UpdateCheckResult.None:
-                        {
-                            log.Message("No updates available.");
-                            break;
-                        } 
-                }
-
-                log.Line();
+                        break;
+                    }
+                case Updater.UpdateCheckResult.Failed:
+                    {
+                        log.Message("Error occurred while checking for updates!");
+                        break;
+                    }
+                case Updater.UpdateCheckResult.None:
+                    {
+                        log.Message("No updates available.");
+                        break;
+                    } 
             }
+            log.Line();
 
             FBD_ContentDir.SelectedPath = Application.StartupPath;
         }
@@ -229,9 +234,12 @@ namespace AutoGro
                 try
                 {
                     // create compressing stream
-                    FileStream grofile = File.Create(fnOutput);
-                    log.Message("Created " + fnOutput + " file.");
+                    log.Message("Opening archive file...");
+                    FileStream grofile = File.OpenWrite(fnOutput);
+
+                    log.Message("Creating compression stream...");
                     ZipArchive zip = new ZipArchive(grofile, ZipArchiveMode.Create, false);
+
                     log.Message("Starting packing...");
 
                     string[] filesList = RemoveDuplicates(files.ToArray());
@@ -255,11 +263,11 @@ namespace AutoGro
                         }
                         catch (UnauthorizedAccessException)
                         {
-                            log.Message("Insufficient permissions to access the file!");
+                            log.Message("Error:  Insufficient permissions to access the file!");
                         }
                         catch (PathTooLongException)
                         {
-                            log.Message("Directory path is too long and is not supported by filesystem.");
+                            log.Message("Error:  Directory path is too long and is not supported by filesystem.");
                         }
                         catch (IOException)
                         {
@@ -271,14 +279,13 @@ namespace AutoGro
                         }
                         catch (InvalidOperationException)
                         {
-                            log.Message("Invalid operation on dequeueing! Unknown file was skipped.");
+                            log.Message("Error:  Invalid operation upon dequeueing! Unknown file was skipped.");
                         }
                     }
 
                     log.Line();
-                    log.Message("Finishing forming the package... (this may take a while)");
+                    log.Message("Finishing forming the package... (may take a while)");
 
-                    // release filestream
                     grofile.Dispose();
 
                     log.Message("Package successfully created.");
@@ -286,8 +293,6 @@ namespace AutoGro
                     // if we are not done yet - no need to interrupt the process
                     if (!CB_Workshop.Checked)
                         MessageBox.Show("Packing finished!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    log.Line();
 
                     // if requested, proceed to analyzing workshop entries
                     if (CB_Workshop.Checked)
@@ -363,8 +368,6 @@ namespace AutoGro
                                 }
 
                             }
-
-
                             // Now that we have a dictionary full of workshop entries and their names, let's find out if
                             // collected before list has any of these
 
@@ -408,7 +411,6 @@ namespace AutoGro
                                 }
                             }
                             MessageBox.Show("Packing done!\nWorkshop subscriptions dependency examined!\n\nCheck the log box to see the results.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            log.Line();
                         }
                         // that's for the very start, go back :V
                         catch (DirectoryNotFoundException)
@@ -434,9 +436,11 @@ namespace AutoGro
                     log.Message("CRITICAL ERROR: Out of memory.");
                     log.Message("Cannot continue packing.");
                     MessageBox.Show("Application is out of memory.\n\nThe process will be aborted.", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                }
+                finally
+                {
                     log.Line();
                 }
-
             }
         }
         
@@ -486,11 +490,10 @@ namespace AutoGro
         /// </summary>
         /// <param name="resource">Path of resource to examine</param>
         /// <param name="files">General queue to add files</param>
-		/// <param name="depth">Indicates how deep recursion went so far. First call should have 0.</param>
+		/// <param name="depth">Indicates how deep recursion went so far. First call should have 1.</param>
         private void ExamineResource(string resource, Queue<string> files, int depth)
         {
             Log log = new Log(RTB_Log);
-
 
             resource = ConvertSEDPathToWindows(resource);
             try
@@ -545,6 +548,10 @@ namespace AutoGro
                             {
                                 log.Message("Adding resource " + resPath);
                                 files.Enqueue(resPath);
+
+                                resPath = ConvertSEDPathToWindows(resPath);
+                                if (CB_Gtitle.Checked)
+                                    ExamineResource(resPath, files, depth + 1);
                             }
                         }
                         else if (extension == "wld")
@@ -556,6 +563,10 @@ namespace AutoGro
 
                                 log.Message("Adding resource " + resPath.Substring(0, resPath.Length - 3) + "nfo" + " to queue.");
                                 files.Enqueue(resPath.Substring(0, resPath.Length - 3) + "nfo");
+
+                                resPath = ConvertSEDPathToWindows(resPath);
+                                if (CB_OtherWLDs.Checked)
+                                    ExamineResource(resPath, files, depth + 1);
                             }
                         }
                         else if (extension == "tex")
@@ -568,24 +579,26 @@ namespace AutoGro
                         {
                             log.Message("Adding resource " + resPath + " to queue.");
                             files.Enqueue(resPath);
+
+                            if (!extExceptions.Contains(extension))
+                                ExamineResource(resPath, files, depth + 1);
                         }
 
-                        resPath = ConvertSEDPathToWindows(resPath);
-
-
-                        if (extension == "gtitle")
+                        
+                        /* - previous code determining if resource need to be examined (obsolete) -
+                         
+                        // determine if the resource need to be examined
+                        if (extension == "gtitle" || extension == "gtitleinfo")
                         {
-                            if (CB_Gtitle.Checked)
-                                ExamineResource(resPath, files, depth + 1);
+                            
                         }
                         else if (extension == "wld")
                         {
-                            if (CB_OtherWLDs.Checked)
-                                ExamineResource(resPath, files, depth + 1);
+                            
                         }
                         // exclude several predefined extensions from analysis
-                        else if (!extExceptions.Contains(extension))
-                            ExamineResource(resPath, files, depth + 1);
+                        else 
+                        */
                     }
 
                     contents = contents.Substring(iEnd);
@@ -709,6 +722,11 @@ namespace AutoGro
                         break;
                     }
             }
+        }
+
+        private void BT_Log_Open_Click(object sender, EventArgs e)
+        {
+            Process.Start("notepad.exe", Log.logfile);
         }
     }
 }

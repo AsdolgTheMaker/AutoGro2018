@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // связанные со сборкой.
 [assembly: AssemblyTitle("AutoGro")]
 [assembly: AssemblyDescription("Software meant to automatically scan .wld files produced by Serious Engine and pack all related resources into a single .gro archive.")]
-[assembly: AssemblyConfiguration("Stable")]
+[assembly: AssemblyConfiguration("Branch")]
 [assembly: AssemblyCompany("Asdolg Products")]
 [assembly: AssemblyProduct("AutoGro 2018")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
@@ -32,4 +32,4 @@ using System.Runtime.InteropServices;
 // Можно задать все значения или принять номер сборки и номер редакции по умолчанию.
 // используя "*", как показано ниже:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.3.3.1")]
+[assembly: AssemblyVersion("1.3.4.0")]
