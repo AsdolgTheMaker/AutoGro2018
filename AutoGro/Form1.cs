@@ -286,6 +286,7 @@ namespace AutoGro
                     log.Line();
                     log.Message("Finishing forming the package... (may take a while)");
 
+                    zip.Dispose();
                     grofile.Dispose();
 
                     log.Message("Package successfully created.");
@@ -326,6 +327,7 @@ namespace AutoGro
                                     var entries = gro.Entries;
 
                                     // we already have all entries in a collection stored, so dispose the files
+                                    gro.Dispose();
                                     wsFile.Dispose();
 
                                     string[] entriesNames = new string[entries.Count];
