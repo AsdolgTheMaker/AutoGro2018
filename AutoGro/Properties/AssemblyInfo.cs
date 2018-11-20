@@ -1,12 +1,11 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
 [assembly: AssemblyTitle("AutoGro")]
-[assembly: AssemblyDescription("Software meant to automatically scan .wld files produced by Serious Engine and pack all related resources into a single .gro archive.")]
+[assembly: AssemblyDescription("Software meant to automatically scan files produced by Serious Engine and pack all related resources into a single .gro archive.")]
 [assembly: AssemblyConfiguration("Branch")]
 [assembly: AssemblyCompany("Asdolg Products")]
 [assembly: AssemblyProduct("AutoGro 2018")]
@@ -32,4 +31,4 @@ using System.Runtime.InteropServices;
 // Можно задать все значения или принять номер сборки и номер редакции по умолчанию.
 // используя "*", как показано ниже:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.3.5.1")]
+[assembly: AssemblyVersion("1.4.3.0")]

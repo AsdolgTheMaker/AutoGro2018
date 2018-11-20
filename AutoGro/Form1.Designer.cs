@@ -53,7 +53,6 @@
             this.BT_Log_Copy = new System.Windows.Forms.Button();
             this.BT_Log_Clear = new System.Windows.Forms.Button();
             this.BT_Exit = new System.Windows.Forms.Button();
-            this.BT_About = new System.Windows.Forms.Button();
             this.BT_Browse_Workshop = new System.Windows.Forms.Button();
             this.LB_Workshop = new System.Windows.Forms.Label();
             this.TB_WorkshopPath = new System.Windows.Forms.TextBox();
@@ -61,6 +60,9 @@
             this.BT_Help_Autodetection = new System.Windows.Forms.Button();
             this.BT_Update = new System.Windows.Forms.Button();
             this.BT_Log_Open = new System.Windows.Forms.Button();
+            this.BT_Settings = new System.Windows.Forms.Button();
+            this.PB_Process = new System.Windows.Forms.ProgressBar();
+            this.LB_CurrentState = new System.Windows.Forms.Label();
             this.GB_Settings.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,13 +73,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TB_DirWLD.Location = new System.Drawing.Point(15, 34);
             this.TB_DirWLD.Name = "TB_DirWLD";
-            this.TB_DirWLD.Size = new System.Drawing.Size(761, 20);
+            this.TB_DirWLD.Size = new System.Drawing.Size(693, 20);
             this.TB_DirWLD.TabIndex = 0;
             // 
             // BT_WldInput
             // 
             this.BT_WldInput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BT_WldInput.Location = new System.Drawing.Point(782, 32);
+            this.BT_WldInput.Location = new System.Drawing.Point(714, 32);
             this.BT_WldInput.Name = "BT_WldInput";
             this.BT_WldInput.Size = new System.Drawing.Size(75, 23);
             this.BT_WldInput.TabIndex = 1;
@@ -92,7 +94,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TB_OutputName.Location = new System.Drawing.Point(15, 151);
             this.TB_OutputName.Name = "TB_OutputName";
-            this.TB_OutputName.Size = new System.Drawing.Size(764, 20);
+            this.TB_OutputName.Size = new System.Drawing.Size(696, 20);
             this.TB_OutputName.TabIndex = 2;
             // 
             // LB_DirWLD
@@ -100,9 +102,9 @@
             this.LB_DirWLD.AutoSize = true;
             this.LB_DirWLD.Location = new System.Drawing.Point(27, 18);
             this.LB_DirWLD.Name = "LB_DirWLD";
-            this.LB_DirWLD.Size = new System.Drawing.Size(75, 13);
+            this.LB_DirWLD.Size = new System.Drawing.Size(79, 13);
             this.LB_DirWLD.TabIndex = 3;
-            this.LB_DirWLD.Text = "Select .wld file";
+            this.LB_DirWLD.Text = "Select input file";
             // 
             // LB_OutputFN
             // 
@@ -120,7 +122,7 @@
             this.BT_PackGro.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.BT_PackGro.Location = new System.Drawing.Point(374, 232);
             this.BT_PackGro.Name = "BT_PackGro";
-            this.BT_PackGro.Size = new System.Drawing.Size(459, 41);
+            this.BT_PackGro.Size = new System.Drawing.Size(391, 41);
             this.BT_PackGro.TabIndex = 5;
             this.BT_PackGro.Text = "Start packing";
             this.BT_PackGro.UseVisualStyleBackColor = true;
@@ -129,8 +131,8 @@
             // OFD_WldInput
             // 
             this.OFD_WldInput.DefaultExt = "wld";
-            this.OFD_WldInput.Filter = "SED world files|*.wld";
-            this.OFD_WldInput.Title = "Choose .wld file to analyze";
+            this.OFD_WldInput.Filter = "Serious Engine levels|*.wld|Serious Engine models|*.mdl|All files|*.*";
+            this.OFD_WldInput.Title = "Choose file to analyze";
             // 
             // SFD_OutputFN
             // 
@@ -141,7 +143,7 @@
             // BT_OutputFN
             // 
             this.BT_OutputFN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BT_OutputFN.Location = new System.Drawing.Point(782, 149);
+            this.BT_OutputFN.Location = new System.Drawing.Point(714, 149);
             this.BT_OutputFN.Name = "BT_OutputFN";
             this.BT_OutputFN.Size = new System.Drawing.Size(75, 23);
             this.BT_OutputFN.TabIndex = 6;
@@ -233,7 +235,7 @@
             // BT_ContentDir
             // 
             this.BT_ContentDir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BT_ContentDir.Location = new System.Drawing.Point(782, 71);
+            this.BT_ContentDir.Location = new System.Drawing.Point(714, 71);
             this.BT_ContentDir.Name = "BT_ContentDir";
             this.BT_ContentDir.Size = new System.Drawing.Size(75, 23);
             this.BT_ContentDir.TabIndex = 10;
@@ -257,7 +259,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TB_ContentPath.Location = new System.Drawing.Point(15, 73);
             this.TB_ContentPath.Name = "TB_ContentPath";
-            this.TB_ContentPath.Size = new System.Drawing.Size(764, 20);
+            this.TB_ContentPath.Size = new System.Drawing.Size(696, 20);
             this.TB_ContentPath.TabIndex = 8;
             // 
             // RTB_Log
@@ -270,17 +272,17 @@
             this.RTB_Log.Name = "RTB_Log";
             this.RTB_Log.ReadOnly = true;
             this.RTB_Log.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.RTB_Log.Size = new System.Drawing.Size(851, 121);
+            this.RTB_Log.Size = new System.Drawing.Size(783, 121);
             this.RTB_Log.TabIndex = 11;
             this.RTB_Log.Text = "";
             // 
             // BT_Log_Copy
             // 
-            this.BT_Log_Copy.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.BT_Log_Copy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BT_Log_Copy.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.BT_Log_Copy.Location = new System.Drawing.Point(146, 419);
+            this.BT_Log_Copy.Location = new System.Drawing.Point(112, 419);
             this.BT_Log_Copy.Name = "BT_Log_Copy";
-            this.BT_Log_Copy.Size = new System.Drawing.Size(75, 23);
+            this.BT_Log_Copy.Size = new System.Drawing.Size(70, 23);
             this.BT_Log_Copy.TabIndex = 12;
             this.BT_Log_Copy.Text = "Copy";
             this.BT_Log_Copy.UseVisualStyleBackColor = true;
@@ -288,11 +290,11 @@
             // 
             // BT_Log_Clear
             // 
-            this.BT_Log_Clear.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.BT_Log_Clear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BT_Log_Clear.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.BT_Log_Clear.Location = new System.Drawing.Point(236, 419);
+            this.BT_Log_Clear.Location = new System.Drawing.Point(193, 419);
             this.BT_Log_Clear.Name = "BT_Log_Clear";
-            this.BT_Log_Clear.Size = new System.Drawing.Size(75, 23);
+            this.BT_Log_Clear.Size = new System.Drawing.Size(70, 23);
             this.BT_Log_Clear.TabIndex = 13;
             this.BT_Log_Clear.Text = "Clear";
             this.BT_Log_Clear.UseVisualStyleBackColor = true;
@@ -300,8 +302,8 @@
             // 
             // BT_Exit
             // 
-            this.BT_Exit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.BT_Exit.Location = new System.Drawing.Point(704, 419);
+            this.BT_Exit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BT_Exit.Location = new System.Drawing.Point(714, 419);
             this.BT_Exit.Name = "BT_Exit";
             this.BT_Exit.Size = new System.Drawing.Size(75, 23);
             this.BT_Exit.TabIndex = 14;
@@ -309,21 +311,10 @@
             this.BT_Exit.UseVisualStyleBackColor = true;
             this.BT_Exit.Click += new System.EventHandler(this.BT_Exit_Click);
             // 
-            // BT_About
-            // 
-            this.BT_About.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.BT_About.Location = new System.Drawing.Point(612, 419);
-            this.BT_About.Name = "BT_About";
-            this.BT_About.Size = new System.Drawing.Size(75, 23);
-            this.BT_About.TabIndex = 15;
-            this.BT_About.Text = "About";
-            this.BT_About.UseVisualStyleBackColor = true;
-            this.BT_About.Click += new System.EventHandler(this.BT_About_Click);
-            // 
             // BT_Browse_Workshop
             // 
             this.BT_Browse_Workshop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BT_Browse_Workshop.Location = new System.Drawing.Point(782, 110);
+            this.BT_Browse_Workshop.Location = new System.Drawing.Point(714, 110);
             this.BT_Browse_Workshop.Name = "BT_Browse_Workshop";
             this.BT_Browse_Workshop.Size = new System.Drawing.Size(75, 23);
             this.BT_Browse_Workshop.TabIndex = 18;
@@ -347,7 +338,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TB_WorkshopPath.Location = new System.Drawing.Point(15, 112);
             this.TB_WorkshopPath.Name = "TB_WorkshopPath";
-            this.TB_WorkshopPath.Size = new System.Drawing.Size(764, 20);
+            this.TB_WorkshopPath.Size = new System.Drawing.Size(696, 20);
             this.TB_WorkshopPath.TabIndex = 16;
             // 
             // CB_Autodetection
@@ -356,7 +347,7 @@
             this.CB_Autodetection.AutoSize = true;
             this.CB_Autodetection.Checked = true;
             this.CB_Autodetection.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CB_Autodetection.Location = new System.Drawing.Point(715, 9);
+            this.CB_Autodetection.Location = new System.Drawing.Point(647, 9);
             this.CB_Autodetection.Name = "CB_Autodetection";
             this.CB_Autodetection.Size = new System.Drawing.Size(127, 17);
             this.CB_Autodetection.TabIndex = 18;
@@ -366,7 +357,7 @@
             // BT_Help_Autodetection
             // 
             this.BT_Help_Autodetection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BT_Help_Autodetection.Location = new System.Drawing.Point(840, 5);
+            this.BT_Help_Autodetection.Location = new System.Drawing.Point(772, 5);
             this.BT_Help_Autodetection.Name = "BT_Help_Autodetection";
             this.BT_Help_Autodetection.Size = new System.Drawing.Size(17, 23);
             this.BT_Help_Autodetection.TabIndex = 19;
@@ -377,7 +368,7 @@
             // BT_Update
             // 
             this.BT_Update.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.BT_Update.Location = new System.Drawing.Point(374, 419);
+            this.BT_Update.Location = new System.Drawing.Point(356, 419);
             this.BT_Update.Name = "BT_Update";
             this.BT_Update.Size = new System.Drawing.Size(119, 23);
             this.BT_Update.TabIndex = 20;
@@ -387,21 +378,54 @@
             // 
             // BT_Log_Open
             // 
-            this.BT_Log_Open.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.BT_Log_Open.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BT_Log_Open.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.BT_Log_Open.Location = new System.Drawing.Point(49, 419);
+            this.BT_Log_Open.Location = new System.Drawing.Point(19, 419);
             this.BT_Log_Open.Name = "BT_Log_Open";
-            this.BT_Log_Open.Size = new System.Drawing.Size(75, 23);
+            this.BT_Log_Open.Size = new System.Drawing.Size(82, 23);
             this.BT_Log_Open.TabIndex = 21;
             this.BT_Log_Open.Text = "Open in file";
             this.BT_Log_Open.UseVisualStyleBackColor = true;
             this.BT_Log_Open.Click += new System.EventHandler(this.BT_Log_Open_Click);
             // 
+            // BT_Settings
+            // 
+            this.BT_Settings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BT_Settings.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.BT_Settings.Location = new System.Drawing.Point(600, 419);
+            this.BT_Settings.Name = "BT_Settings";
+            this.BT_Settings.Size = new System.Drawing.Size(108, 23);
+            this.BT_Settings.TabIndex = 22;
+            this.BT_Settings.Text = "Settings";
+            this.BT_Settings.UseVisualStyleBackColor = true;
+            this.BT_Settings.Click += new System.EventHandler(this.BT_Settings_Click);
+            // 
+            // PB_Process
+            // 
+            this.PB_Process.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PB_Process.Location = new System.Drawing.Point(374, 203);
+            this.PB_Process.Name = "PB_Process";
+            this.PB_Process.Size = new System.Drawing.Size(391, 23);
+            this.PB_Process.TabIndex = 23;
+            // 
+            // LB_CurrentState
+            // 
+            this.LB_CurrentState.AutoSize = true;
+            this.LB_CurrentState.Location = new System.Drawing.Point(381, 187);
+            this.LB_CurrentState.Name = "LB_CurrentState";
+            this.LB_CurrentState.Size = new System.Drawing.Size(96, 13);
+            this.LB_CurrentState.TabIndex = 24;
+            this.LB_CurrentState.Text = "PROCESS STATE";
+            // 
             // F_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(880, 452);
+            this.ClientSize = new System.Drawing.Size(812, 452);
+            this.Controls.Add(this.LB_CurrentState);
+            this.Controls.Add(this.PB_Process);
+            this.Controls.Add(this.BT_Settings);
             this.Controls.Add(this.BT_Log_Open);
             this.Controls.Add(this.BT_Update);
             this.Controls.Add(this.BT_Help_Autodetection);
@@ -409,7 +433,6 @@
             this.Controls.Add(this.BT_Browse_Workshop);
             this.Controls.Add(this.LB_Workshop);
             this.Controls.Add(this.TB_WorkshopPath);
-            this.Controls.Add(this.BT_About);
             this.Controls.Add(this.BT_Exit);
             this.Controls.Add(this.BT_Log_Clear);
             this.Controls.Add(this.BT_Log_Copy);
@@ -426,7 +449,7 @@
             this.Controls.Add(this.BT_WldInput);
             this.Controls.Add(this.TB_DirWLD);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(665, 491);
+            this.MinimumSize = new System.Drawing.Size(828, 491);
             this.Name = "F_Main";
             this.Text = "AutoGro 2018";
             this.GB_Settings.ResumeLayout(false);
@@ -458,7 +481,6 @@
         private System.Windows.Forms.Button BT_Log_Copy;
         private System.Windows.Forms.Button BT_Log_Clear;
         private System.Windows.Forms.Button BT_Exit;
-        private System.Windows.Forms.Button BT_About;
         private System.Windows.Forms.Button BT_Help_Gtitle;
         private System.Windows.Forms.Button BT_Help_OtherWLDs;
         private System.Windows.Forms.Button BT_Browse_Workshop;
@@ -470,6 +492,9 @@
         private System.Windows.Forms.Button BT_Update;
         private System.Windows.Forms.RichTextBox RTB_Log;
         private System.Windows.Forms.Button BT_Log_Open;
+        private System.Windows.Forms.Button BT_Settings;
+        private System.Windows.Forms.ProgressBar PB_Process;
+        private System.Windows.Forms.Label LB_CurrentState;
     }
 }
 

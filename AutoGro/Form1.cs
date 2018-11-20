@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.IO;
 using System.IO.Compression;
 using System.Threading;
 using System.Windows.Forms;
-using System.Reflection;
+using Microsoft.Win32;
 
 namespace AutoGro
 {
@@ -18,46 +14,11 @@ namespace AutoGro
     {
         public string[] extExceptions = { "tex", "wav", "ogg", "tga", "fbx", "obj", "mp3", "png", "amf", "zpr" };
 
-
-        public class Log
-        {
-            public static string logfile = "Autogro_log.txt";
-            RichTextBox LogText;
-
-            // Appends message into log and scrolls textbox
-            public void Message(string message)
-            {
-                message = DateTime.Now.ToLocalTime().ToString() + " || " + message + "\n";
-                LogText.AppendText(message);
-
-                StreamWriter logtxt = File.AppendText(logfile);
-                logtxt.WriteLine(message);
-                logtxt.Dispose();
-
-                LogText.SelectionStart = LogText.Text.Length;
-                LogText.ScrollToCaret();
-            }
-
-            // Clears log textbox
-            public void Clear()
-            {
-                LogText.Text = "";
-            }
-
-            public void Line()
-            {
-                LogText.AppendText("------------------------------------------------------------------------------\n");
-            }
-
-            public Log(RichTextBox LogTextBox)
-            {
-                LogText = LogTextBox;
-            }
-        }
-
         private string sContent = "";
+        private Log log;
 
-        public F_Main()
+
+        public F_Main(string[] args)
         { 
             // check for updates sequence
             if (File.Exists(Updater.tempFile))
@@ -67,7 +28,7 @@ namespace AutoGro
 
             InitializeComponent();
 
-            Log log = new Log(RTB_Log);
+            log = new Log(RTB_Log);
             log.Message("AutoGro 2018 " + Updater.version + " initialized.");
 
             // print out update check result
@@ -102,28 +63,53 @@ namespace AutoGro
                 case Updater.UpdateCheckResult.None:
                     {
                         log.Message("No updates available.");
+
+                        Associations.RegistryUtilities regtls = new Associations.RegistryUtilities();
+
+                        if (Registry.ClassesRoot.OpenSubKey("Autogro").GetValue("FirstRun") == null)
+                        {
+                            MessageBox.Show("What's new?\n\n - Base resource is not limited to .wld anymore!\n - Added progress bar.\n - Increased performance.\n - Increased stability.\n\nAttention! The program will require administrator permissions from now on.\nThis is done in regards to the future update with settings section,\nwhich is under construction already.\n\nEnjoy!", Updater.version.ToString(), MessageBoxButtons.OK);
+                            Registry.ClassesRoot.CreateSubKey("Autogro").SetValue("FirstRun", 0);
+                        }
+
                         break;
                     } 
             }
             log.Line();
 
-            FBD_ContentDir.SelectedPath = Application.StartupPath;
+            // Reserved for settings section
+            /* if (args.Length > 0)
+            {
+                TB_DirWLD.Text = args[0];
+                TB_OutputName.Text = TB_DirWLD.Text.Substring(0, TB_DirWLD.Text.Length - 3) + "gro";
+                if (TB_DirWLD.Text.Contains("\\Content\\"))
+                    TB_ContentPath.Text = TB_DirWLD.Text.Substring(0, TB_DirWLD.Text.IndexOf("\\Content\\") + 9);
+                if (TB_DirWLD.Text.Contains("\\steamapps\\common\\"))
+                    TB_WorkshopPath.Text = TB_DirWLD.Text.Substring(0, TB_DirWLD.Text.IndexOf("common")) + "workshop\\content\\564310\\";
+            }
+            else
+            {
+                FBD_ContentDir.SelectedPath = Application.StartupPath;
+            }
+            */
+
+            LB_CurrentState.Text = "";
         }
 
         // Select .wld file to analyze
         private void BT_WldInput_Click(object sender, EventArgs e)
         {
             DialogResult dRes = OFD_WldInput.ShowDialog();
-            if (dRes == DialogResult.OK && OFD_WldInput.FileName.Contains(".wld"))
+            if (dRes == DialogResult.OK)
             {
                 TB_DirWLD.Text = OFD_WldInput.FileName;
                 if (CB_Autodetection.Checked)
                 {
                     if (TB_OutputName.Text == "")
                         TB_OutputName.Text = TB_DirWLD.Text.Substring(0, TB_DirWLD.Text.Length - 3) + "gro";
-                    if (TB_ContentPath.Text == "" && TB_ContentPath.Text.Contains("\\Content\\"))
+                    if (TB_ContentPath.Text == "" && TB_DirWLD.Text.Contains("\\Content\\"))
                     TB_ContentPath.Text = TB_DirWLD.Text.Substring(0, TB_DirWLD.Text.IndexOf("\\Content\\") + 9);
-                    if (TB_WorkshopPath.Text == "" && TB_ContentPath.Text.Contains("\\steamapps\\common\\"))
+                    if (TB_WorkshopPath.Text == "" && TB_DirWLD.Text.Contains("\\steamapps\\common\\"))
                         TB_WorkshopPath.Text = TB_DirWLD.Text.Substring(0, TB_DirWLD.Text.IndexOf("common")) + "workshop\\content\\564310\\";
                 }
             }
@@ -181,8 +167,6 @@ namespace AutoGro
         // Initialize analyzing sequence
         private void BT_PackGro_Click(object sender, EventArgs e)
         {
-            Log log = new Log(RTB_Log);
-
             string fnInput = TB_DirWLD.Text;
             string fnOutput = TB_OutputName.Text;
             sContent = TB_ContentPath.Text;
@@ -194,10 +178,10 @@ namespace AutoGro
                 sContent += "\\";
 
             // check if a) file extensions are correct, b) Content folder path has Content folder
-            if (!fnInput.Contains(".wld"))
+            if (fnInput.Contains(".tex"))
             {
-                log.Message("Invalid world file selected!");
-                MessageBox.Show("Invalid world file selected!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                log.Message("Invalid input file selected!");
+                MessageBox.Show("Invalid input file selected!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 log.Message("Analysis stopped.");
                 log.Line();
             }
@@ -224,6 +208,8 @@ namespace AutoGro
             }
             else // proceed to analysis
             {
+                LB_CurrentState.Text = "Analyzing resources...";
+
                 // at first we put all found files in this queue
                 Queue<string> files = new Queue<string>();
 
@@ -231,6 +217,8 @@ namespace AutoGro
                 ExamineResource(fnInput, files, 0);
 
                 // go to compressing
+                LB_CurrentState.Text = "Packing resources...";
+                Thread.Sleep(100);
                 try
                 {
                     // create compressing stream
@@ -243,6 +231,9 @@ namespace AutoGro
                     log.Message("Starting packing...");
 
                     string[] filesList = RemoveDuplicates(files.ToArray());
+
+                    PB_Process.Maximum = filesList.Length;
+                    PB_Process.Value = 0;
 
                     // pack every file one by one
                     while (files.Count > 0)
@@ -281,6 +272,10 @@ namespace AutoGro
                         {
                             log.Message("Error:  Invalid operation upon dequeueing! Unknown file was skipped.");
                         }
+                        finally
+                        {
+                            PB_Process.Value++;
+                        }
                     }
 
                     log.Line();
@@ -291,13 +286,19 @@ namespace AutoGro
 
                     log.Message("Package successfully created.");
 
+                    PB_Process.Maximum = 0;
+                    PB_Process.Value = 0;
+
                     // if we are not done yet - no need to interrupt the process
                     if (!CB_Workshop.Checked)
-                        MessageBox.Show("Packing finished!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    // if requested, proceed to analyzing workshop entries
-                    if (CB_Workshop.Checked)
                     {
+                        MessageBox.Show("Packing finished!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    // if requested, proceed to analyzing workshop entries
+                    else if (CB_Workshop.Checked)
+                    {
+                        LB_CurrentState.Text = "Analyzing workshop subscriptions...";
+
                         log.Message("Examining workshop subcriptions...");
                         string sPathWS = TB_WorkshopPath.Text;
 
@@ -306,6 +307,8 @@ namespace AutoGro
                         {
                             string[] asWS = Directory.GetFiles(sPathWS, "*.gro", SearchOption.AllDirectories);
 
+                            PB_Process.Maximum = asWS.Length;
+                            PB_Process.Value = 0;
 
                             Dictionary<string, string[]> workshopEntries = new Dictionary<string, string[]>();
                             for (int i = 0; i < asWS.Length; i++)
@@ -367,6 +370,10 @@ namespace AutoGro
                                 catch (ArgumentException)
                                 {
                                     log.Message("Invalid argument: " + sNameFile);
+                                }
+                                finally
+                                {
+                                    PB_Process.Value++;
                                 }
 
                             }
@@ -444,6 +451,10 @@ namespace AutoGro
                     log.Line();
                 }
             }
+
+            LB_CurrentState.Text = "";
+            PB_Process.Value = 0;
+            PB_Process.Maximum = 0;
         }
         
         /// <summary>
@@ -495,8 +506,6 @@ namespace AutoGro
 		/// <param name="depth">Indicates how deep recursion went so far. First call should have 1.</param>
         private void ExamineResource(string resource, Queue<string> files, int depth)
         {
-            Log log = new Log(RTB_Log);
-
             resource = ConvertSEDPathToWindows(resource);
             try
             {
@@ -541,68 +550,51 @@ namespace AutoGro
                         iEnd--;
                     }
 
-					string resPath = contents.Substring(iStart, iEnd - iStart);
-                    if (!files.Contains(resPath))
+					string respath = contents.Substring(iStart, iEnd - iStart);
+                    if (!files.Contains(respath))
                     {
                         if (extension == "gtitle" || extension == "gtitleinfo")
                         { // pack gtitle only if it is going to be analyzed
                             if (CB_Gtitle.Checked)
                             {
-                                log.Message("Adding resource " + resPath);
-                                files.Enqueue(resPath);
+                                log.Message("Adding resource " + respath);
+                                files.Enqueue(respath);
 
-                                resPath = ConvertSEDPathToWindows(resPath);
+                                respath = ConvertSEDPathToWindows(respath);
                                 if (CB_Gtitle.Checked)
-                                    ExamineResource(resPath, files, depth + 1);
+                                    ExamineResource(respath, files, depth + 1);
                             }
                         }
                         else if (extension == "wld")
                         { // pack worlds only if user desired so
                             if (CB_OtherWLDs.Checked || depth == 0)
                             { // we don't only need .wld, but also .nfo file coming with it
-                                log.Message("Adding resource " + resPath + " to queue.");
-                                files.Enqueue(resPath);
+                                log.Message("Adding resource " + respath + " to queue.");
+                                files.Enqueue(respath);
 
-                                log.Message("Adding resource " + resPath.Substring(0, resPath.Length - 3) + "nfo" + " to queue.");
-                                files.Enqueue(resPath.Substring(0, resPath.Length - 3) + "nfo");
+                                log.Message("Adding resource " + respath.Substring(0, respath.Length - 3) + "nfo" + " to queue.");
+                                files.Enqueue(respath.Substring(0, respath.Length - 3) + "nfo");
 
-                                resPath = ConvertSEDPathToWindows(resPath);
+                                respath = ConvertSEDPathToWindows(respath);
                                 if (CB_OtherWLDs.Checked)
-                                    ExamineResource(resPath, files, depth + 1);
+                                    ExamineResource(respath, files, depth + 1);
                             }
                         }
                         else if (extension == "tex")
                         { // texture can use streaming, so attempt to pack '<name>--Big.tex' too
-                            log.Message("Adding resource " + resPath + " to queue.");
-                            files.Enqueue(resPath);
-                            files.Enqueue(resPath.Substring(0, resPath.Length - 4) + "--Big.tex");
+                            log.Message("Adding resource " + respath + " to queue.");
+                            files.Enqueue(respath);
+                            files.Enqueue(respath.Substring(0, respath.Length - 4) + "--Big.tex");
                         }
                         else // in other case, pack everything
                         {
-                            log.Message("Adding resource " + resPath + " to queue.");
-                            files.Enqueue(resPath);
+                            log.Message("Adding resource " + respath + " to queue.");
+                            files.Enqueue(respath);
 
                             if (!extExceptions.Contains(extension))
-                                ExamineResource(resPath, files, depth + 1);
+                                ExamineResource(respath, files, depth + 1);
                         }
-
-                        
-                        /* - previous code determining if resource need to be examined (obsolete) -
-                         
-                        // determine if the resource need to be examined
-                        if (extension == "gtitle" || extension == "gtitleinfo")
-                        {
-                            
-                        }
-                        else if (extension == "wld")
-                        {
-                            
-                        }
-                        // exclude several predefined extensions from analysis
-                        else 
-                        */
                     }
-
                     contents = contents.Substring(iEnd);
                 }
             }
@@ -622,13 +614,12 @@ namespace AutoGro
 
         private void BT_Log_Copy_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(RTB_Log.Text);
+            Clipboard.SetText(log.LogBox.Text);
             MessageBox.Show("Log copied into clipdoard!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void BT_Log_Clear_Click(object sender, EventArgs e)
         {
-            Log log = new Log(RTB_Log);
             log.Clear();
         }
 
@@ -657,11 +648,6 @@ namespace AutoGro
                 TB_WorkshopPath.Enabled = false;
                 BT_Browse_Workshop.Enabled = false;
             }
-        }
-
-        private void BT_About_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("AutoGro 2018 " + Updater.version + "\n\nMade with:\n.NET Framework 4.6.1\nC# Windows Forms\nVisual Studio Community 2017\n\nAuthor: Asdolg\n" + Updater.updateDate, "About", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
         }
 
         private void BT_Help_OtherWLDs_Click(object sender, EventArgs e)
@@ -729,6 +715,51 @@ namespace AutoGro
         private void BT_Log_Open_Click(object sender, EventArgs e)
         {
             Process.Start("notepad.exe", Log.logfile);
+        }
+
+        private void BT_Settings_Click(object sender, EventArgs e)
+        {
+            // SETTINGS ARE UNDER CONSTRUCTION, DISABLED FOR NOW
+            MessageBox.Show("This is not implemented yet.\n\nPlease, wait for an update.");
+
+            // F_Settings settingsDlg = new F_Settings();
+            // settingsDlg.ShowDialog(this);
+        }
+    }
+
+    public class Log
+    {
+        public static string logfile = "Autogro_log.txt";
+        public RichTextBox LogBox;
+
+        // Appends message into log and scrolls textbox
+        public void Message(string message)
+        {
+            message = DateTime.Now.ToLocalTime().ToString() + " || " + message + "\n";
+            LogBox.AppendText(message);
+
+            StreamWriter logtxt = File.AppendText(logfile);
+            logtxt.WriteLine(message);
+            logtxt.Dispose();
+
+            LogBox.SelectionStart = LogBox.Text.Length;
+            LogBox.ScrollToCaret();
+        }
+
+        // Clears log textbox
+        public void Clear()
+        {
+            LogBox.Text = "";
+        }
+
+        public void Line()
+        {
+            LogBox.AppendText("------------------------------------------------------------------------------\n");
+        }
+
+        public Log(RichTextBox LogTextBox)
+        {
+            LogBox = LogTextBox;
         }
     }
 }

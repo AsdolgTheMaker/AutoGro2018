@@ -5,7 +5,7 @@ using System.Text;
 using System.Reflection;
 using System.Diagnostics;
 using System.Windows.Forms;
-
+using Microsoft.Win32;
 
 namespace AutoGro
 {
@@ -15,7 +15,7 @@ namespace AutoGro
         /// Current application version
         /// </summary>
         public static readonly Version version = Assembly.GetExecutingAssembly().GetName().Version;
-        public static readonly string updateDate = "21th October 2018";
+        public static readonly string updateDate = "20th November 2018";
 
         /// <summary>
         /// Last stable version on Github. Filled in by CheckForUpdates() method.
@@ -130,7 +130,9 @@ namespace AutoGro
                     WebClient webClient = new WebClient();
 
                     webClient.DownloadFile(downloadLink, actualExe);
-                    
+
+                    Registry.ClassesRoot.CreateSubKey("Autogro").DeleteValue("FirstRun");
+
                     Process.Start(actualExe); 
                     Process.GetCurrentProcess().Kill();
 

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <PublishUrlHistory>publish\</PublishUrlHistory>
-    <InstallUrlHistory />
+    <PublishUrlHistory>D:\Projects\Github\Releases\AutoGro2018\|publish\</PublishUrlHistory>
+    <InstallUrlHistory>https://github.com/AsdolgTheMaker/AutoGro2018/releases/download/Public/AutoGro.exe/</InstallUrlHistory>
     <SupportUrlHistory />
     <UpdateUrlHistory />
     <BootstrapperUrlHistory />
@@ -13,5 +13,8 @@
   </PropertyGroup>
   <PropertyGroup>
     <EnableSecurityDebugging>false</EnableSecurityDebugging>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ReferencePath>D:\Libraries\</ReferencePath>
   </PropertyGroup>
 </Project>

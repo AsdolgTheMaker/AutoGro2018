@@ -21,8 +21,5 @@ D:\Projects\Github\AutoGro2018\AutoGro\obj\Release\AutoGro.csproj.GenerateResour
 D:\Projects\Github\AutoGro2018\AutoGro\obj\Release\AutoGro.csproj.CoreCompileInputs.cache
 D:\Projects\Github\AutoGro2018\AutoGro\obj\Release\AutoGro.exe
 D:\Projects\Github\AutoGro2018\AutoGro\obj\Release\AutoGro.pdb
-D:\Projects\Github\AutoGro2018\AutoGro\bin\Release\AutoGro.exe.manifest
-D:\Projects\Github\AutoGro2018\AutoGro\bin\Release\AutoGro.application
-D:\Projects\Github\AutoGro2018\AutoGro\obj\Release\AutoGro.exe.manifest
-D:\Projects\Github\AutoGro2018\AutoGro\obj\Release\AutoGro.application
 D:\Projects\Github\AutoGro2018\AutoGro\obj\Release\AutoGro.csprojAssemblyReference.cache
+D:\Projects\Github\AutoGro2018\AutoGro\obj\Release\AutoGro.F_Settings.resources
