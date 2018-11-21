@@ -64,14 +64,15 @@ namespace AutoGro
                     {
                         log.Message("No updates available.");
 
+                        
                         Associations.RegistryUtilities regtls = new Associations.RegistryUtilities();
 
-                        if (Registry.ClassesRoot.OpenSubKey("Autogro").GetValue("FirstRun") == null)
+                        if (Registry.CurrentUser.CreateSubKey("Software").CreateSubKey("Autogro").GetValue("FirstRun") == null)
                         {
                             MessageBox.Show("What's new?\n\n - Base resource is not limited to .wld anymore!\n - Added progress bar.\n - Increased performance.\n - Increased stability.\n\nAttention! The program will require administrator permissions from now on.\nThis is done in regards to the future update with settings section,\nwhich is under construction already.\n\nEnjoy!", Updater.version.ToString(), MessageBoxButtons.OK);
-                            Registry.ClassesRoot.CreateSubKey("Autogro").SetValue("FirstRun", 0);
+                            Registry.CurrentUser.CreateSubKey("Software").CreateSubKey("Autogro").SetValue("FirstRun", 0);
                         }
-
+                        
                         break;
                     } 
             }
