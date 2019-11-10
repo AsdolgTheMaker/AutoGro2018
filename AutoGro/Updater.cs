@@ -15,7 +15,7 @@ namespace AutoGro
         /// Current application version
         /// </summary>
         public static readonly Version version = Assembly.GetExecutingAssembly().GetName().Version;
-        public static readonly string updateDate = "20th November 2018";
+        public static readonly string updateDate = "10th October 2019";
 
         /// <summary>
         /// Last stable version on Github. Filled in by CheckForUpdates() method.

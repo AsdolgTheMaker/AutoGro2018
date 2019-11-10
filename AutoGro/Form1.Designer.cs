@@ -39,6 +39,9 @@
             this.SFD_OutputFN = new System.Windows.Forms.SaveFileDialog();
             this.BT_OutputFN = new System.Windows.Forms.Button();
             this.GB_Settings = new System.Windows.Forms.GroupBox();
+            this.BT_Help_Exceptions = new System.Windows.Forms.Button();
+            this.BT_ExceptionsSettings = new System.Windows.Forms.Button();
+            this.CB_Exceptions = new System.Windows.Forms.CheckBox();
             this.BT_Help_Workshop = new System.Windows.Forms.Button();
             this.BT_Help_Gtitle = new System.Windows.Forms.Button();
             this.BT_Help_OtherWLDs = new System.Windows.Forms.Button();
@@ -122,7 +125,7 @@
             this.BT_PackGro.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.BT_PackGro.Location = new System.Drawing.Point(374, 232);
             this.BT_PackGro.Name = "BT_PackGro";
-            this.BT_PackGro.Size = new System.Drawing.Size(391, 41);
+            this.BT_PackGro.Size = new System.Drawing.Size(391, 70);
             this.BT_PackGro.TabIndex = 5;
             this.BT_PackGro.Text = "Start packing";
             this.BT_PackGro.UseVisualStyleBackColor = true;
@@ -153,6 +156,9 @@
             // 
             // GB_Settings
             // 
+            this.GB_Settings.Controls.Add(this.BT_Help_Exceptions);
+            this.GB_Settings.Controls.Add(this.BT_ExceptionsSettings);
+            this.GB_Settings.Controls.Add(this.CB_Exceptions);
             this.GB_Settings.Controls.Add(this.BT_Help_Workshop);
             this.GB_Settings.Controls.Add(this.BT_Help_Gtitle);
             this.GB_Settings.Controls.Add(this.BT_Help_OtherWLDs);
@@ -161,15 +167,49 @@
             this.GB_Settings.Controls.Add(this.CB_Gtitle);
             this.GB_Settings.Location = new System.Drawing.Point(15, 190);
             this.GB_Settings.Name = "GB_Settings";
-            this.GB_Settings.Size = new System.Drawing.Size(318, 92);
+            this.GB_Settings.Size = new System.Drawing.Size(318, 112);
             this.GB_Settings.TabIndex = 7;
             this.GB_Settings.TabStop = false;
             this.GB_Settings.Text = "Optional settings";
             // 
+            // BT_Help_Exceptions
+            // 
+            this.BT_Help_Exceptions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BT_Help_Exceptions.Location = new System.Drawing.Point(6, 85);
+            this.BT_Help_Exceptions.Name = "BT_Help_Exceptions";
+            this.BT_Help_Exceptions.Size = new System.Drawing.Size(17, 23);
+            this.BT_Help_Exceptions.TabIndex = 21;
+            this.BT_Help_Exceptions.Text = "?";
+            this.BT_Help_Exceptions.UseVisualStyleBackColor = true;
+            this.BT_Help_Exceptions.Click += new System.EventHandler(this.BT_Help_Exceptions_Click);
+            // 
+            // BT_ExceptionsSettings
+            // 
+            this.BT_ExceptionsSettings.Location = new System.Drawing.Point(202, 85);
+            this.BT_ExceptionsSettings.Name = "BT_ExceptionsSettings";
+            this.BT_ExceptionsSettings.Size = new System.Drawing.Size(110, 22);
+            this.BT_ExceptionsSettings.TabIndex = 20;
+            this.BT_ExceptionsSettings.Text = "Tune exceptions...";
+            this.BT_ExceptionsSettings.UseVisualStyleBackColor = true;
+            this.BT_ExceptionsSettings.Click += new System.EventHandler(this.BT_ExceptionsSettings_Click);
+            // 
+            // CB_Exceptions
+            // 
+            this.CB_Exceptions.AutoSize = true;
+            this.CB_Exceptions.Checked = true;
+            this.CB_Exceptions.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CB_Exceptions.Location = new System.Drawing.Point(29, 89);
+            this.CB_Exceptions.Name = "CB_Exceptions";
+            this.CB_Exceptions.Size = new System.Drawing.Size(139, 17);
+            this.CB_Exceptions.TabIndex = 19;
+            this.CB_Exceptions.Text = "Do not pack exceptions";
+            this.CB_Exceptions.UseVisualStyleBackColor = true;
+            this.CB_Exceptions.CheckedChanged += new System.EventHandler(this.CB_Exceptions_CheckedChanged);
+            // 
             // BT_Help_Workshop
             // 
             this.BT_Help_Workshop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BT_Help_Workshop.Location = new System.Drawing.Point(242, 62);
+            this.BT_Help_Workshop.Location = new System.Drawing.Point(6, 62);
             this.BT_Help_Workshop.Name = "BT_Help_Workshop";
             this.BT_Help_Workshop.Size = new System.Drawing.Size(17, 23);
             this.BT_Help_Workshop.TabIndex = 18;
@@ -180,7 +220,7 @@
             // BT_Help_Gtitle
             // 
             this.BT_Help_Gtitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BT_Help_Gtitle.Location = new System.Drawing.Point(164, 16);
+            this.BT_Help_Gtitle.Location = new System.Drawing.Point(6, 16);
             this.BT_Help_Gtitle.Name = "BT_Help_Gtitle";
             this.BT_Help_Gtitle.Size = new System.Drawing.Size(17, 23);
             this.BT_Help_Gtitle.TabIndex = 17;
@@ -191,7 +231,7 @@
             // BT_Help_OtherWLDs
             // 
             this.BT_Help_OtherWLDs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BT_Help_OtherWLDs.Location = new System.Drawing.Point(196, 39);
+            this.BT_Help_OtherWLDs.Location = new System.Drawing.Point(6, 39);
             this.BT_Help_OtherWLDs.Name = "BT_Help_OtherWLDs";
             this.BT_Help_OtherWLDs.Size = new System.Drawing.Size(17, 23);
             this.BT_Help_OtherWLDs.TabIndex = 16;
@@ -204,7 +244,7 @@
             this.CB_Workshop.AutoSize = true;
             this.CB_Workshop.Checked = true;
             this.CB_Workshop.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CB_Workshop.Location = new System.Drawing.Point(6, 66);
+            this.CB_Workshop.Location = new System.Drawing.Point(29, 66);
             this.CB_Workshop.Name = "CB_Workshop";
             this.CB_Workshop.Size = new System.Drawing.Size(241, 17);
             this.CB_Workshop.TabIndex = 2;
@@ -215,7 +255,7 @@
             // CB_OtherWLDs
             // 
             this.CB_OtherWLDs.AutoSize = true;
-            this.CB_OtherWLDs.Location = new System.Drawing.Point(6, 43);
+            this.CB_OtherWLDs.Location = new System.Drawing.Point(29, 43);
             this.CB_OtherWLDs.Name = "CB_OtherWLDs";
             this.CB_OtherWLDs.Size = new System.Drawing.Size(193, 17);
             this.CB_OtherWLDs.TabIndex = 1;
@@ -225,7 +265,7 @@
             // CB_Gtitle
             // 
             this.CB_Gtitle.AutoSize = true;
-            this.CB_Gtitle.Location = new System.Drawing.Point(7, 20);
+            this.CB_Gtitle.Location = new System.Drawing.Point(30, 20);
             this.CB_Gtitle.Name = "CB_Gtitle";
             this.CB_Gtitle.Size = new System.Drawing.Size(162, 17);
             this.CB_Gtitle.TabIndex = 0;
@@ -267,12 +307,12 @@
             this.RTB_Log.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.RTB_Log.Location = new System.Drawing.Point(15, 292);
+            this.RTB_Log.Location = new System.Drawing.Point(15, 308);
             this.RTB_Log.MaxLength = 10000;
             this.RTB_Log.Name = "RTB_Log";
             this.RTB_Log.ReadOnly = true;
             this.RTB_Log.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.RTB_Log.Size = new System.Drawing.Size(783, 121);
+            this.RTB_Log.Size = new System.Drawing.Size(783, 124);
             this.RTB_Log.TabIndex = 11;
             this.RTB_Log.Text = "";
             // 
@@ -280,7 +320,7 @@
             // 
             this.BT_Log_Copy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BT_Log_Copy.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.BT_Log_Copy.Location = new System.Drawing.Point(112, 419);
+            this.BT_Log_Copy.Location = new System.Drawing.Point(112, 438);
             this.BT_Log_Copy.Name = "BT_Log_Copy";
             this.BT_Log_Copy.Size = new System.Drawing.Size(70, 23);
             this.BT_Log_Copy.TabIndex = 12;
@@ -292,7 +332,7 @@
             // 
             this.BT_Log_Clear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BT_Log_Clear.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.BT_Log_Clear.Location = new System.Drawing.Point(193, 419);
+            this.BT_Log_Clear.Location = new System.Drawing.Point(193, 438);
             this.BT_Log_Clear.Name = "BT_Log_Clear";
             this.BT_Log_Clear.Size = new System.Drawing.Size(70, 23);
             this.BT_Log_Clear.TabIndex = 13;
@@ -303,7 +343,7 @@
             // BT_Exit
             // 
             this.BT_Exit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BT_Exit.Location = new System.Drawing.Point(714, 419);
+            this.BT_Exit.Location = new System.Drawing.Point(714, 438);
             this.BT_Exit.Name = "BT_Exit";
             this.BT_Exit.Size = new System.Drawing.Size(75, 23);
             this.BT_Exit.TabIndex = 14;
@@ -368,7 +408,7 @@
             // BT_Update
             // 
             this.BT_Update.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.BT_Update.Location = new System.Drawing.Point(356, 419);
+            this.BT_Update.Location = new System.Drawing.Point(356, 438);
             this.BT_Update.Name = "BT_Update";
             this.BT_Update.Size = new System.Drawing.Size(119, 23);
             this.BT_Update.TabIndex = 20;
@@ -380,7 +420,7 @@
             // 
             this.BT_Log_Open.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BT_Log_Open.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.BT_Log_Open.Location = new System.Drawing.Point(19, 419);
+            this.BT_Log_Open.Location = new System.Drawing.Point(19, 438);
             this.BT_Log_Open.Name = "BT_Log_Open";
             this.BT_Log_Open.Size = new System.Drawing.Size(82, 23);
             this.BT_Log_Open.TabIndex = 21;
@@ -392,7 +432,7 @@
             // 
             this.BT_Settings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BT_Settings.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.BT_Settings.Location = new System.Drawing.Point(600, 419);
+            this.BT_Settings.Location = new System.Drawing.Point(600, 438);
             this.BT_Settings.Name = "BT_Settings";
             this.BT_Settings.Size = new System.Drawing.Size(108, 23);
             this.BT_Settings.TabIndex = 22;
@@ -422,7 +462,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(812, 452);
+            this.ClientSize = new System.Drawing.Size(812, 471);
             this.Controls.Add(this.LB_CurrentState);
             this.Controls.Add(this.PB_Process);
             this.Controls.Add(this.BT_Settings);
@@ -495,6 +535,9 @@
         private System.Windows.Forms.Button BT_Settings;
         private System.Windows.Forms.ProgressBar PB_Process;
         private System.Windows.Forms.Label LB_CurrentState;
+        private System.Windows.Forms.Button BT_ExceptionsSettings;
+        private System.Windows.Forms.CheckBox CB_Exceptions;
+        private System.Windows.Forms.Button BT_Help_Exceptions;
     }
 }
 

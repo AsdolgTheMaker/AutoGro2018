@@ -99,6 +99,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AF_FileAssociations.cs" />
+    <Compile Include="ExtensionsTuner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExtensionsTuner.Designer.cs">
+      <DependentUpon>ExtensionsTuner.cs</DependentUpon>
+    </Compile>
     <Compile Include="F_Settings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +120,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ExtensionsTuner.resx">
+      <DependentUpon>ExtensionsTuner.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

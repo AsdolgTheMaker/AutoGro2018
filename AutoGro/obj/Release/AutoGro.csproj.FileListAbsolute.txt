@@ -23,3 +23,16 @@ D:\Projects\Github\AutoGro2018\AutoGro\obj\Release\AutoGro.exe
 D:\Projects\Github\AutoGro2018\AutoGro\obj\Release\AutoGro.pdb
 D:\Projects\Github\AutoGro2018\AutoGro\obj\Release\AutoGro.csprojAssemblyReference.cache
 D:\Projects\Github\AutoGro2018\AutoGro\obj\Release\AutoGro.F_Settings.resources
+C:\Users\defra\Source\Repos\AutoGro2018\AutoGro\obj\Release\AutoGro.csprojAssemblyReference.cache
+C:\Users\defra\Source\Repos\AutoGro2018\AutoGro\obj\Release\AutoGro.ExtensionsTuner.resources
+C:\Users\defra\Source\Repos\AutoGro2018\AutoGro\obj\Release\AutoGro.F_Main.resources
+C:\Users\defra\Source\Repos\AutoGro2018\AutoGro\obj\Release\AutoGro.F_Settings.resources
+C:\Users\defra\Source\Repos\AutoGro2018\AutoGro\obj\Release\AutoGro.Properties.Resources.resources
+C:\Users\defra\Source\Repos\AutoGro2018\AutoGro\obj\Release\AutoGro.csproj.GenerateResource.cache
+C:\Users\defra\Source\Repos\AutoGro2018\AutoGro\obj\Release\AutoGro.exe
+C:\Users\defra\Source\Repos\AutoGro2018\AutoGro\obj\Release\AutoGro.pdb
+C:\Users\defra\Source\Repos\AutoGro2018\AutoGro\bin\Release\AutoGro.exe.config
+C:\Users\defra\Source\Repos\AutoGro2018\AutoGro\bin\Release\AutoGro.exe
+C:\Users\defra\Source\Repos\AutoGro2018\AutoGro\bin\Release\AutoGro.pdb
+C:\Users\defra\Source\Repos\AutoGro2018\AutoGro\bin\Release\AutoGro.exe.CodeAnalysisLog.xml
+C:\Users\defra\Source\Repos\AutoGro2018\AutoGro\bin\Release\AutoGro.exe.lastcodeanalysissucceeded

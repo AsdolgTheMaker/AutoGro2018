@@ -19,3 +19,14 @@ D:\Projects\Github\AutoGro2018\AutoGro\obj\Debug\AutoGro.csproj.CoreCompileInput
 D:\Projects\Github\AutoGro2018\AutoGro\obj\Debug\AutoGro.exe
 D:\Projects\Github\AutoGro2018\AutoGro\obj\Debug\AutoGro.pdb
 D:\Projects\Github\AutoGro2018\AutoGro\obj\Debug\AutoGro.F_Settings.resources
+C:\Users\defra\source\repos\AutoGro2018\AutoGro\bin\Debug\AutoGro.exe.config
+C:\Users\defra\source\repos\AutoGro2018\AutoGro\bin\Debug\AutoGro.exe
+C:\Users\defra\source\repos\AutoGro2018\AutoGro\bin\Debug\AutoGro.pdb
+C:\Users\defra\source\repos\AutoGro2018\AutoGro\obj\Debug\AutoGro.csprojAssemblyReference.cache
+C:\Users\defra\source\repos\AutoGro2018\AutoGro\obj\Debug\AutoGro.ExtensionsTuner.resources
+C:\Users\defra\source\repos\AutoGro2018\AutoGro\obj\Debug\AutoGro.F_Main.resources
+C:\Users\defra\source\repos\AutoGro2018\AutoGro\obj\Debug\AutoGro.F_Settings.resources
+C:\Users\defra\source\repos\AutoGro2018\AutoGro\obj\Debug\AutoGro.Properties.Resources.resources
+C:\Users\defra\source\repos\AutoGro2018\AutoGro\obj\Debug\AutoGro.csproj.GenerateResource.cache
+C:\Users\defra\source\repos\AutoGro2018\AutoGro\obj\Debug\AutoGro.exe
+C:\Users\defra\source\repos\AutoGro2018\AutoGro\obj\Debug\AutoGro.pdb

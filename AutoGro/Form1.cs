@@ -12,7 +12,8 @@ namespace AutoGro
 {
     public partial class F_Main : Form
     {
-        public string[] extExceptions = { "tex", "wav", "ogg", "tga", "fbx", "obj", "mp3", "png", "amf", "zpr" };
+        public string[] extExamineExceptions = { "tex", "wav", "ogg", "tga", "fbx", "obj", "mp3", "png", "amf", "zpr" };
+        public List<string> extPackExceptions = new List<string>() { "tex", "wav", "ogg", "tga", "fbx", "obj", "mp3", "png", "amf", "zpr" };
 
         private string sContent = "";
         private Log log;
@@ -168,6 +169,8 @@ namespace AutoGro
         // Initialize analyzing sequence
         private void BT_PackGro_Click(object sender, EventArgs e)
         {
+            if (!CB_Exceptions.Checked) extPackExceptions.Clear();
+
             string fnInput = TB_DirWLD.Text;
             string fnOutput = TB_OutputName.Text;
             sContent = TB_ContentPath.Text;
@@ -587,12 +590,12 @@ namespace AutoGro
                             files.Enqueue(respath);
                             files.Enqueue(respath.Substring(0, respath.Length - 4) + "--Big.tex");
                         }
-                        else // in other case, pack everything
+                        else if (!extPackExceptions.Contains(extension)) // pack everything except desired exceptions
                         {
                             log.Message("Adding resource " + respath + " to queue.");
                             files.Enqueue(respath);
 
-                            if (!extExceptions.Contains(extension))
+                            if (!extExamineExceptions.Contains(extension))
                                 ExamineResource(respath, files, depth + 1);
                         }
                     }
@@ -725,6 +728,28 @@ namespace AutoGro
 
             // F_Settings settingsDlg = new F_Settings();
             // settingsDlg.ShowDialog(this);
+        }
+
+        private void BT_Help_Exceptions_Click(object sender, EventArgs e)
+            => MessageBox.Show("Enable this to exclude desired extensions from resulting gro.\nYou can manually set which extensions will not be packed by clicking 'Tune extensions' button.");
+
+        private void BT_ExceptionsSettings_Click(object sender, EventArgs e)
+        {
+            ExtensionsTuner tuner = new ExtensionsTuner(extPackExceptions);
+            DialogResult result = tuner.ShowDialog();
+            if (result == DialogResult.OK)
+                extPackExceptions = tuner.extensions;
+            tuner.Dispose();
+        }
+
+        private void CB_Exceptions_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CB_Exceptions.Checked && extPackExceptions.Count == 0)
+            {
+                DialogResult result = MessageBox.Show("Warning! Exceptions list is empty. Open Exceptions Tuner?", "No exceptions", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                    BT_ExceptionsSettings_Click(CB_Exceptions, new EventArgs());
+            }
         }
     }
 
