@@ -29,7 +29,7 @@ namespace AutoGro
 
         private void BT_Default_Click(object sender, EventArgs e)
         { 
-            extensions = new List<string>() { "tex", "wav", "ogg", "tga", "fbx", "obj", "mp3", "png", "amf", "zpr" };
+            extensions = new List<string>() { "tga", "fbx", "obj", "mp3", "png", "amf", "zpr" };
             UpdateView();
         }
 

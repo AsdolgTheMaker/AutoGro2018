@@ -13,7 +13,7 @@ namespace AutoGro
     public partial class F_Main : Form
     {
         public string[] extExamineExceptions = { "tex", "wav", "ogg", "tga", "fbx", "obj", "mp3", "png", "amf", "zpr" };
-        public List<string> extPackExceptions = new List<string>() { "tex", "wav", "ogg", "tga", "fbx", "obj", "mp3", "png", "amf", "zpr" };
+        public List<string> extPackExceptions = new List<string>() { "tga", "fbx", "obj", "mp3", "png", "amf", "zpr" };
 
         private string sContent = "";
         private Log log;
