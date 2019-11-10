@@ -70,7 +70,7 @@ namespace AutoGro
 
                         if (Registry.CurrentUser.CreateSubKey("Software").CreateSubKey("Autogro").GetValue("FirstRun") == null)
                         {
-                            MessageBox.Show("What's new?\n\n - Base resource is not limited to .wld anymore!\n - Added progress bar.\n - Increased performance.\n - Increased stability.\n\nAttention! The program will require administrator permissions from now on.\nThis is done in regards to the future update with settings section,\nwhich is under construction already.\n\nEnjoy!", Updater.version.ToString(), MessageBoxButtons.OK);
+                            MessageBox.Show("What's new?\n\n- Added a new setting which allows to control file extensions which should be excluded from packing.\n\nEnjoy!", Updater.version.ToString(), MessageBoxButtons.OK);
                             Registry.CurrentUser.CreateSubKey("Software").CreateSubKey("Autogro").SetValue("FirstRun", 0);
                         }
                         
