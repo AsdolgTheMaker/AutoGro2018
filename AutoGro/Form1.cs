@@ -70,7 +70,12 @@ namespace AutoGro
 
                         if (Registry.CurrentUser.CreateSubKey("Software").CreateSubKey("Autogro").GetValue("FirstRun") == null)
                         {
-                            MessageBox.Show("What's new?\n\n- Added a new setting which allows to control file extensions which should be excluded from packing.\n\nEnjoy!", Updater.version.ToString(), MessageBoxButtons.OK);
+                            MessageBox.Show("What's new?\n" +
+                                "\n- Added subtitles to analysis." +
+                                "\n- Added gtitleinfo to analysis." +
+                                "\n- Fixed an exception caused by incorrect progress bar incremention." +
+                                "\n- Removed unimplemented settings button.",
+                                Updater.version.ToString(), MessageBoxButtons.OK);
                             Registry.CurrentUser.CreateSubKey("Software").CreateSubKey("Autogro").SetValue("FirstRun", 0);
                         }
                         
