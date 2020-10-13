@@ -557,46 +557,54 @@ namespace AutoGro
 					string respath = contents.Substring(iStart, iEnd - iStart);
                     if (!files.Contains(respath))
                     {
-                        if (extension == "gtitle" || extension == "gtitleinfo")
-                        { // pack gtitle only if it is going to be analyzed
-                            if (CB_Gtitle.Checked)
-                            {
-                                log.Message("Adding resource " + respath);
-                                files.Enqueue(respath);
-
-                                respath = ConvertSEDPathToWindows(respath);
+                        if (!extPackExceptions.Contains(extension))
+                        {
+                            if (extension == "gtitle" || extension == "gtitleinfo")
+                            { // pack gtitle only if it is going to be analyzed
                                 if (CB_Gtitle.Checked)
-                                    ExamineResource(respath, files, depth + 1);
+                                {
+                                    log.Message("Adding resource " + respath);
+                                    files.Enqueue(respath);
+
+                                    respath = ConvertSEDPathToWindows(respath);
+                                    if (CB_Gtitle.Checked)
+                                        ExamineResource(respath, files, depth + 1);
+                                }
                             }
-                        }
-                        else if (extension == "wld")
-                        { // pack worlds only if user desired so
-                            if (CB_OtherWLDs.Checked || depth == 0)
-                            { // we don't only need .wld, but also .nfo file coming with it
+                            else if (extension == "wld")
+                            { // pack worlds only if user desired so
+                                if (CB_OtherWLDs.Checked || depth == 0)
+                                { // we don't only need .wld, but also .nfo file coming with it
+                                    log.Message("Adding resource " + respath + " to queue.");
+                                    files.Enqueue(respath);
+
+                                    log.Message("Adding resource " + respath.Substring(0, respath.Length - 3) + "nfo" + " to queue.");
+                                    files.Enqueue(respath.Substring(0, respath.Length - 3) + "nfo");
+
+                                    respath = ConvertSEDPathToWindows(respath);
+                                    if (CB_OtherWLDs.Checked)
+                                        ExamineResource(respath, files, depth + 1);
+                                }
+                            }
+                            else if (extension == "tex")
+                            { // texture can use streaming, so attempt to pack '<name>--Big.tex' too
+                                log.Message("Adding resource " + respath + " to queue.");
+                                files.Enqueue(respath);
+                                files.Enqueue(respath.Substring(0, respath.Length - 4) + "--Big.tex");
+                            }
+                            else if (extension == "ogg" || extension == "wav")
+                            { // consider there are subtitles
+                                files.Enqueue(respath.Substring(0, respath.Length - 3) + "srt");
+                                files.Enqueue(respath.Substring(0, respath.Length - 3) + "ass");
+                            }
+                            else
+                            {
                                 log.Message("Adding resource " + respath + " to queue.");
                                 files.Enqueue(respath);
 
-                                log.Message("Adding resource " + respath.Substring(0, respath.Length - 3) + "nfo" + " to queue.");
-                                files.Enqueue(respath.Substring(0, respath.Length - 3) + "nfo");
-
-                                respath = ConvertSEDPathToWindows(respath);
-                                if (CB_OtherWLDs.Checked)
+                                if (!extExamineExceptions.Contains(extension))
                                     ExamineResource(respath, files, depth + 1);
                             }
-                        }
-                        else if (extension == "tex")
-                        { // texture can use streaming, so attempt to pack '<name>--Big.tex' too
-                            log.Message("Adding resource " + respath + " to queue.");
-                            files.Enqueue(respath);
-                            files.Enqueue(respath.Substring(0, respath.Length - 4) + "--Big.tex");
-                        }
-                        else if (!extPackExceptions.Contains(extension)) // pack everything except desired exceptions
-                        {
-                            log.Message("Adding resource " + respath + " to queue.");
-                            files.Enqueue(respath);
-
-                            if (!extExamineExceptions.Contains(extension))
-                                ExamineResource(respath, files, depth + 1);
                         }
                     }
                     contents = contents.Substring(iEnd);
@@ -765,7 +773,7 @@ namespace AutoGro
             LogBox.AppendText(message);
 
             StreamWriter logtxt = File.AppendText(logfile);
-            logtxt.WriteLine(message);
+            logtxt.Write(message);
             logtxt.Dispose();
 
             LogBox.SelectionStart = LogBox.Text.Length;
