@@ -438,6 +438,7 @@
             this.BT_Settings.TabIndex = 22;
             this.BT_Settings.Text = "Settings";
             this.BT_Settings.UseVisualStyleBackColor = true;
+            this.BT_Settings.Visible = false;
             this.BT_Settings.Click += new System.EventHandler(this.BT_Settings_Click);
             // 
             // PB_Process
