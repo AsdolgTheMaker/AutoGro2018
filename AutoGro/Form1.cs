@@ -236,8 +236,8 @@ namespace AutoGro
 
                     string[] filesList = RemoveDuplicates(files.ToArray());
 
-                    PB_Process.Maximum = filesList.Length;
                     PB_Process.Value = 0;
+                    PB_Process.Maximum = filesList.Length;
 
                     // pack every file one by one
                     while (files.Count > 0)
@@ -278,7 +278,7 @@ namespace AutoGro
                         }
                         finally
                         {
-                            PB_Process.Value++;
+                            try { PB_Process.Value++; } catch (ArgumentOutOfRangeException) {}
                         }
                     }
 
@@ -290,8 +290,8 @@ namespace AutoGro
 
                     log.Message("Package successfully created.");
 
-                    PB_Process.Maximum = 0;
                     PB_Process.Value = 0;
+                    PB_Process.Maximum = 0;
 
                     // if we are not done yet - no need to interrupt the process
                     if (!CB_Workshop.Checked)
@@ -311,8 +311,8 @@ namespace AutoGro
                         {
                             string[] asWS = Directory.GetFiles(sPathWS, "*.gro", SearchOption.AllDirectories);
 
-                            PB_Process.Maximum = asWS.Length;
                             PB_Process.Value = 0;
+                            PB_Process.Maximum = asWS.Length;
 
                             Dictionary<string, string[]> workshopEntries = new Dictionary<string, string[]>();
                             for (int i = 0; i < asWS.Length; i++)
@@ -377,7 +377,7 @@ namespace AutoGro
                                 }
                                 finally
                                 {
-                                    PB_Process.Value++;
+                                    try { PB_Process.Value++; } catch (ArgumentOutOfRangeException) {}
                                 }
 
                             }
