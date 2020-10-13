@@ -14,7 +14,7 @@
            <Accessors>
             <Accessor Name="#get_DefaultIcon()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
              <Messages>
-              <Message TypeName="DoNotRaiseExceptionsInUnexpectedLocations" Category="Microsoft.Design" CheckId="CA1065" Status="Active" Created="2020-10-13 06:56:45Z" FixCategory="Breaking">
+              <Message TypeName="DoNotRaiseExceptionsInUnexpectedLocations" Category="Microsoft.Design" CheckId="CA1065" Status="Active" Created="2020-10-13 07:05:44Z" FixCategory="Breaking">
                <Issue Name="PropertyGetter" Certainty="90" Level="Warning" Path="C:\Users\defra\source\repos\AutoGro2018\AutoGro" File="AF_FileAssociations.cs" Line="440">'AF_FileAssociator.DefaultIcon.get()' создает исключение с типом 'Exception', данный тип исключения не должен вызываться в свойстве. Если существует вероятность вызова этого экземпляра исключения, используйте исключение другого типа, преобразуйте это свойство в метод или измените его логику так, чтобы она не вызывала исключения.</Issue>
                <Issue Name="PropertyGetter" Certainty="90" Level="Warning" Path="C:\Users\defra\source\repos\AutoGro2018\AutoGro" File="AF_FileAssociations.cs" Line="445">'AF_FileAssociator.DefaultIcon.get()' создает исключение с типом 'Exception', данный тип исключения не должен вызываться в свойстве. Если существует вероятность вызова этого экземпляра исключения, используйте исключение другого типа, преобразуйте это свойство в метод или измените его логику так, чтобы она не вызывала исключения.</Issue>
                <Issue Name="PropertyGetter" Certainty="90" Level="Warning" Path="C:\Users\defra\source\repos\AutoGro2018\AutoGro" File="AF_FileAssociations.cs" Line="450">'AF_FileAssociator.DefaultIcon.get()' создает исключение с типом 'Exception', данный тип исключения не должен вызываться в свойстве. Если существует вероятность вызова этого экземпляра исключения, используйте исключение другого типа, преобразуйте это свойство в метод или измените его логику так, чтобы она не вызывала исключения.</Issue>
@@ -27,7 +27,7 @@
            <Accessors>
             <Accessor Name="#get_Description()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
              <Messages>
-              <Message TypeName="DoNotRaiseExceptionsInUnexpectedLocations" Category="Microsoft.Design" CheckId="CA1065" Status="Active" Created="2020-10-13 06:56:45Z" FixCategory="Breaking">
+              <Message TypeName="DoNotRaiseExceptionsInUnexpectedLocations" Category="Microsoft.Design" CheckId="CA1065" Status="Active" Created="2020-10-13 07:05:44Z" FixCategory="Breaking">
                <Issue Name="PropertyGetter" Certainty="90" Level="Warning" Path="C:\Users\defra\source\repos\AutoGro2018\AutoGro" File="AF_FileAssociations.cs" Line="357">'AF_FileAssociator.Description.get()' создает исключение с типом 'Exception', данный тип исключения не должен вызываться в свойстве. Если существует вероятность вызова этого экземпляра исключения, используйте исключение другого типа, преобразуйте это свойство в метод или измените его логику так, чтобы она не вызывала исключения.</Issue>
                <Issue Name="PropertyGetter" Certainty="90" Level="Warning" Path="C:\Users\defra\source\repos\AutoGro2018\AutoGro" File="AF_FileAssociations.cs" Line="362">'AF_FileAssociator.Description.get()' создает исключение с типом 'Exception', данный тип исключения не должен вызываться в свойстве. Если существует вероятность вызова этого экземпляра исключения, используйте исключение другого типа, преобразуйте это свойство в метод или измените его логику так, чтобы она не вызывала исключения.</Issue>
                <Issue Name="PropertyGetter" Certainty="90" Level="Warning" Path="C:\Users\defra\source\repos\AutoGro2018\AutoGro" File="AF_FileAssociations.cs" Line="367">'AF_FileAssociator.Description.get()' создает исключение с типом 'Exception', данный тип исключения не должен вызываться в свойстве. Если существует вероятность вызова этого экземпляра исключения, используйте исключение другого типа, преобразуйте это свойство в метод или измените его логику так, чтобы она не вызывала исключения.</Issue>
@@ -40,7 +40,7 @@
            <Accessors>
             <Accessor Name="#get_Executable()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
              <Messages>
-              <Message TypeName="DoNotRaiseExceptionsInUnexpectedLocations" Category="Microsoft.Design" CheckId="CA1065" Status="Active" Created="2020-10-13 06:56:45Z" FixCategory="Breaking">
+              <Message TypeName="DoNotRaiseExceptionsInUnexpectedLocations" Category="Microsoft.Design" CheckId="CA1065" Status="Active" Created="2020-10-13 07:05:44Z" FixCategory="Breaking">
                <Issue Name="PropertyGetter" Certainty="90" Level="Warning" Path="C:\Users\defra\source\repos\AutoGro2018\AutoGro" File="AF_FileAssociations.cs" Line="527">'AF_FileAssociator.Executable.get()' создает исключение с типом 'Exception', данный тип исключения не должен вызываться в свойстве. Если существует вероятность вызова этого экземпляра исключения, используйте исключение другого типа, преобразуйте это свойство в метод или измените его логику так, чтобы она не вызывала исключения.</Issue>
                <Issue Name="PropertyGetter" Certainty="90" Level="Warning" Path="C:\Users\defra\source\repos\AutoGro2018\AutoGro" File="AF_FileAssociations.cs" Line="532">'AF_FileAssociator.Executable.get()' создает исключение с типом 'Exception', данный тип исключения не должен вызываться в свойстве. Если существует вероятность вызова этого экземпляра исключения, используйте исключение другого типа, преобразуйте это свойство в метод или измените его логику так, чтобы она не вызывала исключения.</Issue>
                <Issue Name="PropertyGetter" Certainty="90" Level="Warning" Path="C:\Users\defra\source\repos\AutoGro2018\AutoGro" File="AF_FileAssociations.cs" Line="537">'AF_FileAssociator.Executable.get()' создает исключение с типом 'Exception', данный тип исключения не должен вызываться в свойстве. Если существует вероятность вызова этого экземпляра исключения, используйте исключение другого типа, преобразуйте это свойство в метод или измените его логику так, чтобы она не вызывала исключения.</Issue>
@@ -53,7 +53,7 @@
            <Accessors>
             <Accessor Name="#get_ID()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
              <Messages>
-              <Message TypeName="DoNotRaiseExceptionsInUnexpectedLocations" Category="Microsoft.Design" CheckId="CA1065" Status="Active" Created="2020-10-13 06:56:45Z" FixCategory="Breaking">
+              <Message TypeName="DoNotRaiseExceptionsInUnexpectedLocations" Category="Microsoft.Design" CheckId="CA1065" Status="Active" Created="2020-10-13 07:05:44Z" FixCategory="Breaking">
                <Issue Name="PropertyGetter" Certainty="90" Level="Warning" Path="C:\Users\defra\source\repos\AutoGro2018\AutoGro" File="AF_FileAssociations.cs" Line="288">'AF_FileAssociator.ID.get()' создает исключение с типом 'Exception', данный тип исключения не должен вызываться в свойстве. Если существует вероятность вызова этого экземпляра исключения, используйте исключение другого типа, преобразуйте это свойство в метод или измените его логику так, чтобы она не вызывала исключения.</Issue>
                <Issue Name="PropertyGetter" Certainty="90" Level="Warning" Path="C:\Users\defra\source\repos\AutoGro2018\AutoGro" File="AF_FileAssociations.cs" Line="293">'AF_FileAssociator.ID.get()' создает исключение с типом 'Exception', данный тип исключения не должен вызываться в свойстве. Если существует вероятность вызова этого экземпляра исключения, используйте исключение другого типа, преобразуйте это свойство в метод или измените его логику так, чтобы она не вызывала исключения.</Issue>
               </Message>
@@ -65,7 +65,7 @@
            <Accessors>
             <Accessor Name="#get_OpenWith()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
              <Messages>
-              <Message TypeName="DoNotRaiseExceptionsInUnexpectedLocations" Category="Microsoft.Design" CheckId="CA1065" Status="Active" Created="2020-10-13 06:56:45Z" FixCategory="Breaking">
+              <Message TypeName="DoNotRaiseExceptionsInUnexpectedLocations" Category="Microsoft.Design" CheckId="CA1065" Status="Active" Created="2020-10-13 07:05:44Z" FixCategory="Breaking">
                <Issue Name="PropertyGetter" Certainty="90" Level="Warning" Path="C:\Users\defra\source\repos\AutoGro2018\AutoGro" File="AF_FileAssociations.cs" Line="614">'AF_FileAssociator.OpenWith.get()' создает исключение с типом 'Exception', данный тип исключения не должен вызываться в свойстве. Если существует вероятность вызова этого экземпляра исключения, используйте исключение другого типа, преобразуйте это свойство в метод или измените его логику так, чтобы она не вызывала исключения.</Issue>
                <Issue Name="PropertyGetter" Certainty="90" Level="Warning" Path="C:\Users\defra\source\repos\AutoGro2018\AutoGro" File="AF_FileAssociations.cs" Line="619">'AF_FileAssociator.OpenWith.get()' создает исключение с типом 'Exception', данный тип исключения не должен вызываться в свойстве. Если существует вероятность вызова этого экземпляра исключения, используйте исключение другого типа, преобразуйте это свойство в метод или измените его логику так, чтобы она не вызывала исключения.</Issue>
                <Issue Name="PropertyGetter" Certainty="90" Level="Warning" Path="C:\Users\defra\source\repos\AutoGro2018\AutoGro" File="AF_FileAssociations.cs" Line="624">'AF_FileAssociator.OpenWith.get()' создает исключение с типом 'Exception', данный тип исключения не должен вызываться в свойстве. Если существует вероятность вызова этого экземпляра исключения, используйте исключение другого типа, преобразуйте это свойство в метод или измените его логику так, чтобы она не вызывала исключения.</Issue>
@@ -84,9 +84,9 @@
          <Members>
           <Member Name="#BT_PackGro_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="Не ликвидировать объекты несколько раз" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2020-10-13 06:56:45Z" FixCategory="DependsOnFix">
-             <Issue Certainty="75" Level="Warning" Path="C:\Users\defra\source\repos\AutoGro2018\AutoGro" File="Form1.cs" Line="289">Объект "'grofile'" можно удалять более одного раза в методе 'F_Main.BT_PackGro_Click(object, EventArgs)'. Чтобы избежать исключения System.ObjectDisposedException, следует вызывать метод "Dispose" для объекта только один раз.: Lines: 289</Issue>
-             <Issue Certainty="75" Level="Warning" Path="C:\Users\defra\source\repos\AutoGro2018\AutoGro" File="Form1.cs" Line="338">Объект "'new FileStream(asWS[i], FileMode.Open, FileAccess.Read)'" можно удалять более одного раза в методе 'F_Main.BT_PackGro_Click(object, EventArgs)'. Чтобы избежать исключения System.ObjectDisposedException, следует вызывать метод "Dispose" для объекта только один раз.: Lines: 338</Issue>
+            <Message TypeName="Не ликвидировать объекты несколько раз" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2020-10-13 07:05:44Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\defra\source\repos\AutoGro2018\AutoGro" File="Form1.cs" Line="298">Объект "'grofile'" можно удалять более одного раза в методе 'F_Main.BT_PackGro_Click(object, EventArgs)'. Чтобы избежать исключения System.ObjectDisposedException, следует вызывать метод "Dispose" для объекта только один раз.: Lines: 298</Issue>
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\defra\source\repos\AutoGro2018\AutoGro" File="Form1.cs" Line="347">Объект "'new FileStream(asWS[i], FileMode.Open, FileAccess.Read)'" можно удалять более одного раза в методе 'F_Main.BT_PackGro_Click(object, EventArgs)'. Чтобы избежать исключения System.ObjectDisposedException, следует вызывать метод "Dispose" для объекта только один раз.: Lines: 347</Issue>
             </Message>
            </Messages>
           </Member>
@@ -113,7 +113,7 @@
   <Rule TypeName="Не ликвидировать объекты несколько раз" Category="Microsoft.Usage" CheckId="CA2202">
    <Name>Не ликвидировать объекты несколько раз</Name>
    <Description>Правильно реализованный метод Dispose может вызываться неоднократно без создания исключения. Однако такой гарантии нет, и чтобы предотвратить создание System.ObjectDisposedException, не следует вызывать метод Dispose для объекта более одного раза.</Description>
-   <Resolution Name="Default">Объект "{0}" можно удалять более одного раза в методе {1}. Чтобы избежать исключения System.ObjectDisposedException, следует вызывать метод "Dispose" для объекта только один раз.: Lines: 338</Resolution>
+   <Resolution Name="Default">Объект "{0}" можно удалять более одного раза в методе {1}. Чтобы избежать исключения System.ObjectDisposedException, следует вызывать метод "Dispose" для объекта только один раз.: Lines: 347</Resolution>
    <Owner>RuleOwner</Owner>
    <Url>http://msdn.microsoft.com/library/ms182334.aspx</Url>
    <Email />

@@ -131,6 +131,7 @@ namespace AutoGro
 
                     webClient.DownloadFile(downloadLink, actualExe);
 
+                    // cleanup from earlier versions
                     Registry.CurrentUser.CreateSubKey("Software").CreateSubKey("Autogro").DeleteValue("FirstRun");
 
                     Process.Start(actualExe); 

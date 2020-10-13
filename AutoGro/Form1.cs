@@ -65,20 +65,13 @@ namespace AutoGro
                     {
                         log.Message("No updates available.");
 
-                        
-                        Associations.RegistryUtilities regtls = new Associations.RegistryUtilities();
-
-                        if (Registry.CurrentUser.CreateSubKey("Software").CreateSubKey("Autogro").GetValue("FirstRun") == null)
-                        {
-                            MessageBox.Show("What's new?\n" +
-                                "\n- Added subtitles to analysis." +
-                                "\n- Added gtitleinfo to analysis." +
-                                "\n- Fixed an exception caused by incorrect progress bar incremention." +
-                                "\n- Removed unimplemented settings button.",
-                                Updater.version.ToString(), MessageBoxButtons.OK);
-                            Registry.CurrentUser.CreateSubKey("Software").CreateSubKey("Autogro").SetValue("FirstRun", 0);
-                        }
-                        
+                        // output what's new
+                        log.Message("What's new in this version?" +
+                            "\n- Added subtitles to analysis." +
+                            "\n- Added gtitleinfo to analysis." +
+                            "\n- Fixed an exception caused by incorrect progress bar incremention." +
+                            "\n- Removed unimplemented settings button.\n",
+                            saveToFile: false, addFormatting: false);
                         break;
                     } 
             }
@@ -775,14 +768,17 @@ namespace AutoGro
         public RichTextBox LogBox;
 
         // Appends message into log and scrolls textbox
-        public void Message(string message)
+        public void Message(string message, bool saveToFile = true, bool addFormatting = true)
         {
-            message = DateTime.Now.ToLocalTime().ToString() + " || " + message + "\n";
+            if (addFormatting) message = DateTime.Now.ToLocalTime().ToString() + " || " + message + "\n";
             LogBox.AppendText(message);
 
-            StreamWriter logtxt = File.AppendText(logfile);
-            logtxt.Write(message);
-            logtxt.Dispose();
+            if (saveToFile)
+            {
+                StreamWriter logtxt = File.AppendText(logfile);
+                logtxt.Write(message);
+                logtxt.Dispose();
+            }
 
             LogBox.SelectionStart = LogBox.Text.Length;
             LogBox.ScrollToCaret();

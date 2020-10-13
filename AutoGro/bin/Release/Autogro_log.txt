@@ -77,3 +77,15 @@
 13.10.2020 11:55:02 || No updates available.
 13.10.2020 11:56:51 || AutoGro 2018 1.4.5.4 initialized.
 13.10.2020 11:56:51 || No updates available.
+13.10.2020 12:01:19 || AutoGro 2018 1.4.5.5 initialized.
+13.10.2020 12:01:20 || No updates available.
+13.10.2020 12:01:49 || AutoGro 2018 1.4.5.5 initialized.
+13.10.2020 12:01:49 || No updates available.
+13.10.2020 12:05:50 || AutoGro 2018 1.4.5.5 initialized.
+13.10.2020 12:05:50 || What's new in this version?
+
+- Added subtitles to analysis.
+- Added gtitleinfo to analysis.
+- Fixed an exception caused by incorrect progress bar incremention.
+- Removed unimplemented settings button.
+13.10.2020 12:05:50 || No updates available.
