@@ -559,12 +559,15 @@ namespace AutoGro
                     {
                         if (!extPackExceptions.Contains(extension))
                         {
-                            if (extension == "gtitle" || extension == "gtitleinfo")
+                            if (extension == "gtitle")
                             { // pack gtitle only if it is going to be analyzed
                                 if (CB_Gtitle.Checked)
                                 {
                                     log.Message("Adding resource " + respath);
                                     files.Enqueue(respath);
+
+                                    // also add gtitleinfo for gtitle
+                                    files.Enqueue(respath + "info");
 
                                     respath = ConvertSEDPathToWindows(respath);
                                     if (CB_Gtitle.Checked)
