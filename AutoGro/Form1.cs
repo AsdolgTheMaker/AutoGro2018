@@ -575,7 +575,10 @@ namespace AutoGro
                                 files.Enqueue(respath.Substring(0, respath.Length - 4) + "--Big.tex");
                             }
                             else if (extension == "ogg" || extension == "wav")
-                            { // consider there are subtitles
+                            {
+                                files.Enqueue(respath);
+
+                                // consider there are subtitles
                                 files.Enqueue(respath.Substring(0, respath.Length - 3) + "srt");
                                 files.Enqueue(respath.Substring(0, respath.Length - 3) + "ass");
                             }
