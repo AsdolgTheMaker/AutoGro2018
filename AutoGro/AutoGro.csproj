@@ -99,6 +99,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AF_FileAssociations.cs" />
+    <Compile Include="Asset.cs" />
+    <Compile Include="AssetType.cs" />
     <Compile Include="ExtensionsTuner.cs">
       <SubType>Form</SubType>
     </Compile>

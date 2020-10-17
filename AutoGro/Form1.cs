@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Defining this variable enables deprecated code which is meant to be replaced with a new method.
+#define USE_DEPRECATED_ANALYSIS
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -15,7 +18,7 @@ namespace AutoGro
         public string[] extExamineExceptions = { "tex", "wav", "ogg", "tga", "fbx", "obj", "mp3", "png", "amf", "zpr" };
         public List<string> extPackExceptions = new List<string>() { "tga", "fbx", "obj", "mp3", "png", "amf", "zpr" };
 
-        private string sContent = "";
+        private string contentFolder = "";
         private Log log;
 
 
@@ -69,6 +72,7 @@ namespace AutoGro
                         log.Message("What's new in this version?" +
                             "\n- Added subtitles to analysis." +
                             "\n- Added gtitleinfo to analysis." +
+                            "\n- Added resource source information to log output." +
                             "\n- Fixed an exception caused by incorrect progress bar incremention." +
                             "\n- Removed unimplemented settings button.\n",
                             saveToFile: false, addFormatting: false);
@@ -171,13 +175,13 @@ namespace AutoGro
 
             string fnInput = TB_DirWLD.Text;
             string fnOutput = TB_OutputName.Text;
-            sContent = TB_ContentPath.Text;
+            contentFolder = TB_ContentPath.Text;
 
             log.Message("Analyzing " + fnInput + " file...");
 
             // a small fixup in case of missing slash
-            if (!sContent.EndsWith("\\"))
-                sContent += "\\";
+            if (!contentFolder.EndsWith("\\"))
+                contentFolder += "\\";
 
             // check if a) file extensions are correct, b) Content folder path has Content folder
             if (fnInput.Contains(".tex"))
@@ -194,7 +198,7 @@ namespace AutoGro
                 log.Message("Analysis stopped.");
                 log.Line();
             }
-            else if (!sContent.Contains("Content"))
+            else if (!contentFolder.Contains("Content"))
             {
                 log.Message("Invalid Content directory!");
                 MessageBox.Show("Invalid Content folder directory!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -210,6 +214,17 @@ namespace AutoGro
             }
             else // proceed to analysis
             {
+                #region New analysis code
+
+                Asset RootAsset = new Asset(fnInput, log);
+                Queue<Asset> PackingQueue = new Queue<Asset>();
+                RootAsset.EnqueueChildrenAndSubchildren(PackingQueue);
+                
+                throw new NotImplementedException();
+
+                #endregion
+
+#if USE_DEPRECATED_ANALYSIS
                 LB_CurrentState.Text = "Analyzing resources...";
 
                 // at first we put all found files in this queue
@@ -337,13 +352,13 @@ namespace AutoGro
 
                                     string[] entriesNames = new string[entries.Count];
 
-                                    // now for each entry assign 
+                                    // now for each entry assign its name
                                     for (int j = 0; j < entries.Count; j++)
                                     {
                                         entriesNames[j] = entries[j].FullName;
                                     }
-                                    // store filenames into a dictionary
 
+                                    // store filenames into a dictionary
                                     try
                                     {
                                         workshopEntries.Add(sNameFile, entriesNames);
@@ -452,53 +467,19 @@ namespace AutoGro
                 {
                     log.Line();
                 }
+#endif
             }
 
             LB_CurrentState.Text = "";
             PB_Process.Value = 0;
             PB_Process.Maximum = 0;
         }
-        
-        /// <summary>
-        /// Converts given string path to SED's format
-        /// </summary>
-        /// <param name="source">Path to convert</param>
-        /// <returns>Converted path string</returns>
-        private string ConvertPathToSED(string source)
-        {
-            if (source.Contains("Content"))
-            {
-                // cut string to Content part
-                source = source.Substring(source.IndexOf("Content"));
 
-                // SED uses flipped slash
-                source = source.Replace('\\', '/');
-                return source;
-            }
-            else // that's some bullshit path
-                return(source);
-        }
+        [Obsolete("Functionality moved to Asset.GetSoftPath() method.")] 
+        private string ConvertPathToSED(string source) => Asset.GetSoftPath(source);
 
-        /// <summary>
-        /// Converts given string path to Windows format
-        /// </summary>
-        /// <param name="source">String to change</param>
-        /// <returns>Converted string</returns>
-        private string ConvertSEDPathToWindows(string source)
-        {
-            if (source.Contains("Content/"))
-            {
-                // Content folder + resource folder without "Content" part
-                source = sContent + source.Substring(source.IndexOf("Content") + 8);
-
-                // SED uses flipped slash, so flip them back
-                source = source.Replace('/', '\\');
-
-                return source;
-            }
-            else
-                return source;
-        }
+        [Obsolete("Functionality moved to Asset.GetFullPath() method.")]
+        private string ConvertSEDPathToWindows(string source) => Asset.GetFullPath(source, contentFolder);
 
         /// <summary>
         /// Examines specified resource and collects all other resources linked inside

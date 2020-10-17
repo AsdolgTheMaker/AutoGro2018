@@ -22,7 +22,6 @@ D:\Projects\Github\AutoGro2018\AutoGro\obj\Debug\AutoGro.F_Settings.resources
 C:\Users\defra\source\repos\AutoGro2018\AutoGro\bin\Debug\AutoGro.exe.config
 C:\Users\defra\source\repos\AutoGro2018\AutoGro\bin\Debug\AutoGro.exe
 C:\Users\defra\source\repos\AutoGro2018\AutoGro\bin\Debug\AutoGro.pdb
-C:\Users\defra\source\repos\AutoGro2018\AutoGro\obj\Debug\AutoGro.csprojAssemblyReference.cache
 C:\Users\defra\source\repos\AutoGro2018\AutoGro\obj\Debug\AutoGro.ExtensionsTuner.resources
 C:\Users\defra\source\repos\AutoGro2018\AutoGro\obj\Debug\AutoGro.F_Main.resources
 C:\Users\defra\source\repos\AutoGro2018\AutoGro\obj\Debug\AutoGro.F_Settings.resources
