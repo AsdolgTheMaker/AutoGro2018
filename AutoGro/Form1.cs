@@ -764,10 +764,10 @@ namespace AutoGro
             }
         }
     }
-
+    
     public class Log
     {
-        public static string logfile = "Autogro_log.txt";
+        public static string logfile = "Autogro_log_" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + ".txt";
         public RichTextBox LogBox;
 
         // Appends message into log and scrolls textbox
