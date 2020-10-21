@@ -70,7 +70,8 @@ namespace AutoGro
                             "\n- Added subtitles to analysis." +
                             "\n- Added gtitleinfo to analysis." +
                             "\n- Fixed an exception caused by incorrect progress bar incremention." +
-                            "\n- Removed unimplemented settings button.\n",
+                            "\n- Removed unimplemented settings button." +
+                            "\n- Log files are now separated by current program version (temporary solution).\n",
                             saveToFile: false, addFormatting: false);
                         break;
                     } 
