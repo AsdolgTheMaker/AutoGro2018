@@ -45,6 +45,7 @@
     <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CodeAnalysisRuleSet>BasicDesignGuidelineRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -56,6 +57,7 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>true</Prefer32Bit>
     <RunCodeAnalysis>true</RunCodeAnalysis>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>true</SignManifests>
@@ -101,6 +103,11 @@
     <Compile Include="AF_FileAssociations.cs" />
     <Compile Include="Asset.cs" />
     <Compile Include="AssetType.cs" />
+    <Compile Include="AssetTypeDescriptionAttribute.cs" />
+    <Compile Include="AssetTypeDescrition.cs" />
+    <Compile Include="BinaryParser\BinaryParser.cs" />
+    <Compile Include="BinaryParser\SeriousUniversalContainer.cs" />
+    <Compile Include="Extensions\EnumExtensionMethods.cs" />
     <Compile Include="ExtensionsTuner.cs">
       <SubType>Form</SubType>
     </Compile>
