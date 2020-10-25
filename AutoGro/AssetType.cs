@@ -2,7 +2,7 @@
 
 namespace AutoGro
 {
-    internal partial class Asset
+    public partial class Asset
     {
         public enum AssetType
         {

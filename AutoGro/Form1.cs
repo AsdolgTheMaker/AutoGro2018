@@ -19,7 +19,7 @@ namespace AutoGro
         public List<string> extPackExceptions = new List<string>() { "tga", "fbx", "obj", "mp3", "png", "amf", "zpr" };
 
         private string contentFolder = "";
-        private Log log;
+        private LogInterface log;
 
 
         public F_Main(string[] args)
@@ -32,7 +32,7 @@ namespace AutoGro
 
             InitializeComponent();
 
-            log = new Log(RTB_Log);
+            log = new LogInterface(RTB_Log);
             log.Message("AutoGro 2018 " + Updater.version + " initialized.");
 
             // print out update check result
@@ -611,7 +611,7 @@ namespace AutoGro
 
         private void BT_Log_Copy_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(log.LogBox.Text);
+            Clipboard.SetText(log.logBox.Text);
             MessageBox.Show("Log copied into clipdoard!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -669,7 +669,7 @@ namespace AutoGro
 
         private void BT_Update_Click(object sender, EventArgs e)
         {
-            Log log = new Log(RTB_Log);
+            LogInterface log = new LogInterface(RTB_Log);
 
             Updater.UpdateCheckResult updaterResult = Updater.CheckForUpdates();
             switch (updaterResult)
@@ -711,7 +711,7 @@ namespace AutoGro
 
         private void BT_Log_Open_Click(object sender, EventArgs e)
         {
-            Process.Start("notepad.exe", Log.logfile);
+            Process.Start("notepad.exe", LogInterface.logfile);
         }
 
         private void BT_Settings_Click(object sender, EventArgs e)
@@ -743,45 +743,6 @@ namespace AutoGro
                 if (result == DialogResult.Yes)
                     BT_ExceptionsSettings_Click(CB_Exceptions, new EventArgs());
             }
-        }
-    }
-
-    public class Log
-    {
-        public static string logfile = "Autogro_log.txt";
-        public RichTextBox LogBox;
-
-        // Appends message into log and scrolls textbox
-        public void Message(string message, bool saveToFile = true, bool addFormatting = true)
-        {
-            if (addFormatting) message = DateTime.Now.ToLocalTime().ToString() + " || " + message + "\n";
-            LogBox.AppendText(message);
-
-            if (saveToFile)
-            {
-                StreamWriter logtxt = File.AppendText(logfile);
-                logtxt.Write(message);
-                logtxt.Dispose();
-            }
-
-            LogBox.SelectionStart = LogBox.Text.Length;
-            LogBox.ScrollToCaret();
-        }
-
-        // Clears log textbox
-        public void Clear()
-        {
-            LogBox.Text = "";
-        }
-
-        public void Line()
-        {
-            LogBox.AppendText("------------------------------------------------------------------------------\n");
-        }
-
-        public Log(RichTextBox LogTextBox)
-        {
-            LogBox = LogTextBox;
         }
     }
 }

@@ -1,7 +1,7 @@
-using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AutoGro;
+using System.IO;
 using System.Collections.Generic;
+using AutoGro;
 
 namespace ParserTests
 {
@@ -12,13 +12,13 @@ namespace ParserTests
         public void ReadRFIL()
         {
             string projectDirectory = Directory.GetParent(System.Environment.CurrentDirectory).Parent.Parent.FullName;
-            FileStream fileStream = new FileStream(projectDirectory + "/files/RFIL.bin", FileMode.Open, FileAccess.Read);
+            SeriousStream fileStream = new SeriousStream(projectDirectory + "/files/RFIL.bin", FileMode.Open, FileAccess.Read);
 
             // skid RFIL id
             fileStream.Seek(4, SeekOrigin.Current);
 
             // read the file
-            List<string> RFIL = BinaryParser.SeriousUniversalContainer.ReadStruct(fileStream, BinaryParser.SeriousUniversalContainer.StructType.RFIL);
+            List<string> RFIL = fileStream.ReadStruct(SeriousStream.StructType.RFIL);
 
             fileStream.Dispose();
 
@@ -28,41 +28,10 @@ namespace ParserTests
         }
 
         [TestMethod]
-        public void ReadMSGS()
-        {
-            string projectDirectory = Directory.GetParent(System.Environment.CurrentDirectory).Parent.Parent.FullName;
-            FileStream fileStream = new FileStream(projectDirectory + "/files/MSGS.bin", FileMode.Open, FileAccess.Read);
-
-            // skid MSGS id
-            fileStream.Seek(4, SeekOrigin.Current);
-
-            // read the file
-            BinaryParser.SeriousUniversalContainer.ReadStruct(fileStream, BinaryParser.SeriousUniversalContainer.StructType.MSGS);
-
-            fileStream.Dispose();
-        }
-
-        [TestMethod]
-        public void ReadSignature() // SIGSTRM1 + WRKSTRM1
-        {
-            string projectDirectory = Directory.GetParent(System.Environment.CurrentDirectory).Parent.Parent.FullName;
-            FileStream fileStream = new FileStream(projectDirectory + "/files/SIGNATURE.bin", FileMode.Open, FileAccess.Read);
-
-            // skid MSGS id
-            fileStream.Seek(4, SeekOrigin.Current);
-
-            // read the file
-            BinaryParser.SeriousUniversalContainer.ReadStruct(fileStream, BinaryParser.SeriousUniversalContainer.StructType.SIGSTRM1);
-            BinaryParser.SeriousUniversalContainer.ReadStruct(fileStream, BinaryParser.SeriousUniversalContainer.StructType.WRKSTRM1);
-
-            fileStream.Dispose();
-        }
-
-        [TestMethod]
         public void ConvertIdentifiersToNumbers()
         {
             string projectDirectory = Directory.GetParent(System.Environment.CurrentDirectory).Parent.Parent.FullName;
-            FileStream fileStream = new FileStream(projectDirectory + "/files/Identifiers.txt", FileMode.Open, FileAccess.Read);
+            SeriousStream fileStream = new SeriousStream(projectDirectory + "/files/Identifiers.txt", FileMode.Open, FileAccess.Read);
 
             // File contents:
             //  SIGSTRM1
@@ -73,15 +42,15 @@ namespace ParserTests
             //  MSGS
 
             // read the file
-            uint SIGS = BinaryParser.SeriousUniversalContainer.ReadUint32(fileStream);
-            uint TRM1 = BinaryParser.SeriousUniversalContainer.ReadUint32(fileStream);
-            uint WRKS = BinaryParser.SeriousUniversalContainer.ReadUint32(fileStream);
-            BinaryParser.SeriousUniversalContainer.SkipUint32(fileStream);
-            uint CTSE = BinaryParser.SeriousUniversalContainer.ReadUint32(fileStream);
-            uint META = BinaryParser.SeriousUniversalContainer.ReadUint32(fileStream);
-            uint INFO = BinaryParser.SeriousUniversalContainer.ReadUint32(fileStream);
-            uint RFIL = BinaryParser.SeriousUniversalContainer.ReadUint32(fileStream);
-            uint MSGS = BinaryParser.SeriousUniversalContainer.ReadUint32(fileStream);
+            uint SIGS = fileStream.ReadUint32();
+            uint TRM1 = fileStream.ReadUint32();
+            uint WRKS = fileStream.ReadUint32();
+            fileStream.SkipUint32();
+            uint CTSE = fileStream.ReadUint32();
+            uint META = fileStream.ReadUint32();
+            uint INFO = fileStream.ReadUint32();
+            uint RFIL = fileStream.ReadUint32();
+            uint MSGS = fileStream.ReadUint32();
 
             fileStream.Dispose();
 
@@ -98,6 +67,46 @@ namespace ParserTests
                     "MSGS = " + MSGS.ToString() + " = " + MSGS.ToString("X")
                 }
             );
+        }
+
+        [TestMethod]
+        public void ParseFile()
+        {
+            Log log = new Log("LOG_ParseFile.log");
+            string projectDirectory = Directory.GetParent(System.Environment.CurrentDirectory).Parent.Parent.FullName;
+
+            // TestWLD_01
+            List<string> RFIL = new List<string>();
+            Asset testWld01 = new Asset(projectDirectory + "/files/TestWLD_01.wld", log);
+            bool success = testWld01.TryParse(out RFIL, null);
+            if (success)
+            {
+                RFIL.Insert(0, RFIL.Count.ToString());
+                File.WriteAllLines(projectDirectory + "/files/TestWLD_01_RFIL.txt", RFIL);
+            }
+            else Assert.Fail("Unable to read binary file TestWLD_01.wld.");
+            
+            // TestWLD_02
+            RFIL = new List<string>();
+            Asset testWld02 = new Asset(projectDirectory + "/files/TestWLD_02.wld", log);
+            success = testWld02.TryParse(out RFIL, null);
+            if (success)
+            {
+                RFIL.Insert(0, RFIL.Count.ToString());
+                File.WriteAllLines(projectDirectory + "/files/TestWLD_02_RFIL.txt", RFIL);
+            }
+            else Assert.Fail("Unable to read binary file TestWLD_02.wld.");
+            
+            // TestMDL_01
+            RFIL = new List<string>();
+            Asset testMdl01 = new Asset(projectDirectory + "/files/TestMDL_01.mdl", log);
+            success = testMdl01.TryParse(out RFIL, log);
+            if (success)
+            {
+                RFIL.Insert(0, RFIL.Count.ToString());
+                File.WriteAllLines(projectDirectory + "/files/TestMDL_01_RFIL.txt", RFIL);
+            }
+            else Assert.Fail("Unable to read binary file TestMDL_01.md;.");
         }
     }
 }

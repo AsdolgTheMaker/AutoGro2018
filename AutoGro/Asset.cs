@@ -3,27 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static AutoGro.SeriousStream;
 
 namespace AutoGro
 {
-    internal partial class Asset
+    public partial class Asset
     {
         // Cache variables are used to avoid multiplie calculations for certain properties
         private string extension_cache = string.Empty;
         private AssetType? type_cache = null;
         private string softPath_cache = string.Empty;
 
-        private Log Log; // for output purposes
-
+        private Log Log;
+        private string fullPath = string.Empty;
+        
         public string FullPath {
-            get => FullPath;
+            get => fullPath;
             set {
                 // empty cache before setting the value
                 extension_cache = string.Empty;
                 softPath_cache = string.Empty;
                 type_cache = null;
                 
-                FullPath = value;
+                fullPath = value;
             }
         }
 
@@ -63,17 +65,16 @@ namespace AutoGro
 
         public List<Asset> Children;
 
-
         /// <summary>
         /// Adds all related assets to a given queue
         /// </summary>
-        internal void EnqueueChildrenAndSubchildren(Queue<Asset> packingQueue)
+        public void EnqueueChildrenAndSubchildren(Queue<Asset> packingQueue)
         {
             throw new NotImplementedException();
         }
 
-        internal string GetAssetExtension() => Extension;
-        internal static string GetAssetExtension(string assetPath)
+        public string GetAssetExtension() => Extension;
+        public static string GetAssetExtension(string assetPath)
         {
             int iDot = assetPath.LastIndexOf(".");
             if (iDot >= assetPath.Length) throw new ArgumentException("Invalid path: was not able to detect file extension.");
@@ -123,7 +124,50 @@ namespace AutoGro
         }
         #endregion
 
-        internal Asset(string fullPath, Log log, Asset source = null)
+        /// <summary>
+        /// Parses given binary file. Returns true if result is successful, false if could not read the file. Writes resulting RFIL to given string list.
+        /// </summary>
+        public bool TryParse(out List<string> result, Log log)
+        {
+            bool output = !(log == null);
+
+            SeriousStream stream = new SeriousStream(FullPath, System.IO.FileMode.Open, System.IO.FileAccess.Read);
+            while (stream.Position < stream.Length)
+            {
+                StructType structType = stream.CheckID();
+                switch (structType)
+                {
+                    // one of those generic structures we are not interested in - skip them
+                    case StructType.WRKSTRM1:
+                    case StructType.CTSEMETA:
+                    case StructType.MSGS:
+                    case StructType.INFO:
+                        if (output) log.Message("Parsing binary: skipping generic struct " + structType.ToString()); // TODO: StructType output is not user-friendly.
+                        stream.ReadStruct(structType);
+                        break;
+
+                    // a separate log for SIGSTRM1 cause that's an important struct for further reading
+                    case StructType.SIGSTRM1:
+                        if (output) log.Message("Parsing binary: reading SIGSTRM1.");
+                        stream.ReadStruct(StructType.SIGSTRM1);
+                        break;
+
+                    case StructType.RFIL: // found rfil, read it and return
+                        if (output) log.Message("Parsing binary: Detected RFIL struct. Reading file references:");
+                        result = stream.ReadStruct(StructType.RFIL);
+                        if (output) log.Message(result.ToString(), addFormatting: false);
+                        return true;
+
+                    case StructType.Unknown: // could not read binary, give false result
+                    default:
+                        if (output) log.Message("Parsing binary: Failed.");
+                        result = null; return false;
+                }
+            }
+            result = null; return false;
+        }
+
+        public Asset(string fullPath, Log log, Asset source = null)
         {
             Log = log;
             FullPath = fullPath;
@@ -131,6 +175,7 @@ namespace AutoGro
 
             log.Message("Creating ");
 
+            /*
             AssetTypeDescrition type = EnumOps.EnumExtensionMethods.GetAssetTypeDescription(Type);
             if (type.IsBinary) // read the file like normal humans do
             {
@@ -144,7 +189,9 @@ namespace AutoGro
             #region Read RFIL, fill Children list
 
             throw new NotImplementedException();
+            
             #endregion
+            */
         }
     }
 }
