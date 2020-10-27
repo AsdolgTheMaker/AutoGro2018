@@ -475,10 +475,10 @@ namespace AutoGro
             PB_Process.Maximum = 0;
         }
 
-        [Obsolete("Functionality moved to Asset.GetSoftPath() method.")] 
+        [Obsolete("Functionality moved to Asset.GetSoftPath() method.", true)] 
         private string ConvertPathToSED(string source) => Asset.GetSoftPath(source);
 
-        [Obsolete("Functionality moved to Asset.GetFullPath() method.")]
+        [Obsolete("Functionality moved to Asset.GetFullPath() method.", true)]
         private string ConvertSEDPathToWindows(string source) => Asset.GetFullPath(source, contentFolder);
 
         /// <summary>

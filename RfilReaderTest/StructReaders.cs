@@ -70,37 +70,48 @@ namespace ParserTests
         }
 
         [TestMethod]
-        public void ParseFile()
+        public void ParseTestWLD_01()
         {
             Log log = new Log("LOG_ParseFile.log");
             string projectDirectory = Directory.GetParent(System.Environment.CurrentDirectory).Parent.Parent.FullName;
 
-            // TestWLD_01
             List<string> RFIL = new List<string>();
             Asset testWld01 = new Asset(projectDirectory + "/files/TestWLD_01.wld", log);
-            bool success = testWld01.TryParse(out RFIL, null);
+            bool success = testWld01.TryParse(null, out RFIL);
             if (success)
             {
                 RFIL.Insert(0, RFIL.Count.ToString());
                 File.WriteAllLines(projectDirectory + "/files/TestWLD_01_RFIL.txt", RFIL);
             }
-            else Assert.Fail("Unable to read binary file TestWLD_01.wld.");
-            
-            // TestWLD_02
-            RFIL = new List<string>();
+            else Assert.Fail("Unable to read binary file TestWLD_01.wld.");  
+        }
+
+        [TestMethod]
+        public void ParseTestWLD_02()
+        {
+            Log log = new Log("LOG_ParseFile.log");
+            string projectDirectory = Directory.GetParent(System.Environment.CurrentDirectory).Parent.Parent.FullName;
+
+            List<string> RFIL = new List<string>();
             Asset testWld02 = new Asset(projectDirectory + "/files/TestWLD_02.wld", log);
-            success = testWld02.TryParse(out RFIL, null);
+            bool success = testWld02.TryParse(null, out RFIL);
             if (success)
             {
                 RFIL.Insert(0, RFIL.Count.ToString());
                 File.WriteAllLines(projectDirectory + "/files/TestWLD_02_RFIL.txt", RFIL);
             }
             else Assert.Fail("Unable to read binary file TestWLD_02.wld.");
-            
-            // TestMDL_01
-            RFIL = new List<string>();
+        }
+
+        [TestMethod]
+        public void ParseTestMDL_01()
+        {
+            Log log = new Log("LOG_ParseFile.log");
+            string projectDirectory = Directory.GetParent(System.Environment.CurrentDirectory).Parent.Parent.FullName;
+
+            List<string> RFIL = new List<string>();
             Asset testMdl01 = new Asset(projectDirectory + "/files/TestMDL_01.mdl", log);
-            success = testMdl01.TryParse(out RFIL, log);
+            bool success = testMdl01.TryParse(log, out RFIL);
             if (success)
             {
                 RFIL.Insert(0, RFIL.Count.ToString());

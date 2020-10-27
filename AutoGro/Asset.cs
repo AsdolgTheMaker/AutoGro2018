@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using static AutoGro.SeriousStream;
 
@@ -49,13 +50,7 @@ namespace AutoGro
             get {
                 if (type_cache == null)
                 {
-                    // To check the type, we have to do the following:
-                    // 1) Try parsing the file. If it matches SED pattern - read it as a SED file, check the type out of it, set vars correspondingly.
-                    // 2) If parsing wasn't a success - try reading file's extension.
-                    // 3) If nothing helped - set file's type as Unknown.
-
                     
-                    throw new NotImplementedException();
                 }
                 return (AssetType)type_cache;
             }
@@ -63,7 +58,7 @@ namespace AutoGro
 
         public Asset Source;
 
-        public List<Asset> Children;
+        public List<Lazy<Asset>> Children;
 
         /// <summary>
         /// Adds all related assets to a given queue
@@ -127,7 +122,7 @@ namespace AutoGro
         /// <summary>
         /// Parses given binary file. Returns true if result is successful, false if could not read the file. Writes resulting RFIL to given string list.
         /// </summary>
-        public bool TryParse(out List<string> result, Log log)
+        public bool TryParse(Log log, out List<string> result)
         {
             bool output = !(log == null);
 
@@ -173,25 +168,40 @@ namespace AutoGro
             FullPath = fullPath;
             Source = source;
 
-            log.Message("Creating ");
+            log.Message("Examining asset: " + SoftPath);
+            List<string> childrenList = new List<string>();
+            bool isBinary = TryParse(Log, out childrenList);
 
-            /*
-            AssetTypeDescrition type = EnumOps.EnumExtensionMethods.GetAssetTypeDescription(Type);
-            if (type.IsBinary) // read the file like normal humans do
+            if (isBinary) // binary was successfuly parsed and we can read the results
             {
-
+                log.Message("Binary parsed. Found resources:");
+                for (int i = 0; i < childrenList.Count; i++)
+                {
+                    log.Message(childrenList[i], false);
+                    Children.Add(new Lazy<Asset>(() => 
+                        new Asset(childrenList[i], Log, this))
+                    );
+                }
             }
-            else // read the file like you are asdolg
+            else // wasn't able to parse file as binary. Stick to regex search then
             {
+                log.Message("Failed parsing binary. Attempting regex search...");
 
+                string fileContents = System.IO.File.ReadAllText(fullPath);
+                MatchCollection searchResult = new Regex(@"\w+(?>\/\w+)+(?>\w*.[a-z0-9_]+)+").Matches(fileContents);
+                if (searchResult.Count == 0) log.Message("Regex search failed.");
+                else
+                {
+                    log.Message("Regex search results:");
+                    for (int i = 0; i < searchResult.Count; i++)
+                    {
+                        log.Message(searchResult[i].Value, false);
+                        Children.Add(new Lazy<Asset>(() => 
+                            new Asset(searchResult[i].Value, Log, this))
+                        );
+                    }
+                }
             }
-
-            #region Read RFIL, fill Children list
-
-            throw new NotImplementedException();
-            
-            #endregion
-            */
         }
     }
 }
