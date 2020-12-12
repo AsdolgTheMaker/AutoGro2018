@@ -1,28 +1,27 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace AutoGro
 {
     public class LogInterface : Log
     {
-        public RichTextBox logBox;
+        public RichTextBox logBox = null;
+        public StreamWriter logTxt = null;
 
         // Appends message into log and scrolls textbox
         public void Message(string message, bool saveToFile = true, bool addFormatting = true)
         {
             if (addFormatting) message = DateTime.Now.ToLocalTime().ToString() + " || " + message + "\n";
-            logBox.AppendText(message);
+            
+            logBox.AppendText(message); // WARNING: AppendText can cause perfomance issues
 
             if (saveToFile)
             {
-                StreamWriter logtxt = File.AppendText(logfile);
-                logtxt.Write(message);
-                logtxt.Dispose();
+                if (logTxt == null) logTxt = File.AppendText(logfile);
+                logTxt.Write(message);
             }
-
-            logBox.SelectionStart = logBox.Text.Length;
-            logBox.ScrollToCaret();
         }
 
         public void Clear()
@@ -40,6 +39,7 @@ namespace AutoGro
         {
             logfile = output;
             logBox = LogTextBox;
+            logBox.HideSelection = false;
         }
     }
 

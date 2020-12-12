@@ -62,7 +62,7 @@
             this.CB_Autodetection = new System.Windows.Forms.CheckBox();
             this.BT_Help_Autodetection = new System.Windows.Forms.Button();
             this.BT_Update = new System.Windows.Forms.Button();
-            this.BT_Log_Open = new System.Windows.Forms.Button();
+            this.BT_Log_Save = new System.Windows.Forms.Button();
             this.BT_Settings = new System.Windows.Forms.Button();
             this.PB_Process = new System.Windows.Forms.ProgressBar();
             this.LB_CurrentState = new System.Windows.Forms.Label();
@@ -416,17 +416,17 @@
             this.BT_Update.UseVisualStyleBackColor = true;
             this.BT_Update.Click += new System.EventHandler(this.BT_Update_Click);
             // 
-            // BT_Log_Open
+            // BT_Log_Save
             // 
-            this.BT_Log_Open.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.BT_Log_Open.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.BT_Log_Open.Location = new System.Drawing.Point(19, 438);
-            this.BT_Log_Open.Name = "BT_Log_Open";
-            this.BT_Log_Open.Size = new System.Drawing.Size(82, 23);
-            this.BT_Log_Open.TabIndex = 21;
-            this.BT_Log_Open.Text = "Open in file";
-            this.BT_Log_Open.UseVisualStyleBackColor = true;
-            this.BT_Log_Open.Click += new System.EventHandler(this.BT_Log_Open_Click);
+            this.BT_Log_Save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BT_Log_Save.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.BT_Log_Save.Location = new System.Drawing.Point(19, 438);
+            this.BT_Log_Save.Name = "BT_Log_Save";
+            this.BT_Log_Save.Size = new System.Drawing.Size(82, 23);
+            this.BT_Log_Save.TabIndex = 21;
+            this.BT_Log_Save.Text = "Save to file";
+            this.BT_Log_Save.UseVisualStyleBackColor = true;
+            this.BT_Log_Save.Click += new System.EventHandler(this.BT_Log_Open_Click);
             // 
             // BT_Settings
             // 
@@ -467,7 +467,7 @@
             this.Controls.Add(this.LB_CurrentState);
             this.Controls.Add(this.PB_Process);
             this.Controls.Add(this.BT_Settings);
-            this.Controls.Add(this.BT_Log_Open);
+            this.Controls.Add(this.BT_Log_Save);
             this.Controls.Add(this.BT_Update);
             this.Controls.Add(this.BT_Help_Autodetection);
             this.Controls.Add(this.CB_Autodetection);
@@ -532,7 +532,7 @@
         private System.Windows.Forms.Button BT_Help_Autodetection;
         private System.Windows.Forms.Button BT_Update;
         private System.Windows.Forms.RichTextBox RTB_Log;
-        private System.Windows.Forms.Button BT_Log_Open;
+        private System.Windows.Forms.Button BT_Log_Save;
         private System.Windows.Forms.Button BT_Settings;
         private System.Windows.Forms.ProgressBar PB_Process;
         private System.Windows.Forms.Label LB_CurrentState;

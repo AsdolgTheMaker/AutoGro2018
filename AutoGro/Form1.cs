@@ -71,11 +71,9 @@ namespace AutoGro
 
                         // output what's new
                         log.Message("What's new in this version?" +
-                            "\n- Added subtitles to analysis." +
-                            "\n- Added gtitleinfo to analysis." +
-                            "\n- Added resource source information to log output." +
-                            "\n- Fixed an exception caused by incorrect progress bar incremention." +
-                            "\n- Removed unimplemented settings button.\n",
+                            "\n- Implemented binary reading, which rapidly increased analysis speed." +
+                            "\n- For generic text filetypes, new regex search is used instead of old Content-relying method." +
+                            "\n- Internal workflow went through some harsh refactoring.\n",
                             saveToFile: false, addFormatting: false);
                         break;
                     } 
@@ -244,7 +242,6 @@ namespace AutoGro
                 }
                 log.Message("Releasing compression stream... (may take a while)");
                 zip.Dispose();
-                grofile.Dispose();
                 log.Message("Packing successfully finished.");
                 log.Line(true);
 
@@ -507,7 +504,7 @@ namespace AutoGro
 
         private void BT_Log_Open_Click(object sender, EventArgs e)
         {
-            Process.Start("notepad.exe", LogInterface.logfile);
+            MessageBox.Show("Этот функционал кое-кто сломал и так и не починил. Если несложно, пни автора пожалуйста.");
         }
 
         private void BT_Settings_Click(object sender, EventArgs e)

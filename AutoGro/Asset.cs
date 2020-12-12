@@ -104,7 +104,7 @@ namespace AutoGro
         /// <summary>
         /// Parses given binary file. Returns true if result is successful, false if could not read the file. Writes resulting RFIL to given string list.
         /// </summary>
-        public bool TryParse(Log log, out List<string> result)
+        public bool TryParse(LogInterface log, out List<string> result)
         {
             bool output = !(log == null);
 
@@ -130,11 +130,8 @@ namespace AutoGro
                         break;
 
                     case StructType.RFIL: // found rfil, read it and return
-                        if (output) log.Message("Parsing binary: Detected RFIL struct. Reading file references:");
+                        if (output) log.Message("Parsing binary: Detected RFIL struct. Reading file references.");
                         result = stream.ReadStruct(StructType.RFIL);
-                        if (output) 
-                            foreach (string item in result)
-                                log.Message(item);
                         return true;
 
                     case StructType.Unknown: // could not read binary, give false result
@@ -146,10 +143,10 @@ namespace AutoGro
             result = null; return false;
         }
 
-        public static Asset AssetFromSoftPath(string inputPath, string gameFolder, Log log, Asset source = null)
+        public static Asset AssetFromSoftPath(string inputPath, string gameFolder, LogInterface log, Asset source = null)
             => new Asset(gameFolder.Trim('\\') + "\\" + inputPath, log, source);
 
-        public Asset(string inputPath, Log log, Asset source = null)
+        public Asset(string inputPath, LogInterface log, Asset source = null)
         {
             Log = log;
             Source = source;
@@ -157,7 +154,7 @@ namespace AutoGro
 
             log.Message("Examining asset: " + inputPath);
             List<string> childrenList;
-            bool isBinary = TryParse(Log, out childrenList);
+            bool isBinary = TryParse(log, out childrenList);
 
             if (isBinary) // binary was successfuly parsed and we can read the results
             {
