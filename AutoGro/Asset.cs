@@ -13,7 +13,6 @@ namespace AutoGro
         // Cache variables are used to avoid multiplie calculations for certain properties
         private string extension_cache = string.Empty;
         private AssetType? type_cache = null;
-        private string softPath_cache = string.Empty;
 
         private Log Log;
         private string fullPath = string.Empty;
@@ -23,18 +22,9 @@ namespace AutoGro
             set {
                 // empty cache before setting the value
                 extension_cache = string.Empty;
-                softPath_cache = string.Empty;
                 type_cache = null;
                 
                 fullPath = value;
-            }
-        }
-
-        // SED-like path conversion
-        public string SoftPath {
-            get {
-                if (string.IsNullOrEmpty(softPath_cache)) softPath_cache = GetSoftPath(FullPath);
-                return softPath_cache;
             }
         }
 
@@ -58,20 +48,12 @@ namespace AutoGro
 
         public Asset Source;
 
-        public List<Lazy<Asset>> Children;
-
-        /// <summary>
-        /// Adds all related assets to a given queue
-        /// </summary>
-        public void EnqueueChildrenAndSubchildren(Queue<Asset> packingQueue)
-        {
-            throw new NotImplementedException();
-        }
+        public List<string> ChildrenSoft = new List<string>();
 
         public string GetAssetExtension() => Extension;
         public static string GetAssetExtension(string assetPath)
         {
-            int iDot = assetPath.LastIndexOf(".");
+            int iDot = assetPath.LastIndexOf(".") + 1;
             if (iDot >= assetPath.Length) throw new ArgumentException("Invalid path: was not able to detect file extension.");
 
             return assetPath.Substring(iDot);
@@ -150,7 +132,9 @@ namespace AutoGro
                     case StructType.RFIL: // found rfil, read it and return
                         if (output) log.Message("Parsing binary: Detected RFIL struct. Reading file references:");
                         result = stream.ReadStruct(StructType.RFIL);
-                        if (output) log.Message(result.ToString(), addFormatting: false);
+                        if (output) 
+                            foreach (string item in result)
+                                log.Message(item);
                         return true;
 
                     case StructType.Unknown: // could not read binary, give false result
@@ -162,43 +146,43 @@ namespace AutoGro
             result = null; return false;
         }
 
-        public Asset(string fullPath, Log log, Asset source = null)
+        public static Asset AssetFromSoftPath(string inputPath, string gameFolder, Log log, Asset source = null)
+            => new Asset(gameFolder.Trim('\\') + "\\" + inputPath, log, source);
+
+        public Asset(string inputPath, Log log, Asset source = null)
         {
             Log = log;
-            FullPath = fullPath;
             Source = source;
+            FullPath = inputPath;
 
-            log.Message("Examining asset: " + SoftPath);
-            List<string> childrenList = new List<string>();
+            log.Message("Examining asset: " + inputPath);
+            List<string> childrenList;
             bool isBinary = TryParse(Log, out childrenList);
 
             if (isBinary) // binary was successfuly parsed and we can read the results
             {
-                log.Message("Binary parsed. Found resources:");
+                log.Message("Binary parsed.");
                 for (int i = 0; i < childrenList.Count; i++)
                 {
-                    log.Message(childrenList[i], false);
-                    Children.Add(new Lazy<Asset>(() => 
-                        new Asset(childrenList[i], Log, this))
-                    );
+                    string path = childrenList[i];
+                    log.Message("Found asset: " + path);
+                    ChildrenSoft.Add(path);
                 }
             }
             else // wasn't able to parse file as binary. Stick to regex search then
             {
                 log.Message("Failed parsing binary. Attempting regex search...");
 
-                string fileContents = System.IO.File.ReadAllText(fullPath);
+                string fileContents = System.IO.File.ReadAllText(inputPath);
                 MatchCollection searchResult = new Regex(@"\w+(?>\/\w+)+(?>\w*.[a-z0-9_]+)+").Matches(fileContents);
-                if (searchResult.Count == 0) log.Message("Regex search failed.");
+                if (searchResult.Count == 0) log.Message("Regex search did not find any assets.");
                 else
                 {
-                    log.Message("Regex search results:");
                     for (int i = 0; i < searchResult.Count; i++)
                     {
-                        log.Message(searchResult[i].Value, false);
-                        Children.Add(new Lazy<Asset>(() => 
-                            new Asset(searchResult[i].Value, Log, this))
-                        );
+                        string path = childrenList[i];
+                        log.Message("Found asset: " + path);
+                        ChildrenSoft.Add(path);
                     }
                 }
             }

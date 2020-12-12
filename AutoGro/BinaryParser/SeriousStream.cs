@@ -150,14 +150,7 @@ namespace AutoGro
                         {
                             SkipUint32(2); // skip two unknown uint32 data
 
-                            /*
                             fileReferences.Add(ReadString()); // read and save entry
-                            */
-
-                            string s = ReadString();
-                            if (s == "Content/SeriousSamHD/Models/SouthAmerica/HeadStatue01/HeadStatue.mdl")
-                                ;
-                            fileReferences.Add(s);
                         }
                         return fileReferences;
                     }

@@ -102,6 +102,7 @@
   <ItemGroup>
     <Compile Include="AF_FileAssociations.cs" />
     <Compile Include="Asset.cs" />
+    <Compile Include="AssetQueue.cs" />
     <Compile Include="AssetType.cs" />
     <Compile Include="AssetTypeDescriptionAttribute.cs" />
     <Compile Include="AssetTypeDescrition.cs" />
@@ -120,6 +121,7 @@
       <DependentUpon>F_Settings.cs</DependentUpon>
     </Compile>
     <Compile Include="Log.cs" />
+    <Compile Include="LogInterface.cs" />
     <Compile Include="Updater.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

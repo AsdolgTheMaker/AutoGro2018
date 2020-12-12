@@ -1,5 +1,5 @@
 ﻿// Defining this variable enables deprecated code which is meant to be replaced with a new method.
-#define USE_DEPRECATED_ANALYSIS
+//#define USE_DEPRECATED_ANALYSIS
 
 using System;
 using System.Collections.Generic;
@@ -33,6 +33,7 @@ namespace AutoGro
             InitializeComponent();
 
             log = new LogInterface(RTB_Log);
+            log.Line(true);
             log.Message("AutoGro 2018 " + Updater.version + " initialized.");
 
             // print out update check result
@@ -109,11 +110,11 @@ namespace AutoGro
                 TB_DirWLD.Text = OFD_WldInput.FileName;
                 if (CB_Autodetection.Checked)
                 {
-                    if (TB_OutputName.Text == "")
+                    if (string.IsNullOrEmpty(TB_OutputName.Text))
                         TB_OutputName.Text = TB_DirWLD.Text.Substring(0, TB_DirWLD.Text.Length - 3) + "gro";
-                    if (TB_ContentPath.Text == "" && TB_DirWLD.Text.Contains("\\Content\\"))
-                    TB_ContentPath.Text = TB_DirWLD.Text.Substring(0, TB_DirWLD.Text.IndexOf("\\Content\\") + 9);
-                    if (TB_WorkshopPath.Text == "" && TB_DirWLD.Text.Contains("\\steamapps\\common\\"))
+                    if (string.IsNullOrEmpty(TB_GamePath.Text) && TB_DirWLD.Text.Contains("\\Serious Sam 4\\"))
+                        TB_GamePath.Text = TB_DirWLD.Text.Substring(0, TB_DirWLD.Text.IndexOf("\\Serious Sam 4\\") + 15);
+                    if (string.IsNullOrEmpty(TB_WorkshopPath.Text) && TB_DirWLD.Text.Contains("\\steamapps\\common\\"))
                         TB_WorkshopPath.Text = TB_DirWLD.Text.Substring(0, TB_DirWLD.Text.IndexOf("common")) + "workshop\\content\\564310\\";
                 }
             }
@@ -140,8 +141,8 @@ namespace AutoGro
                 TB_WorkshopPath.Text = FBD_ContentDir.SelectedPath;
                 if (CB_Autodetection.Checked)
                 {
-                    if (TB_ContentPath.Text == "")
-                        TB_ContentPath.Text = TB_WorkshopPath.Text.Substring(0, TB_WorkshopPath.Text.IndexOf("workshop")) + "common\\Serious Sam Fusion 2017\\Content\\";
+                    if (TB_GamePath.Text == "")
+                        TB_GamePath.Text = TB_WorkshopPath.Text.Substring(0, TB_WorkshopPath.Text.IndexOf("workshop")) + "common\\Serious Sam Fusion 2017\\Content\\";
                 }
             }
             else
@@ -151,15 +152,15 @@ namespace AutoGro
         // Select Content folder path
         private void BT_ContentDir_Click(object sender, EventArgs e)
         {
-            FBD_ContentDir.SelectedPath = TB_ContentPath.Text;
+            FBD_ContentDir.SelectedPath = TB_GamePath.Text;
             DialogResult dRes = FBD_ContentDir.ShowDialog();
             if (dRes == DialogResult.OK && FBD_ContentDir.SelectedPath.Contains("\\Content"))
             {
-                TB_ContentPath.Text = FBD_ContentDir.SelectedPath;
+                TB_GamePath.Text = FBD_ContentDir.SelectedPath;
                 if (CB_Autodetection.Checked)
                 {
-                    if (TB_WorkshopPath.Text == "" && TB_ContentPath.Text.Contains("\\steamapps\\common\\"))
-                        TB_WorkshopPath.Text = TB_ContentPath.Text.Substring(0, TB_ContentPath.Text.IndexOf("common")) + "workshop\\content\\564310\\";
+                    if (TB_WorkshopPath.Text == "" && TB_GamePath.Text.Contains("\\steamapps\\common\\"))
+                        TB_WorkshopPath.Text = TB_GamePath.Text.Substring(0, TB_GamePath.Text.IndexOf("common")) + "workshop\\content\\564310\\";
                 }
             }
             else
@@ -175,7 +176,7 @@ namespace AutoGro
 
             string fnInput = TB_DirWLD.Text;
             string fnOutput = TB_OutputName.Text;
-            contentFolder = TB_ContentPath.Text;
+            contentFolder = TB_GamePath.Text;
 
             log.Message("Analyzing " + fnInput + " file...");
 
@@ -198,13 +199,13 @@ namespace AutoGro
                 log.Message("Analysis stopped.");
                 log.Line();
             }
-            else if (!contentFolder.Contains("Content"))
+            /*else if (!contentFolder.Contains("Content"))
             {
                 log.Message("Invalid Content directory!");
                 MessageBox.Show("Invalid Content folder directory!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 log.Message("Analysis stopped.");
                 log.Line();
-            }
+            }*/
             else if (CB_Workshop.Checked && !TB_WorkshopPath.Text.Contains("\\workshop\\content\\"))
             {
                 log.Message("Invalid workshop content directory!");
@@ -216,271 +217,65 @@ namespace AutoGro
             {
                 #region New analysis code
 
-                Asset RootAsset = new Asset(fnInput, log);
-                Queue<Asset> PackingQueue = new Queue<Asset>();
-                RootAsset.EnqueueChildrenAndSubchildren(PackingQueue);
-                
-                throw new NotImplementedException();
+                LB_CurrentState.Text = "Checking asset references...";
+
+                // find referenced files
+                Asset rootAsset = new Asset(fnInput, log);
+                List<Asset> assetsToPack = ReadAllChildren(rootAsset);
+
+                // create compression stream
+                log.Message("Opening archive file...");
+                FileStream grofile = File.OpenWrite(fnOutput);
+
+                log.Message("Creating compression stream...");
+                ZipArchive zip = new ZipArchive(grofile, ZipArchiveMode.Create, false);
+
+                log.Message("Starting packing...");
+
+                PB_Process.Value = 0;
+                PB_Process.Maximum = assetsToPack.Count;
+                LB_CurrentState.Text = "Packing assets...";
+
+                foreach (Asset asset in assetsToPack)
+                {
+                    log.Message("Packing file " + asset.FullPath + "...");
+                    PB_Process.Value++;
+                    zip.CreateEntryFromFile(asset.FullPath, asset.FullPath.Replace(TB_GamePath.Text, string.Empty));
+                }
+                log.Message("Releasing compression stream... (may take a while)");
+                zip.Dispose();
+                grofile.Dispose();
+                log.Message("Packing successfully finished.");
+                log.Line(true);
+
+                LB_CurrentState.Text = string.Empty;
+                PB_Process.Value = 0;
+                PB_Process.Maximum = 0;
 
                 #endregion
-
-#if USE_DEPRECATED_ANALYSIS
-                LB_CurrentState.Text = "Analyzing resources...";
-
-                // at first we put all found files in this queue
-                Queue<string> files = new Queue<string>();
-
-                // start recursive method which examines world file and everything inside it
-                ExamineResource(fnInput, files, 0);
-
-                // go to compressing
-                LB_CurrentState.Text = "Packing resources...";
-                Thread.Sleep(100);
-                try
-                {
-                    // create compressing stream
-                    log.Message("Opening archive file...");
-                    FileStream grofile = File.OpenWrite(fnOutput);
-
-                    log.Message("Creating compression stream...");
-                    ZipArchive zip = new ZipArchive(grofile, ZipArchiveMode.Create, false);
-
-                    log.Message("Starting packing...");
-
-                    string[] filesList = RemoveDuplicates(files.ToArray());
-
-                    PB_Process.Value = 0;
-                    PB_Process.Maximum = filesList.Length;
-
-                    // pack every file one by one
-                    while (files.Count > 0)
-                    {
-                        try
-                        {
-                            string file = files.Dequeue();
-                            log.Message("Packing " + file + "...");
-                            zip.CreateEntryFromFile(ConvertSEDPathToWindows(file), file);
-                        }
-                        catch (FileNotFoundException)
-                        {
-                            log.Message("Error: file does not exist.");
-                        }
-                        catch (DirectoryNotFoundException)
-                        {
-                            log.Message("Error: file's location does not exist.");
-                        }
-                        catch (UnauthorizedAccessException)
-                        {
-                            log.Message("Error:  Insufficient permissions to access the file!");
-                        }
-                        catch (PathTooLongException)
-                        {
-                            log.Message("Error:  Directory path is too long and is not supported by filesystem.");
-                        }
-                        catch (IOException)
-                        {
-                            log.Message("Error occurred while opening the file!");
-                        }
-                        catch (ArgumentException)
-                        {
-                            log.Message("Unknown error! Please, check filename for validity.");
-                        }
-                        catch (InvalidOperationException)
-                        {
-                            log.Message("Error:  Invalid operation upon dequeueing! Unknown file was skipped.");
-                        }
-                        finally
-                        {
-                            try { PB_Process.Value++; } catch (ArgumentOutOfRangeException) {}
-                        }
-                    }
-
-                    log.Line();
-                    log.Message("Finishing forming the package... (may take a while)");
-
-                    zip.Dispose();
-                    grofile.Dispose();
-
-                    log.Message("Package successfully created.");
-
-                    PB_Process.Value = 0;
-                    PB_Process.Maximum = 0;
-
-                    // if we are not done yet - no need to interrupt the process
-                    if (!CB_Workshop.Checked)
-                    {
-                        MessageBox.Show("Packing finished!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    // if requested, proceed to analyzing workshop entries
-                    else if (CB_Workshop.Checked)
-                    {
-                        LB_CurrentState.Text = "Analyzing workshop subscriptions...";
-
-                        log.Message("Examining workshop subcriptions...");
-                        string sPathWS = TB_WorkshopPath.Text;
-
-                        Queue<string> subscriptions = new Queue<string>();
-                        try
-                        {
-                            string[] asWS = Directory.GetFiles(sPathWS, "*.gro", SearchOption.AllDirectories);
-
-                            PB_Process.Value = 0;
-                            PB_Process.Maximum = asWS.Length;
-
-                            Dictionary<string, string[]> workshopEntries = new Dictionary<string, string[]>();
-                            for (int i = 0; i < asWS.Length; i++)
-                            {
-                                // let's find out what subscription we are examining
-                                string sNameFile = asWS[i].Replace(".gro", ".txt");
-                                try
-                                {
-                                    sNameFile = File.ReadAllText(sNameFile);
-                                    // that's how entries are kept - between first and second '#' symbols
-                                    int iFirstReshotka = sNameFile.IndexOf('#');
-                                    int iSecondReshotka = sNameFile.IndexOf('#', iFirstReshotka + 1);
-                                    sNameFile = sNameFile.Substring(iFirstReshotka, iSecondReshotka - iFirstReshotka);
-
-                                    // time to scan that little .gro
-                                    FileStream wsFile = new FileStream(asWS[i], FileMode.Open, FileAccess.Read);
-                                    ZipArchive gro = new ZipArchive(wsFile, ZipArchiveMode.Read, false);
-
-                                    var entries = gro.Entries;
-
-                                    // we already have all entries in a collection stored, so dispose the files
-                                    gro.Dispose();
-                                    wsFile.Dispose();
-
-                                    string[] entriesNames = new string[entries.Count];
-
-                                    // now for each entry assign its name
-                                    for (int j = 0; j < entries.Count; j++)
-                                    {
-                                        entriesNames[j] = entries[j].FullName;
-                                    }
-
-                                    // store filenames into a dictionary
-                                    try
-                                    {
-                                        workshopEntries.Add(sNameFile, entriesNames);
-                                    }
-                                    catch (ArgumentException)
-                                    {
-                                        log.Message("Failed to analyze subscription with key value " + sNameFile);
-                                    }
-                                }
-                                catch (FileNotFoundException)
-                                {
-                                    log.Message("Cannot find info file " + sNameFile);
-                                }
-                                catch (DirectoryNotFoundException)
-                                {
-                                    log.Message("Cannot find info file directory " + sNameFile);
-                                }
-                                catch (UnauthorizedAccessException)
-                                {
-                                    log.Message("Denied permissions in access to file " + sNameFile);
-                                }
-                                catch (IOException)
-                                {
-                                    log.Message("Unexpected error when reading " + sNameFile);
-                                }
-                                catch (ArgumentException)
-                                {
-                                    log.Message("Invalid argument: " + sNameFile);
-                                }
-                                finally
-                                {
-                                    try { PB_Process.Value++; } catch (ArgumentOutOfRangeException) {}
-                                }
-
-                            }
-                            // Now that we have a dictionary full of workshop entries and their names, let's find out if
-                            // collected before list has any of these
-
-                            // here we will store all found names
-                            Queue<string> WSsubscriptions = new Queue<string>();
-
-                            for (int i = 0; i < workshopEntries.Count; i++)
-                            {
-                                string key = workshopEntries.Keys.ToArray()[i];
-                                log.Message("Analyzing " + key + " subscription...");
-
-                                for (int k = 0; k < workshopEntries[key].Length; k++)
-                                {
-                                    bool bStop = false;
-                                    for (int j = 0; j < filesList.Length; j++)
-                                    {
-                                        if (workshopEntries[key][k] == filesList[j])
-                                        {
-                                            WSsubscriptions.Enqueue(key);
-                                            log.Message("Subscription \"" + key + "\" usage detected.");
-
-                                            // this entry is submitted, no need to check anymore
-                                            bStop = true;
-                                            break;
-                                        }
-                                    }
-                                    if (bStop) break;
-                                }
-                            }
-                            log.Line();
-                            log.Message("Workshop subscriptions used:");
-                            while (WSsubscriptions.Count != 0)
-                            {
-                                try
-                                {
-                                    log.Message(WSsubscriptions.Dequeue());
-                                }
-                                catch (InvalidOperationException)
-                                {
-                                    log.Message("Invalid Operation Exception during dequeueing! Please, report this.");
-                                }
-                            }
-                            MessageBox.Show("Packing done!\nWorkshop subscriptions dependency examined!\n\nCheck the log box to see the results.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        // that's for the very start, go back :V
-                        catch (DirectoryNotFoundException)
-                        {
-                            log.Message("Cannot find " + sPathWS + " directory.");
-                        }
-                        catch (ArgumentException)
-                        {
-                            log.Message("Invalid argument: " + sPathWS);
-                        }
-                        catch (UnauthorizedAccessException)
-                        {
-                            log.Message("Cannot access " + sPathWS + " - permission denied.");
-                        }
-                        catch (IOException)
-                        {
-                            log.Message("Unknown error when accessing " + sPathWS);
-                        }
-                    }
-                }
-                catch (OutOfMemoryException)
-                {
-                    log.Message("CRITICAL ERROR: Out of memory.");
-                    log.Message("Cannot continue packing.");
-                    MessageBox.Show("Application is out of memory.\n\nThe process will be aborted.", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
-                }
-                finally
-                {
-                    log.Line();
-                }
-#endif
             }
-
-            LB_CurrentState.Text = "";
-            PB_Process.Value = 0;
-            PB_Process.Maximum = 0;
         }
 
-        [Obsolete("Functionality moved to Asset.GetSoftPath() method.", true)] 
-        private string ConvertPathToSED(string source) => Asset.GetSoftPath(source);
+        public List<Asset> ReadAllChildren(Asset rootAsset)
+        {
+            List<Asset> result = new List<Asset>();
+            result.Add(rootAsset);
 
-        [Obsolete("Functionality moved to Asset.GetFullPath() method.", true)]
-        private string ConvertSEDPathToWindows(string source) => Asset.GetFullPath(source, contentFolder);
+            foreach (string softPath in rootAsset.ChildrenSoft)
+            {
+                string fullPath = TB_GamePath.Text.Trim('\\') + "\\" + softPath.Replace('/', '\\');
+                if (!File.Exists(fullPath))
+                {
+                    log.Message("File " + softPath + " not found on local disk.");
+                    continue;
+                }
+                Asset child = new Asset(fullPath, log, rootAsset);
+                result.AddRange(ReadAllChildren(child));
+            }
+            return result;
+        }
 
+        /*
         /// <summary>
         /// Examines specified resource and collects all other resources linked inside
         /// </summary>
@@ -608,6 +403,7 @@ namespace AutoGro
                 log.Message("Unknown error while analyzing " + resource + ". Recursion depth: " + depth);
             }
         }
+        */
 
         private void BT_Log_Copy_Click(object sender, EventArgs e)
         {

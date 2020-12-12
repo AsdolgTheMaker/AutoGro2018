@@ -49,8 +49,8 @@
             this.CB_OtherWLDs = new System.Windows.Forms.CheckBox();
             this.CB_Gtitle = new System.Windows.Forms.CheckBox();
             this.BT_ContentDir = new System.Windows.Forms.Button();
-            this.LB_ContentFolder = new System.Windows.Forms.Label();
-            this.TB_ContentPath = new System.Windows.Forms.TextBox();
+            this.LB_GameFolder = new System.Windows.Forms.Label();
+            this.TB_GamePath = new System.Windows.Forms.TextBox();
             this.FBD_ContentDir = new System.Windows.Forms.FolderBrowserDialog();
             this.RTB_Log = new System.Windows.Forms.RichTextBox();
             this.BT_Log_Copy = new System.Windows.Forms.Button();
@@ -283,24 +283,24 @@
             this.BT_ContentDir.UseVisualStyleBackColor = true;
             this.BT_ContentDir.Click += new System.EventHandler(this.BT_ContentDir_Click);
             // 
-            // LB_ContentFolder
+            // LB_GameFolder
             // 
-            this.LB_ContentFolder.AutoSize = true;
-            this.LB_ContentFolder.Location = new System.Drawing.Point(27, 57);
-            this.LB_ContentFolder.Name = "LB_ContentFolder";
-            this.LB_ContentFolder.Size = new System.Drawing.Size(97, 13);
-            this.LB_ContentFolder.TabIndex = 9;
-            this.LB_ContentFolder.Text = "Content folder path";
+            this.LB_GameFolder.AutoSize = true;
+            this.LB_GameFolder.Location = new System.Drawing.Point(27, 57);
+            this.LB_GameFolder.Name = "LB_GameFolder";
+            this.LB_GameFolder.Size = new System.Drawing.Size(64, 13);
+            this.LB_GameFolder.TabIndex = 9;
+            this.LB_GameFolder.Text = "Game folder";
             // 
-            // TB_ContentPath
+            // TB_GamePath
             // 
-            this.TB_ContentPath.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.TB_GamePath.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TB_ContentPath.Location = new System.Drawing.Point(15, 73);
-            this.TB_ContentPath.Name = "TB_ContentPath";
-            this.TB_ContentPath.Size = new System.Drawing.Size(696, 20);
-            this.TB_ContentPath.TabIndex = 8;
+            this.TB_GamePath.Location = new System.Drawing.Point(15, 73);
+            this.TB_GamePath.Name = "TB_GamePath";
+            this.TB_GamePath.Size = new System.Drawing.Size(696, 20);
+            this.TB_GamePath.TabIndex = 8;
             // 
             // RTB_Log
             // 
@@ -367,9 +367,9 @@
             this.LB_Workshop.AutoSize = true;
             this.LB_Workshop.Location = new System.Drawing.Point(27, 96);
             this.LB_Workshop.Name = "LB_Workshop";
-            this.LB_Workshop.Size = new System.Drawing.Size(109, 13);
+            this.LB_Workshop.Size = new System.Drawing.Size(85, 13);
             this.LB_Workshop.TabIndex = 17;
-            this.LB_Workshop.Text = "Workshop folder path";
+            this.LB_Workshop.Text = "Workshop folder";
             // 
             // TB_WorkshopPath
             // 
@@ -479,8 +479,8 @@
             this.Controls.Add(this.BT_Log_Copy);
             this.Controls.Add(this.RTB_Log);
             this.Controls.Add(this.BT_ContentDir);
-            this.Controls.Add(this.LB_ContentFolder);
-            this.Controls.Add(this.TB_ContentPath);
+            this.Controls.Add(this.LB_GameFolder);
+            this.Controls.Add(this.TB_GamePath);
             this.Controls.Add(this.GB_Settings);
             this.Controls.Add(this.BT_OutputFN);
             this.Controls.Add(this.BT_PackGro);
@@ -516,8 +516,8 @@
         private System.Windows.Forms.CheckBox CB_Gtitle;
         private System.Windows.Forms.CheckBox CB_Workshop;
         private System.Windows.Forms.Button BT_ContentDir;
-        private System.Windows.Forms.Label LB_ContentFolder;
-        private System.Windows.Forms.TextBox TB_ContentPath;
+        private System.Windows.Forms.Label LB_GameFolder;
+        private System.Windows.Forms.TextBox TB_GamePath;
         private System.Windows.Forms.FolderBrowserDialog FBD_ContentDir;
         private System.Windows.Forms.Button BT_Log_Copy;
         private System.Windows.Forms.Button BT_Log_Clear;
