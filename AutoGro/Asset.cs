@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.IO;
 using static AutoGro.SeriousStream;
 
 namespace AutoGro
 {
-    public partial class Asset
+    public partial class Asset : IEqualityComparer<Asset>
     {
         // Cache variables are used to avoid multiplie calculations for certain properties
         private string extension_cache = string.Empty;
@@ -27,6 +28,8 @@ namespace AutoGro
                 fullPath = value;
             }
         }
+
+        public string PathWithoutExtension { get => FullPath.Substring(0, FullPath.Length - Extension.Length).Trim('.'); }
 
         // File extension. Basing on this, we can try to determine asset type, if not able to read it from binary file.
         public string Extension {
@@ -57,6 +60,42 @@ namespace AutoGro
             if (iDot >= assetPath.Length) throw new ArgumentException("Invalid path: was not able to detect file extension.");
 
             return assetPath.Substring(iDot);
+        }
+
+        internal void CollectExtensionBasedAssetsTo(List<Asset> result)
+        {
+            switch (Extension)
+            {
+                case "ogg": case "wav": case "mp3":
+                {
+                    string fileAttempt = PathWithoutExtension + ".srt";
+                    if (File.Exists(fileAttempt)) result.Add(new Asset(fileAttempt, (LogInterface)Log, this));
+                    fileAttempt = PathWithoutExtension + ".ass";
+                    if (File.Exists(fileAttempt)) result.Add(new Asset(fileAttempt, (LogInterface)Log, this));
+                    break;
+                }
+
+                case "gtitle":
+                {
+                    string fileAttempt = FullPath + "info";
+                    if (File.Exists(fileAttempt)) result.Add(new Asset(fileAttempt, (LogInterface)Log, this));
+                    break;
+                }
+
+                case "wld":
+                {
+                    string fileAttempt = PathWithoutExtension + ".nfo";
+                    if (File.Exists(fileAttempt)) result.Add(new Asset(fileAttempt, (LogInterface)Log, this));
+                    break;
+                }
+                
+                case "tex":
+                {
+                    string fileAttempt = PathWithoutExtension + "--Big.tex";
+                    if (File.Exists(fileAttempt)) result.Add(new Asset(fileAttempt, (LogInterface)Log, this));
+                    break;
+                }
+            }
         }
 
         #region Path type conversions
@@ -108,7 +147,7 @@ namespace AutoGro
         {
             bool output = !(log == null);
 
-            SeriousStream stream = new SeriousStream(FullPath, System.IO.FileMode.Open, System.IO.FileAccess.Read);
+            SeriousStream stream = new SeriousStream(FullPath, FileMode.Open, FileAccess.Read);
             while (stream.Position < stream.Length)
             {
                 StructType structType = stream.CheckID();
@@ -146,6 +185,16 @@ namespace AutoGro
         public static Asset AssetFromSoftPath(string inputPath, string gameFolder, LogInterface log, Asset source = null)
             => new Asset(gameFolder.Trim('\\') + "\\" + inputPath, log, source);
 
+        public override string ToString() => FullPath;
+
+        public bool Equals(Asset x, Asset y)
+        {
+            if (x.FullPath == y.FullPath) return true;
+            else return false;
+        }
+
+        public int GetHashCode(Asset obj) => obj.FullPath.GetHashCode();
+
         public Asset(string inputPath, LogInterface log, Asset source = null)
         {
             Log = log;
@@ -170,14 +219,14 @@ namespace AutoGro
             {
                 log.Message("Failed parsing binary. Attempting regex search...");
 
-                string fileContents = System.IO.File.ReadAllText(inputPath);
+                string fileContents = File.ReadAllText(inputPath);
                 MatchCollection searchResult = new Regex(@"\w+(?>\/\w+)+(?>\w*.[a-z0-9_]+)+").Matches(fileContents);
                 if (searchResult.Count == 0) log.Message("Regex search did not find any assets.");
                 else
                 {
                     for (int i = 0; i < searchResult.Count; i++)
                     {
-                        string path = childrenList[i];
+                        string path = searchResult[i].Groups[1].ToString();
                         log.Message("Found asset: " + path);
                         ChildrenSoft.Add(path);
                     }

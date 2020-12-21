@@ -21,7 +21,6 @@ namespace AutoGro
         private string contentFolder = "";
         private LogInterface log;
 
-
         public F_Main(string[] args)
         { 
             // check for updates sequence
@@ -219,7 +218,10 @@ namespace AutoGro
 
                 // find referenced files
                 Asset rootAsset = new Asset(fnInput, log);
-                List<Asset> assetsToPack = ReadAllChildren(rootAsset);
+                List<Asset> assetsToPack = new List<Asset>(); 
+                ReadAllChildrenTo(rootAsset, assetsToPack);
+                
+                assetsToPack = assetsToPack.Distinct(rootAsset).ToList();
 
                 // create compression stream
                 log.Message("Opening archive file...");
@@ -253,10 +255,9 @@ namespace AutoGro
             }
         }
 
-        public List<Asset> ReadAllChildren(Asset rootAsset)
+        public void ReadAllChildrenTo(Asset rootAsset, List<Asset> output)
         {
-            List<Asset> result = new List<Asset>();
-            result.Add(rootAsset);
+            output.Add(rootAsset);
 
             foreach (string softPath in rootAsset.ChildrenSoft)
             {
@@ -267,9 +268,9 @@ namespace AutoGro
                     continue;
                 }
                 Asset child = new Asset(fullPath, log, rootAsset);
-                result.AddRange(ReadAllChildren(child));
+                child.CollectExtensionBasedAssetsTo(output);
+                ReadAllChildrenTo(child, output);
             }
-            return result;
         }
 
         /*
