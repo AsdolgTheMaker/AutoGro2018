@@ -8,7 +8,7 @@ namespace AutoGro
 {
     public partial class AssetTypeDescriptionAttribute : Attribute
     {
-        public AssetTypeDescrition AssetTypeDescription = new AssetTypeDescrition();
+        public AssetTypeDescription AssetTypeDescription = new AssetTypeDescription();
 
         public string ExtensionString { get => AssetTypeDescription.ExtensionString; set => AssetTypeDescription.ExtensionString = value; }
         public string Description { get => AssetTypeDescription.Description; set => AssetTypeDescription.Description = value; }

@@ -1,9 +1,28 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
+using System.Linq;
 
 namespace AutoGro
 {
     public partial class Asset
     {
+        public AssetType Type
+        {
+            get
+            {
+                var enumType = typeof(AssetType);
+                foreach (AssetType assetType in Enum.GetValues(enumType))
+                {
+                    var memberInfos = enumType.GetMember(assetType.ToString());
+                    var enumValueMemberInfo = memberInfos.FirstOrDefault(m => m.DeclaringType == enumType);
+                    var valueAttributes = enumValueMemberInfo.GetCustomAttributes(typeof(AssetTypeDescriptionAttribute), false);
+                    var extension = ((AssetTypeDescriptionAttribute)valueAttributes[0]).ExtensionString;
+                    if (extension == Extension) return assetType;
+                }
+                return AssetType.UNKNOWN;
+            }
+        }
+
         public enum AssetType
         {
             [AssetTypeDescription("ANH", "Animation host", isBinary: true)]

@@ -111,7 +111,7 @@
     <Compile Include="Asset.cs" />
     <Compile Include="AssetType.cs" />
     <Compile Include="AssetTypeDescriptionAttribute.cs" />
-    <Compile Include="AssetTypeDescrition.cs" />
+    <Compile Include="AssetTypeDescription.cs" />
     <Compile Include="BinaryParser\SeriousStream.cs" />
     <Compile Include="Extensions\EnumExtensionMethods.cs" />
     <Compile Include="ExtensionsTuner.cs">

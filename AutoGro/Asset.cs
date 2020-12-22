@@ -13,7 +13,6 @@ namespace AutoGro
     {
         // Cache variables are used to avoid multiplie calculations for certain properties
         private string extension_cache = string.Empty;
-
         private readonly Log Log;
         private string fullPath = string.Empty;
         
@@ -26,7 +25,6 @@ namespace AutoGro
                 fullPath = value;
             }
         }
-
         public string PathWithoutExtension { get => FullPath.Substring(0, FullPath.Length - Extension.Length).Trim('.'); }
 
         // File extension. Basing on this, we can try to determine asset type, if not able to read it from binary file.

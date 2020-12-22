@@ -6,7 +6,7 @@ namespace EnumOps
 {
     public static class EnumExtensionMethods
     {
-        public static AutoGro.AssetTypeDescrition GetAssetTypeDescription(this Enum GenericEnum)
+        public static AutoGro.AssetTypeDescription GetAssetTypeDescription(this Enum GenericEnum)
         {
             Type genericEnumType = GenericEnum.GetType();
             MemberInfo[] memberInfo = genericEnumType.GetMember(GenericEnum.ToString());
@@ -18,7 +18,7 @@ namespace EnumOps
                     return ((AutoGro.AssetTypeDescriptionAttribute)_Attribs.ElementAt(0)).AssetTypeDescription;
                 }
             }
-            return new AutoGro.AssetTypeDescrition();
+            return new AutoGro.AssetTypeDescription();
         }
 
     }
