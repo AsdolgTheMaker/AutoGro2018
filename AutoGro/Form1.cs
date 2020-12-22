@@ -19,7 +19,7 @@ namespace AutoGro
         public List<string> extPackExceptions = new List<string>() { "tga", "fbx", "obj", "mp3", "png", "amf", "zpr" };
 
         private string contentFolder = "";
-        private LogInterface log;
+        private readonly LogInterface log;
 
         public F_Main(string[] args)
         { 
@@ -167,6 +167,8 @@ namespace AutoGro
                 
                 assetsToPack = assetsToPack.Distinct(rootAsset).ToList();
 
+                // TODO: Add assets tree viewer with an ability to add/exclude specific assets for packing.
+
                 // create compression stream
                 log.Message("Opening archive file...");
                 FileStream grofile = File.OpenWrite(fnOutput);
@@ -233,14 +235,6 @@ namespace AutoGro
             Dispose();
         }
 
-        private static string[] RemoveDuplicates(string[] s)
-        {
-            HashSet<string> set = new HashSet<string>(s);
-            string[] result = new string[set.Count];
-            set.CopyTo(result);
-            return result;
-        }
-
         private void BT_Help_OtherWLDs_Click(object sender, EventArgs e)
         {
             MessageBox.Show("This option defines if analizer will examine .wld files which are linked from selected one.\nThat means, if you have a ten levels campaign, you should select first level and tick this option, so resources from all levels will be collected.", "Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -258,8 +252,6 @@ namespace AutoGro
 
         private void BT_Update_Click(object sender, EventArgs e)
         {
-            LogInterface log = new LogInterface(RTB_Log);
-
             Updater.UpdateCheckResult updaterResult = Updater.CheckForUpdates();
             switch (updaterResult)
             {

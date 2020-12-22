@@ -8,7 +8,7 @@ namespace AutoGro
         public static string logfile = "Autogro_log.txt";
 
         // Appends message into log and scrolls textbox
-        public void Message(string message, bool addFormatting = true)
+        public static void Message(string message, bool addFormatting = true)
         {
             if (addFormatting) message = DateTime.Now.ToLocalTime().ToString() + " || " + message + "\n";
                         

@@ -13,9 +13,8 @@ namespace AutoGro
     {
         // Cache variables are used to avoid multiplie calculations for certain properties
         private string extension_cache = string.Empty;
-        private AssetType? type_cache = null;
 
-        private Log Log;
+        private readonly Log Log;
         private string fullPath = string.Empty;
         
         public string FullPath {
@@ -23,7 +22,6 @@ namespace AutoGro
             set {
                 // empty cache before setting the value
                 extension_cache = string.Empty;
-                type_cache = null;
                 
                 fullPath = value;
             }
@@ -36,16 +34,6 @@ namespace AutoGro
             get {
                 if (string.IsNullOrEmpty(extension_cache)) extension_cache = GetAssetExtension(FullPath);
                 return extension_cache;
-            }
-        }
-
-        public AssetType Type {
-            get {
-                if (type_cache == null)
-                {
-                    
-                }
-                return (AssetType)type_cache;
             }
         }
 
@@ -171,15 +159,20 @@ namespace AutoGro
                     case StructType.RFIL: // found rfil, read it and return
                         if (output) log.Message("Parsing binary: Detected RFIL struct. Reading file references.");
                         result = stream.ReadStruct(StructType.RFIL);
+                        stream.Dispose();
                         return true;
 
                     case StructType.Unknown: // could not read binary, give false result
                     default:
                         if (output) log.Message("Parsing binary: Failed.");
-                        result = null; return false;
+                        stream.Dispose();
+                        result = null; 
+                        return false;
                 }
             }
-            result = null; return false;
+            stream.Dispose();
+            result = null; 
+            return false;
         }
 
         public static Asset AssetFromSoftPath(string inputPath, string gameFolder, LogInterface log, Asset source = null)
@@ -202,8 +195,7 @@ namespace AutoGro
             FullPath = inputPath;
 
             log.Message("Examining asset: " + inputPath);
-            List<string> childrenList;
-            bool isBinary = TryParse(log, out childrenList);
+            bool isBinary = TryParse(log, out List<string> childrenList);
 
             if (isBinary) // binary was successfuly parsed and we can read the results
             {

@@ -30,7 +30,7 @@ namespace AutoGro
         /// <summary>
         /// Version control file address
         /// </summary>
-        private static readonly string VersionFileLink = "https://raw.githubusercontent.com/AsdolgTheMaker/AutoGro2018/master/version.txt";
+        private const string VersionFileLink = "https://raw.githubusercontent.com/AsdolgTheMaker/AutoGro2018/master/version.txt";
 
         /// <summary>
         /// Version file download target location

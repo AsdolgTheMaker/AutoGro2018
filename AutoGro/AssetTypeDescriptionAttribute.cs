@@ -12,7 +12,7 @@ namespace AutoGro
 
         public string ExtensionString { get => AssetTypeDescription.ExtensionString; set => AssetTypeDescription.ExtensionString = value; }
         public string Description { get => AssetTypeDescription.Description; set => AssetTypeDescription.Description = value; }
-        public bool IsBinary { get => AssetTypeDescription.IsBinary; set => AssetTypeDescription.IsBinary = IsBinary; }
+        public bool IsBinary { get => AssetTypeDescription.IsBinary; set => AssetTypeDescription.IsBinary = value; }
 
         public AssetTypeDescriptionAttribute(string description)
         {
