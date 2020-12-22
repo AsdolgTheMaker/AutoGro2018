@@ -1,0 +1,4 @@
+3
+Content/SeriousSam4/Models/Candles/Candles.bmf
+Content/SeriousSam4/Presets/FastLights/CandlesAddOn.rsc
+Content/SeriousSam4/Presets/Effects/BowlFire.pfx

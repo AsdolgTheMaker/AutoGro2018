@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2046
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoGro", "AutoGro\AutoGro.csproj", "{D2127DBF-F5FF-4780-8D62-49FDECBD354C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParserTests", "RfilReaderTest\ParserTests.csproj", "{1319B6AB-107E-4851-920E-45FF8F1FFB46}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D2127DBF-F5FF-4780-8D62-49FDECBD354C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2127DBF-F5FF-4780-8D62-49FDECBD354C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2127DBF-F5FF-4780-8D62-49FDECBD354C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1319B6AB-107E-4851-920E-45FF8F1FFB46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1319B6AB-107E-4851-920E-45FF8F1FFB46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1319B6AB-107E-4851-920E-45FF8F1FFB46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1319B6AB-107E-4851-920E-45FF8F1FFB46}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
