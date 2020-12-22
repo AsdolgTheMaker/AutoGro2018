@@ -72,7 +72,7 @@ namespace AutoGro
 
         private void TB_NewExtension_TextChanged(object sender, EventArgs e)
         {
-            TB_NewExtension.BackColor = Color.White;
+            TB_NewExtension.BackColor = Color.FromArgb(255, 64, 64, 64);
         }
     }
 }

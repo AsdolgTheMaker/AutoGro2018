@@ -41,7 +41,10 @@
             // BT_Cancel
             // 
             this.BT_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BT_Cancel.Location = new System.Drawing.Point(117, 287);
+            this.BT_Cancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BT_Cancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon;
+            this.BT_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_Cancel.Location = new System.Drawing.Point(146, 205);
             this.BT_Cancel.Name = "BT_Cancel";
             this.BT_Cancel.Size = new System.Drawing.Size(75, 23);
             this.BT_Cancel.TabIndex = 0;
@@ -52,7 +55,10 @@
             // BT_Apply
             // 
             this.BT_Apply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BT_Apply.Location = new System.Drawing.Point(198, 287);
+            this.BT_Apply.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.BT_Apply.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.BT_Apply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_Apply.Location = new System.Drawing.Point(146, 234);
             this.BT_Apply.Name = "BT_Apply";
             this.BT_Apply.Size = new System.Drawing.Size(75, 23);
             this.BT_Apply.TabIndex = 1;
@@ -63,9 +69,12 @@
             // BT_Default
             // 
             this.BT_Default.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.BT_Default.Location = new System.Drawing.Point(12, 287);
+            this.BT_Default.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.BT_Default.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BT_Default.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_Default.Location = new System.Drawing.Point(12, 234);
             this.BT_Default.Name = "BT_Default";
-            this.BT_Default.Size = new System.Drawing.Size(95, 23);
+            this.BT_Default.Size = new System.Drawing.Size(108, 23);
             this.BT_Default.TabIndex = 2;
             this.BT_Default.Text = "Revert to default";
             this.BT_Default.UseVisualStyleBackColor = true;
@@ -74,7 +83,10 @@
             // TB_NewExtension
             // 
             this.TB_NewExtension.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TB_NewExtension.Location = new System.Drawing.Point(203, 12);
+            this.TB_NewExtension.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TB_NewExtension.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TB_NewExtension.ForeColor = System.Drawing.Color.White;
+            this.TB_NewExtension.Location = new System.Drawing.Point(151, 12);
             this.TB_NewExtension.Name = "TB_NewExtension";
             this.TB_NewExtension.Size = new System.Drawing.Size(70, 20);
             this.TB_NewExtension.TabIndex = 4;
@@ -83,7 +95,10 @@
             // BT_Add
             // 
             this.BT_Add.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BT_Add.Location = new System.Drawing.Point(203, 38);
+            this.BT_Add.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.BT_Add.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.BT_Add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_Add.Location = new System.Drawing.Point(151, 38);
             this.BT_Add.Name = "BT_Add";
             this.BT_Add.Size = new System.Drawing.Size(70, 23);
             this.BT_Add.TabIndex = 5;
@@ -94,7 +109,10 @@
             // BT_Remove
             // 
             this.BT_Remove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BT_Remove.Location = new System.Drawing.Point(203, 97);
+            this.BT_Remove.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BT_Remove.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon;
+            this.BT_Remove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_Remove.Location = new System.Drawing.Point(151, 97);
             this.BT_Remove.Name = "BT_Remove";
             this.BT_Remove.Size = new System.Drawing.Size(70, 37);
             this.BT_Remove.TabIndex = 6;
@@ -106,17 +124,21 @@
             // 
             this.listExtensions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.listExtensions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.listExtensions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listExtensions.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.listExtensions.FormattingEnabled = true;
             this.listExtensions.Location = new System.Drawing.Point(12, 12);
             this.listExtensions.Name = "listExtensions";
-            this.listExtensions.Size = new System.Drawing.Size(185, 264);
+            this.listExtensions.Size = new System.Drawing.Size(108, 197);
             this.listExtensions.TabIndex = 7;
             // 
             // ExtensionsTuner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(285, 322);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(36)))));
+            this.ClientSize = new System.Drawing.Size(233, 269);
             this.Controls.Add(this.listExtensions);
             this.Controls.Add(this.BT_Remove);
             this.Controls.Add(this.BT_Add);
@@ -124,8 +146,10 @@
             this.Controls.Add(this.BT_Default);
             this.Controls.Add(this.BT_Apply);
             this.Controls.Add(this.BT_Cancel);
+            this.ForeColor = System.Drawing.Color.White;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(301, 361);
+            this.MinimumSize = new System.Drawing.Size(233, 269);
             this.Name = "ExtensionsTuner";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ExtensionsTuner";

@@ -42,10 +42,8 @@
             this.BT_Help_Exceptions = new System.Windows.Forms.Button();
             this.BT_ExceptionsSettings = new System.Windows.Forms.Button();
             this.CB_Exceptions = new System.Windows.Forms.CheckBox();
-            this.BT_Help_Workshop = new System.Windows.Forms.Button();
             this.BT_Help_Gtitle = new System.Windows.Forms.Button();
             this.BT_Help_OtherWLDs = new System.Windows.Forms.Button();
-            this.CB_Workshop = new System.Windows.Forms.CheckBox();
             this.CB_OtherWLDs = new System.Windows.Forms.CheckBox();
             this.CB_Gtitle = new System.Windows.Forms.CheckBox();
             this.BT_ContentDir = new System.Windows.Forms.Button();
@@ -53,17 +51,11 @@
             this.TB_GamePath = new System.Windows.Forms.TextBox();
             this.FBD_ContentDir = new System.Windows.Forms.FolderBrowserDialog();
             this.RTB_Log = new System.Windows.Forms.RichTextBox();
-            this.BT_Log_Copy = new System.Windows.Forms.Button();
             this.BT_Log_Clear = new System.Windows.Forms.Button();
             this.BT_Exit = new System.Windows.Forms.Button();
-            this.BT_Browse_Workshop = new System.Windows.Forms.Button();
-            this.LB_Workshop = new System.Windows.Forms.Label();
-            this.TB_WorkshopPath = new System.Windows.Forms.TextBox();
             this.CB_Autodetection = new System.Windows.Forms.CheckBox();
             this.BT_Help_Autodetection = new System.Windows.Forms.Button();
             this.BT_Update = new System.Windows.Forms.Button();
-            this.BT_Log_Save = new System.Windows.Forms.Button();
-            this.BT_Settings = new System.Windows.Forms.Button();
             this.PB_Process = new System.Windows.Forms.ProgressBar();
             this.LB_CurrentState = new System.Windows.Forms.Label();
             this.GB_Settings.SuspendLayout();
@@ -74,15 +66,21 @@
             this.TB_DirWLD.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.TB_DirWLD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TB_DirWLD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TB_DirWLD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.TB_DirWLD.Location = new System.Drawing.Point(15, 34);
             this.TB_DirWLD.Name = "TB_DirWLD";
-            this.TB_DirWLD.Size = new System.Drawing.Size(693, 20);
+            this.TB_DirWLD.Size = new System.Drawing.Size(718, 20);
             this.TB_DirWLD.TabIndex = 0;
             // 
             // BT_WldInput
             // 
             this.BT_WldInput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BT_WldInput.Location = new System.Drawing.Point(714, 32);
+            this.BT_WldInput.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.BT_WldInput.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BT_WldInput.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_WldInput.Location = new System.Drawing.Point(739, 32);
             this.BT_WldInput.Name = "BT_WldInput";
             this.BT_WldInput.Size = new System.Drawing.Size(75, 23);
             this.BT_WldInput.TabIndex = 1;
@@ -95,9 +93,12 @@
             this.TB_OutputName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TB_OutputName.Location = new System.Drawing.Point(15, 151);
+            this.TB_OutputName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TB_OutputName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TB_OutputName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.TB_OutputName.Location = new System.Drawing.Point(15, 112);
             this.TB_OutputName.Name = "TB_OutputName";
-            this.TB_OutputName.Size = new System.Drawing.Size(696, 20);
+            this.TB_OutputName.Size = new System.Drawing.Size(718, 20);
             this.TB_OutputName.TabIndex = 2;
             // 
             // LB_DirWLD
@@ -112,7 +113,7 @@
             // LB_OutputFN
             // 
             this.LB_OutputFN.AutoSize = true;
-            this.LB_OutputFN.Location = new System.Drawing.Point(27, 135);
+            this.LB_OutputFN.Location = new System.Drawing.Point(27, 96);
             this.LB_OutputFN.Name = "LB_OutputFN";
             this.LB_OutputFN.Size = new System.Drawing.Size(79, 13);
             this.LB_OutputFN.TabIndex = 4;
@@ -122,10 +123,14 @@
             // 
             this.BT_PackGro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.BT_PackGro.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.BT_PackGro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.BT_PackGro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.ForestGreen;
+            this.BT_PackGro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BT_PackGro.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BT_PackGro.Location = new System.Drawing.Point(374, 232);
+            this.BT_PackGro.Location = new System.Drawing.Point(374, 194);
             this.BT_PackGro.Name = "BT_PackGro";
-            this.BT_PackGro.Size = new System.Drawing.Size(391, 70);
+            this.BT_PackGro.Size = new System.Drawing.Size(440, 50);
             this.BT_PackGro.TabIndex = 5;
             this.BT_PackGro.Text = "Start packing";
             this.BT_PackGro.UseVisualStyleBackColor = true;
@@ -146,7 +151,10 @@
             // BT_OutputFN
             // 
             this.BT_OutputFN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BT_OutputFN.Location = new System.Drawing.Point(714, 149);
+            this.BT_OutputFN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.BT_OutputFN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BT_OutputFN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_OutputFN.Location = new System.Drawing.Point(739, 110);
             this.BT_OutputFN.Name = "BT_OutputFN";
             this.BT_OutputFN.Size = new System.Drawing.Size(75, 23);
             this.BT_OutputFN.TabIndex = 6;
@@ -159,15 +167,14 @@
             this.GB_Settings.Controls.Add(this.BT_Help_Exceptions);
             this.GB_Settings.Controls.Add(this.BT_ExceptionsSettings);
             this.GB_Settings.Controls.Add(this.CB_Exceptions);
-            this.GB_Settings.Controls.Add(this.BT_Help_Workshop);
             this.GB_Settings.Controls.Add(this.BT_Help_Gtitle);
             this.GB_Settings.Controls.Add(this.BT_Help_OtherWLDs);
-            this.GB_Settings.Controls.Add(this.CB_Workshop);
             this.GB_Settings.Controls.Add(this.CB_OtherWLDs);
             this.GB_Settings.Controls.Add(this.CB_Gtitle);
-            this.GB_Settings.Location = new System.Drawing.Point(15, 190);
+            this.GB_Settings.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.GB_Settings.Location = new System.Drawing.Point(15, 152);
             this.GB_Settings.Name = "GB_Settings";
-            this.GB_Settings.Size = new System.Drawing.Size(318, 112);
+            this.GB_Settings.Size = new System.Drawing.Size(318, 92);
             this.GB_Settings.TabIndex = 7;
             this.GB_Settings.TabStop = false;
             this.GB_Settings.Text = "Optional settings";
@@ -175,7 +182,9 @@
             // BT_Help_Exceptions
             // 
             this.BT_Help_Exceptions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BT_Help_Exceptions.Location = new System.Drawing.Point(6, 85);
+            this.BT_Help_Exceptions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_Help_Exceptions.ForeColor = System.Drawing.Color.Silver;
+            this.BT_Help_Exceptions.Location = new System.Drawing.Point(6, 62);
             this.BT_Help_Exceptions.Name = "BT_Help_Exceptions";
             this.BT_Help_Exceptions.Size = new System.Drawing.Size(17, 23);
             this.BT_Help_Exceptions.TabIndex = 21;
@@ -185,7 +194,10 @@
             // 
             // BT_ExceptionsSettings
             // 
-            this.BT_ExceptionsSettings.Location = new System.Drawing.Point(202, 85);
+            this.BT_ExceptionsSettings.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.BT_ExceptionsSettings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BT_ExceptionsSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_ExceptionsSettings.Location = new System.Drawing.Point(202, 62);
             this.BT_ExceptionsSettings.Name = "BT_ExceptionsSettings";
             this.BT_ExceptionsSettings.Size = new System.Drawing.Size(110, 22);
             this.BT_ExceptionsSettings.TabIndex = 20;
@@ -196,30 +208,28 @@
             // CB_Exceptions
             // 
             this.CB_Exceptions.AutoSize = true;
+            this.CB_Exceptions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.CB_Exceptions.Checked = true;
             this.CB_Exceptions.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CB_Exceptions.Location = new System.Drawing.Point(29, 89);
+            this.CB_Exceptions.FlatAppearance.CheckedBackColor = System.Drawing.Color.Green;
+            this.CB_Exceptions.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.CB_Exceptions.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.CB_Exceptions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CB_Exceptions.Location = new System.Drawing.Point(29, 66);
             this.CB_Exceptions.Name = "CB_Exceptions";
-            this.CB_Exceptions.Size = new System.Drawing.Size(139, 17);
+            this.CB_Exceptions.Size = new System.Drawing.Size(136, 17);
             this.CB_Exceptions.TabIndex = 19;
             this.CB_Exceptions.Text = "Do not pack exceptions";
-            this.CB_Exceptions.UseVisualStyleBackColor = true;
+            this.CB_Exceptions.UseVisualStyleBackColor = false;
             this.CB_Exceptions.CheckedChanged += new System.EventHandler(this.CB_Exceptions_CheckedChanged);
-            // 
-            // BT_Help_Workshop
-            // 
-            this.BT_Help_Workshop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BT_Help_Workshop.Location = new System.Drawing.Point(6, 62);
-            this.BT_Help_Workshop.Name = "BT_Help_Workshop";
-            this.BT_Help_Workshop.Size = new System.Drawing.Size(17, 23);
-            this.BT_Help_Workshop.TabIndex = 18;
-            this.BT_Help_Workshop.Text = "?";
-            this.BT_Help_Workshop.UseVisualStyleBackColor = true;
-            this.BT_Help_Workshop.Click += new System.EventHandler(this.BT_Help_Workshop_Click);
             // 
             // BT_Help_Gtitle
             // 
             this.BT_Help_Gtitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BT_Help_Gtitle.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.BT_Help_Gtitle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BT_Help_Gtitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_Help_Gtitle.ForeColor = System.Drawing.Color.Silver;
             this.BT_Help_Gtitle.Location = new System.Drawing.Point(6, 16);
             this.BT_Help_Gtitle.Name = "BT_Help_Gtitle";
             this.BT_Help_Gtitle.Size = new System.Drawing.Size(17, 23);
@@ -231,6 +241,8 @@
             // BT_Help_OtherWLDs
             // 
             this.BT_Help_OtherWLDs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BT_Help_OtherWLDs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_Help_OtherWLDs.ForeColor = System.Drawing.Color.Silver;
             this.BT_Help_OtherWLDs.Location = new System.Drawing.Point(6, 39);
             this.BT_Help_OtherWLDs.Name = "BT_Help_OtherWLDs";
             this.BT_Help_OtherWLDs.Size = new System.Drawing.Size(17, 23);
@@ -239,43 +251,43 @@
             this.BT_Help_OtherWLDs.UseVisualStyleBackColor = true;
             this.BT_Help_OtherWLDs.Click += new System.EventHandler(this.BT_Help_OtherWLDs_Click);
             // 
-            // CB_Workshop
-            // 
-            this.CB_Workshop.AutoSize = true;
-            this.CB_Workshop.Checked = true;
-            this.CB_Workshop.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CB_Workshop.Location = new System.Drawing.Point(29, 66);
-            this.CB_Workshop.Name = "CB_Workshop";
-            this.CB_Workshop.Size = new System.Drawing.Size(241, 17);
-            this.CB_Workshop.TabIndex = 2;
-            this.CB_Workshop.Text = "Examine workshop subscriptions dependency";
-            this.CB_Workshop.UseVisualStyleBackColor = true;
-            this.CB_Workshop.CheckedChanged += new System.EventHandler(this.CB_Workshop_CheckedChanged);
-            // 
             // CB_OtherWLDs
             // 
             this.CB_OtherWLDs.AutoSize = true;
+            this.CB_OtherWLDs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.CB_OtherWLDs.FlatAppearance.CheckedBackColor = System.Drawing.Color.Green;
+            this.CB_OtherWLDs.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.CB_OtherWLDs.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.CB_OtherWLDs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CB_OtherWLDs.Location = new System.Drawing.Point(29, 43);
             this.CB_OtherWLDs.Name = "CB_OtherWLDs";
-            this.CB_OtherWLDs.Size = new System.Drawing.Size(193, 17);
+            this.CB_OtherWLDs.Size = new System.Drawing.Size(190, 17);
             this.CB_OtherWLDs.TabIndex = 1;
             this.CB_OtherWLDs.Text = "Examine levels linked from selected";
-            this.CB_OtherWLDs.UseVisualStyleBackColor = true;
+            this.CB_OtherWLDs.UseVisualStyleBackColor = false;
             // 
             // CB_Gtitle
             // 
             this.CB_Gtitle.AutoSize = true;
+            this.CB_Gtitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.CB_Gtitle.FlatAppearance.CheckedBackColor = System.Drawing.Color.Green;
+            this.CB_Gtitle.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.CB_Gtitle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.CB_Gtitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CB_Gtitle.Location = new System.Drawing.Point(30, 20);
             this.CB_Gtitle.Name = "CB_Gtitle";
-            this.CB_Gtitle.Size = new System.Drawing.Size(162, 17);
+            this.CB_Gtitle.Size = new System.Drawing.Size(159, 17);
             this.CB_Gtitle.TabIndex = 0;
             this.CB_Gtitle.Text = "Pack .gtitle and its resources";
-            this.CB_Gtitle.UseVisualStyleBackColor = true;
+            this.CB_Gtitle.UseVisualStyleBackColor = false;
             // 
             // BT_ContentDir
             // 
             this.BT_ContentDir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BT_ContentDir.Location = new System.Drawing.Point(714, 71);
+            this.BT_ContentDir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.BT_ContentDir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BT_ContentDir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_ContentDir.Location = new System.Drawing.Point(739, 71);
             this.BT_ContentDir.Name = "BT_ContentDir";
             this.BT_ContentDir.Size = new System.Drawing.Size(75, 23);
             this.BT_ContentDir.TabIndex = 10;
@@ -297,9 +309,12 @@
             this.TB_GamePath.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.TB_GamePath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TB_GamePath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TB_GamePath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.TB_GamePath.Location = new System.Drawing.Point(15, 73);
             this.TB_GamePath.Name = "TB_GamePath";
-            this.TB_GamePath.Size = new System.Drawing.Size(696, 20);
+            this.TB_GamePath.Size = new System.Drawing.Size(718, 20);
             this.TB_GamePath.TabIndex = 8;
             // 
             // RTB_Log
@@ -307,32 +322,26 @@
             this.RTB_Log.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.RTB_Log.Location = new System.Drawing.Point(15, 308);
+            this.RTB_Log.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.RTB_Log.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.RTB_Log.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.RTB_Log.Location = new System.Drawing.Point(15, 250);
             this.RTB_Log.MaxLength = 10000;
             this.RTB_Log.Name = "RTB_Log";
             this.RTB_Log.ReadOnly = true;
             this.RTB_Log.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.RTB_Log.Size = new System.Drawing.Size(783, 124);
+            this.RTB_Log.Size = new System.Drawing.Size(799, 153);
             this.RTB_Log.TabIndex = 11;
             this.RTB_Log.Text = "";
-            // 
-            // BT_Log_Copy
-            // 
-            this.BT_Log_Copy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.BT_Log_Copy.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.BT_Log_Copy.Location = new System.Drawing.Point(112, 438);
-            this.BT_Log_Copy.Name = "BT_Log_Copy";
-            this.BT_Log_Copy.Size = new System.Drawing.Size(70, 23);
-            this.BT_Log_Copy.TabIndex = 12;
-            this.BT_Log_Copy.Text = "Copy";
-            this.BT_Log_Copy.UseVisualStyleBackColor = true;
-            this.BT_Log_Copy.Click += new System.EventHandler(this.BT_Log_Copy_Click);
             // 
             // BT_Log_Clear
             // 
             this.BT_Log_Clear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BT_Log_Clear.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.BT_Log_Clear.Location = new System.Drawing.Point(193, 438);
+            this.BT_Log_Clear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.BT_Log_Clear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BT_Log_Clear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_Log_Clear.Location = new System.Drawing.Point(15, 409);
             this.BT_Log_Clear.Name = "BT_Log_Clear";
             this.BT_Log_Clear.Size = new System.Drawing.Size(70, 23);
             this.BT_Log_Clear.TabIndex = 13;
@@ -343,7 +352,10 @@
             // BT_Exit
             // 
             this.BT_Exit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BT_Exit.Location = new System.Drawing.Point(714, 438);
+            this.BT_Exit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BT_Exit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon;
+            this.BT_Exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_Exit.Location = new System.Drawing.Point(730, 409);
             this.BT_Exit.Name = "BT_Exit";
             this.BT_Exit.Size = new System.Drawing.Size(75, 23);
             this.BT_Exit.TabIndex = 14;
@@ -351,53 +363,30 @@
             this.BT_Exit.UseVisualStyleBackColor = true;
             this.BT_Exit.Click += new System.EventHandler(this.BT_Exit_Click);
             // 
-            // BT_Browse_Workshop
-            // 
-            this.BT_Browse_Workshop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BT_Browse_Workshop.Location = new System.Drawing.Point(714, 110);
-            this.BT_Browse_Workshop.Name = "BT_Browse_Workshop";
-            this.BT_Browse_Workshop.Size = new System.Drawing.Size(75, 23);
-            this.BT_Browse_Workshop.TabIndex = 18;
-            this.BT_Browse_Workshop.Text = "Browse";
-            this.BT_Browse_Workshop.UseVisualStyleBackColor = true;
-            this.BT_Browse_Workshop.Click += new System.EventHandler(this.BT_Browse_Workshop_Click);
-            // 
-            // LB_Workshop
-            // 
-            this.LB_Workshop.AutoSize = true;
-            this.LB_Workshop.Location = new System.Drawing.Point(27, 96);
-            this.LB_Workshop.Name = "LB_Workshop";
-            this.LB_Workshop.Size = new System.Drawing.Size(85, 13);
-            this.LB_Workshop.TabIndex = 17;
-            this.LB_Workshop.Text = "Workshop folder";
-            // 
-            // TB_WorkshopPath
-            // 
-            this.TB_WorkshopPath.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TB_WorkshopPath.Location = new System.Drawing.Point(15, 112);
-            this.TB_WorkshopPath.Name = "TB_WorkshopPath";
-            this.TB_WorkshopPath.Size = new System.Drawing.Size(696, 20);
-            this.TB_WorkshopPath.TabIndex = 16;
-            // 
             // CB_Autodetection
             // 
             this.CB_Autodetection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CB_Autodetection.AutoSize = true;
+            this.CB_Autodetection.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.CB_Autodetection.Checked = true;
             this.CB_Autodetection.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CB_Autodetection.Location = new System.Drawing.Point(647, 9);
+            this.CB_Autodetection.FlatAppearance.CheckedBackColor = System.Drawing.Color.Green;
+            this.CB_Autodetection.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.CB_Autodetection.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.CB_Autodetection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CB_Autodetection.Location = new System.Drawing.Point(668, 9);
             this.CB_Autodetection.Name = "CB_Autodetection";
-            this.CB_Autodetection.Size = new System.Drawing.Size(127, 17);
+            this.CB_Autodetection.Size = new System.Drawing.Size(124, 17);
             this.CB_Autodetection.TabIndex = 18;
             this.CB_Autodetection.Text = "Enable autodetection";
-            this.CB_Autodetection.UseVisualStyleBackColor = true;
+            this.CB_Autodetection.UseVisualStyleBackColor = false;
             // 
             // BT_Help_Autodetection
             // 
             this.BT_Help_Autodetection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BT_Help_Autodetection.Location = new System.Drawing.Point(772, 5);
+            this.BT_Help_Autodetection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_Help_Autodetection.ForeColor = System.Drawing.Color.Silver;
+            this.BT_Help_Autodetection.Location = new System.Drawing.Point(790, 5);
             this.BT_Help_Autodetection.Name = "BT_Help_Autodetection";
             this.BT_Help_Autodetection.Size = new System.Drawing.Size(17, 23);
             this.BT_Help_Autodetection.TabIndex = 19;
@@ -408,7 +397,10 @@
             // BT_Update
             // 
             this.BT_Update.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.BT_Update.Location = new System.Drawing.Point(356, 438);
+            this.BT_Update.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.BT_Update.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BT_Update.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_Update.Location = new System.Drawing.Point(364, 409);
             this.BT_Update.Name = "BT_Update";
             this.BT_Update.Size = new System.Drawing.Size(119, 23);
             this.BT_Update.TabIndex = 20;
@@ -416,44 +408,20 @@
             this.BT_Update.UseVisualStyleBackColor = true;
             this.BT_Update.Click += new System.EventHandler(this.BT_Update_Click);
             // 
-            // BT_Log_Save
-            // 
-            this.BT_Log_Save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.BT_Log_Save.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.BT_Log_Save.Location = new System.Drawing.Point(19, 438);
-            this.BT_Log_Save.Name = "BT_Log_Save";
-            this.BT_Log_Save.Size = new System.Drawing.Size(82, 23);
-            this.BT_Log_Save.TabIndex = 21;
-            this.BT_Log_Save.Text = "Save to file";
-            this.BT_Log_Save.UseVisualStyleBackColor = true;
-            this.BT_Log_Save.Click += new System.EventHandler(this.BT_Log_Open_Click);
-            // 
-            // BT_Settings
-            // 
-            this.BT_Settings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BT_Settings.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.BT_Settings.Location = new System.Drawing.Point(600, 438);
-            this.BT_Settings.Name = "BT_Settings";
-            this.BT_Settings.Size = new System.Drawing.Size(108, 23);
-            this.BT_Settings.TabIndex = 22;
-            this.BT_Settings.Text = "Settings";
-            this.BT_Settings.UseVisualStyleBackColor = true;
-            this.BT_Settings.Visible = false;
-            this.BT_Settings.Click += new System.EventHandler(this.BT_Settings_Click);
-            // 
             // PB_Process
             // 
             this.PB_Process.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PB_Process.Location = new System.Drawing.Point(374, 203);
+            this.PB_Process.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.PB_Process.Location = new System.Drawing.Point(374, 165);
             this.PB_Process.Name = "PB_Process";
-            this.PB_Process.Size = new System.Drawing.Size(391, 23);
+            this.PB_Process.Size = new System.Drawing.Size(440, 23);
             this.PB_Process.TabIndex = 23;
             // 
             // LB_CurrentState
             // 
             this.LB_CurrentState.AutoSize = true;
-            this.LB_CurrentState.Location = new System.Drawing.Point(381, 187);
+            this.LB_CurrentState.Location = new System.Drawing.Point(381, 149);
             this.LB_CurrentState.Name = "LB_CurrentState";
             this.LB_CurrentState.Size = new System.Drawing.Size(96, 13);
             this.LB_CurrentState.TabIndex = 24;
@@ -463,20 +431,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(812, 471);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.ClientSize = new System.Drawing.Size(828, 444);
             this.Controls.Add(this.LB_CurrentState);
             this.Controls.Add(this.PB_Process);
-            this.Controls.Add(this.BT_Settings);
-            this.Controls.Add(this.BT_Log_Save);
             this.Controls.Add(this.BT_Update);
             this.Controls.Add(this.BT_Help_Autodetection);
             this.Controls.Add(this.CB_Autodetection);
-            this.Controls.Add(this.BT_Browse_Workshop);
-            this.Controls.Add(this.LB_Workshop);
-            this.Controls.Add(this.TB_WorkshopPath);
             this.Controls.Add(this.BT_Exit);
             this.Controls.Add(this.BT_Log_Clear);
-            this.Controls.Add(this.BT_Log_Copy);
             this.Controls.Add(this.RTB_Log);
             this.Controls.Add(this.BT_ContentDir);
             this.Controls.Add(this.LB_GameFolder);
@@ -489,8 +452,9 @@
             this.Controls.Add(this.TB_OutputName);
             this.Controls.Add(this.BT_WldInput);
             this.Controls.Add(this.TB_DirWLD);
+            this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(828, 491);
+            this.MinimumSize = new System.Drawing.Size(828, 444);
             this.Name = "F_Main";
             this.Text = "AutoGro 2018";
             this.GB_Settings.ResumeLayout(false);
@@ -514,26 +478,18 @@
         private System.Windows.Forms.GroupBox GB_Settings;
         private System.Windows.Forms.CheckBox CB_OtherWLDs;
         private System.Windows.Forms.CheckBox CB_Gtitle;
-        private System.Windows.Forms.CheckBox CB_Workshop;
         private System.Windows.Forms.Button BT_ContentDir;
         private System.Windows.Forms.Label LB_GameFolder;
         private System.Windows.Forms.TextBox TB_GamePath;
         private System.Windows.Forms.FolderBrowserDialog FBD_ContentDir;
-        private System.Windows.Forms.Button BT_Log_Copy;
         private System.Windows.Forms.Button BT_Log_Clear;
         private System.Windows.Forms.Button BT_Exit;
         private System.Windows.Forms.Button BT_Help_Gtitle;
         private System.Windows.Forms.Button BT_Help_OtherWLDs;
-        private System.Windows.Forms.Button BT_Browse_Workshop;
-        private System.Windows.Forms.Label LB_Workshop;
-        private System.Windows.Forms.TextBox TB_WorkshopPath;
         private System.Windows.Forms.CheckBox CB_Autodetection;
-        private System.Windows.Forms.Button BT_Help_Workshop;
         private System.Windows.Forms.Button BT_Help_Autodetection;
         private System.Windows.Forms.Button BT_Update;
         private System.Windows.Forms.RichTextBox RTB_Log;
-        private System.Windows.Forms.Button BT_Log_Save;
-        private System.Windows.Forms.Button BT_Settings;
         private System.Windows.Forms.ProgressBar PB_Process;
         private System.Windows.Forms.Label LB_CurrentState;
         private System.Windows.Forms.Button BT_ExceptionsSettings;
